@@ -1,0 +1,12 @@
+uuid: df0bf37e-2932-4f9a-8434-2c1a45c78105
+langcode: fr
+status: true
+dependencies: {  }
+id: etudiant
+label: Etudiant
+weight: 8
+is_admin: null
+permissions:
+  - 'create field_carte'
+  - 'edit own field_carte'
+  - 'view own field_carte'

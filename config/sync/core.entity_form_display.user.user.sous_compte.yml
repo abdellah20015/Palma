@@ -1,0 +1,82 @@
+uuid: dad0d73a-098a-407b-84ab-6e97106aa4d3
+langcode: fr
+status: true
+dependencies:
+  config:
+    - core.entity_form_mode.user.sous_compte
+    - field.field.user.user.field_abonnement
+    - field.field.user.user.field_adresses_ip
+    - field.field.user.user.field_carte
+    - field.field.user.user.field_credit
+    - field.field.user.user.field_d_adresse_physique
+    - field.field.user.user.field_date_de_naissance_
+    - field.field.user.user.field_interesse_par
+    - field.field.user.user.field_nom
+    - field.field.user.user.field_nombre_achat_numero
+    - field.field.user.user.field_pack
+    - field.field.user.user.field_photo
+    - field.field.user.user.field_prenom
+    - field.field.user.user.field_sous_compte
+    - field.field.user.user.field_telephone
+    - field.field.user.user.field_type
+    - field.field.user.user.field_ville
+    - field.field.user.user.user_picture
+  module:
+    - user
+_core:
+  default_config_hash: Aa0rnGnFvcpVmC8SGW68BNYde2tSrNzOmvfAzSeIUVI
+id: user.user.sous_compte
+targetEntityType: user
+bundle: user
+mode: sous_compte
+content:
+  account:
+    weight: 0
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_nom:
+    weight: 1
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_prenom:
+    weight: 2
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  google_analytics:
+    weight: 3
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+hidden:
+  contact: true
+  field_abonnement: true
+  field_adresses_ip: true
+  field_carte: true
+  field_cgdv: true
+  field_credit: true
+  field_d_adresse_physique: true
+  field_date_de_naissance_: true
+  field_interesse_par: true
+  field_journalrevu: true
+  field_nombre_achat_numero: true
+  field_pack: true
+  field_photo: true
+  field_sous_compte: true
+  field_telephone: true
+  field_type: true
+  field_ville: true
+  langcode: true
+  language: true
+  path: true
+  simplenews: true
+  timezone: true
+  user_picture: true

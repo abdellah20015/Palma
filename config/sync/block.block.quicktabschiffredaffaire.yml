@@ -1,0 +1,25 @@
+uuid: 598cde53-7eaf-43c6-a2b5-4afd8ac7c0e9
+langcode: fr
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - palma
+id: quicktabschiffredaffaire
+theme: palma
+region: content
+weight: -16
+provider: null
+plugin: 'quicktabs_block:chiffre_d_affaire'
+settings:
+  id: 'quicktabs_block:chiffre_d_affaire'
+  label: 'Chiffre d’affaire'
+  provider: quicktabs
+  label_display: visible
+visibility:
+  request_path:
+    id: request_path
+    pages: /liste-des-ventes
+    negate: false
+    context_mapping: {  }

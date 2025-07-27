@@ -1,0 +1,23 @@
+uuid: 2ace7f7a-0471-4ffa-a4be-009104c71295
+langcode: fr
+status: true
+dependencies:
+  config:
+    - block_content.type.contactez_nous
+    - field.field.block_content.contactez_nous.body
+  module:
+    - text
+id: block_content.contactez_nous.default
+targetEntityType: block_content
+bundle: contactez_nous
+mode: default
+content:
+  body:
+    label: visually_hidden
+    type: text_default
+    weight: 0
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+hidden:
+  langcode: true

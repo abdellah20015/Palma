@@ -1,0 +1,10 @@
+uuid: 1623ceae-ca7d-4e87-90fe-49a47d45ca0b
+langcode: fr
+status: true
+dependencies:
+  module:
+    - node
+id: node.article_en_lsite
+label: 'article en lsite'
+targetEntityType: node
+cache: true

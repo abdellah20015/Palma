@@ -1,0 +1,10 @@
+uuid: c41713cf-d712-4d18-81d6-5c389e748afe
+langcode: fr
+status: true
+dependencies:
+  module:
+    - config_pages
+id: config_pages.carousel
+label: carousel
+targetEntityType: config_pages
+cache: true

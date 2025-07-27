@@ -1,0 +1,65 @@
+<!--Palma (Header)  -->  
+<main id="site">   
+    <header class="header desktop">
+      <div class="container">
+         <div class="row align-items-center justify_content">
+       
+             {% if page.header %}
+                 {{ page.header}}
+             {% endif %} 
+             
+                   {% if page.primary_menu %}
+                         {{ page.primary_menu  }}       
+                   {% endif %}
+
+              {% if page.header_right %}
+                    {{page.header_right}}
+              {% endif %}
+
+        </div>
+    </div>
+</header>
+
+ 
+ 
+     
+            
+ 
+ <div class="main_wrapper">
+    <div class="main_container"> 
+        {% if page.breadcrumb  %}
+            <div class="container pl_2">
+              <div class="page_title_inner">
+                    <div class="breadcrumb">
+                      {{ page.breadcrumb }} 
+                    </div>
+              </div>
+            </div>
+        {% endif %}  
+
+        <div class="compte_title">
+            <h2 class="populaire__title ">
+                    {{ 'Recharger votre compte'|t }}
+            </h2>
+        </div>
+
+    </div>
+         
+     <div class="main_recharge">
+        {% if page.content %}
+             {{ page.content }}
+        {% endif %}        
+     </div>
+</div>
+
+
+
+
+ 
+<!--\Palma\(Newsletter\logo et reseau social\footer)-->
+<footer class="footer">   
+       {% if page.footer %}
+             {{ page.footer  }}       
+       {% endif %}        
+</footer>
+</main>

@@ -1,0 +1,24 @@
+<?php
+
+/**
+ * @file
+ * Contains imagemaps.module.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements hook_help().
+ */
+function imagemaps_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the imagemaps module.
+    case 'help.page.imagemaps':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('image maps module for ckeditor') . '</p>';
+      return $output;
+
+    default:
+  }
+}

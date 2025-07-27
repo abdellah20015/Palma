@@ -1,0 +1,20 @@
+
+{% set classes = ['menu', 'text-lg-center','desktop', 'menu--'] %}
+{% set heading_id = attributes.id ~ '-menu'|clean_id %}
+<nav role="navigation"  {{ attributes.addClass(classes)|without('role', 'aria-labelledby') }}>
+                 
+          <input type="checkbox" class="openMenu" id="openMenu">
+          <label for="openMenu" class="IconToggle">
+            <div class="spinner diagonal part-1"></div>
+            <div class="spinner horizontal"></div>
+            <div class="spinner diagonal part-2"></div>
+          </label>
+     
+      {% block content %}
+        {{ content }}
+      {% endblock %}
+
+   
+
+</nav>
+

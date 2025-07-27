@@ -1,0 +1,30 @@
+<!--bibliotheque-->
+{% for key, item in resultats %}
+	<div class="col-xs-12 col-sm-6 col-lg-3">
+		<div class="main_item_biblio  category">
+			<div class="item_populaire">
+				<span class="cat__populaire">{{ item.categorie }} </span> 
+				<div class="element__lien">
+					<a href="{{ item.urllink }}" class="pop_item_link">{{'Voir'|t }}
+					</a>
+					<div class="item__media_content">
+						<div class="item__media">
+							<img src="{{ item.image }}" class="img-fluid">
+						</div>
+					</div>
+					<div class="biblio_action_variable">
+						<span class="total"> {{ item.prix|round }} {{' MAD'|t }}</span>
+						<span class="item_variable">{{'Entier'}} </span>
+					</div>
+				</div>
+			</div>  
+			<div class="populaire__content">
+				<span class="mag__item">{{ '-'|t }} {{ item.numtitle }} {{'-'|t }}</span>
+				<span class="mag__item">{{ item.perdiode }}</span>
+				<span class="mag__item">{{ item.source }}</span>
+				<span class="mag__item"> {{ 'N°'|t }} {{ item.title }} {{ item.thedate|date('d M Y') }}</span>
+			</div>
+		</div>
+	</div>
+{% endfor %}	
+

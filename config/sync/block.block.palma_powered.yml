@@ -1,0 +1,22 @@
+uuid: d910f7bd-65a8-481a-8175-7f1e98eb59bf
+langcode: fr
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - palma
+_core:
+  default_config_hash: jQQUUWN2Uxr5qZtc9zcJKBCxpKY8orN1u2HPqYYRQDI
+id: palma_powered
+theme: palma
+region: aucun
+weight: -22
+provider: null
+plugin: system_powered_by_block
+settings:
+  id: system_powered_by_block
+  label: 'Propulsé par Drupal'
+  provider: system
+  label_display: '0'
+visibility: {  }

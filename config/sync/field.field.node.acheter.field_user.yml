@@ -1,0 +1,28 @@
+uuid: 0d4d411e-cf97-4f91-8ea5-fd814d432e0d
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_user
+    - node.type.acheter
+id: node.acheter.field_user
+field_name: field_user
+entity_type: node
+bundle: acheter
+label: user
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:user'
+  handler_settings:
+    include_anonymous: true
+    filter:
+      type: _none
+    target_bundles: null
+    sort:
+      field: _none
+    auto_create: false
+field_type: entity_reference

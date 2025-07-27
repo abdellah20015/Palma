@@ -1,0 +1,64 @@
+<form {{ attributes }} data-toggle="validator" novalidate="true"> 
+		<div class="form-group">
+			{{ element.field_nom }}
+			<div class="help-block with-errors"></div>
+		</div>
+		<div class="form-group">
+			{{ element.field_prenom }}
+			<div class="help-block with-errors"></div>
+		</div>
+		<div class="form-group">
+			{{ element.field_type }}
+		</div>
+		<div class="form-group-type">			
+			<div class="spamsge">
+				<p>{{'Afin de bénificier de tous les avantages de la plateforme, le choix du pack "Etudiant" est nécessaire après la création de votre compte'|t }}</p>
+				<!-- <div class="form-group">
+				element.field_carte }}
+				</div> -->
+		    </div>
+		</div>
+		<div class="form-group">
+			{{ element.field_telephone }}
+		</div>
+		<div class="form-group">
+			<label for="edit-mail">e-mail *</label>
+			<input type="email" id="edit-mail" name="mail" value="" class="form-control" required="required" placeholder="Votre e-mail" data-error="Ce champ est requis.">
+			<div class="help-block with-errors"></div>
+		</div>
+		<div class="form-group password-parent">
+			<label for="edit-pass-pass1">{{'Mot de passe'|t }} *</label>
+			<input class="form-control" required="required" type="password" id="edit-pass-pass1" name="pass[pass1]" placeholder=" Votre  mot de passe" data-error="Ce champ est requis.">
+			<span class="display-password pass1 far fa-eye"></span>
+			<div class="help-block with-errors"></div>
+			<div class="pass-error">{{ "Le mot de passe doit contenir au minimum 8 caractères"|t }}<br></div>
+		</div>
+		<div class="form-group password-parent">
+			<label for="edit-pass-pass2">{{'Confirmer le mot de passe'|t }} *</label>
+			<input class="form-control" required="required" type="password" id="edit-pass-pass2" name="pass[pass2]" required="required"placeholder="Votre  mot de passe" data-error="Ce champ est requis.">
+			<span class="display-password pass2 far fa-eye"></span>
+			<div class="help-block with-errors" ></div>
+			<div class="pass-error2">{{ "Les mots de passe ne se correspondent pas."|t }}<br></div>
+		</div>
+		<div class="form-group">
+			<input required data-twig-suggestion="user-register-form" type="checkbox" id="edit-gdpr-warning" name="gdpr-warning" class="form-checkbox required" data-error="Ce champ est requis.">
+			<label for="edit-gdpr-warning" class="option js-form-required form-required">{{"j'ai lu et j'accepte la politique de "|t }}<a href="{{ drupal_config('helper.condition', 'cookies_et_confidentialit') }}">{{'cookies et confidentialité'|t}}</a> *</label>
+			<div>
+				{{"En validant, vous acceptez l'intégralité de nos Conditions générales d'utilisation et notamment la mention relative à la protection des données personnelles. Conformément à la loi 09-08, vous disposez d'un droit d'accès, de rectification et d'opposition au traitement de vos données personnelles."|t }}
+			</div>
+			<div class="help-block with-errors"></div>
+  		</div>
+  		<div class="form-group">
+			<input required data-twig-suggestion="user-register-form" type="checkbox" id="edit-field-cgdv" name="field_cgdv[value]" class="form-checkbox required" data-error="Ce champ est requis.">
+			<label for="edit-field-cgdv" class="option js-form-required form-required">{{ "j'ai lu et j'accepte les " |t }}<a href="{{ drupal_config('helper.condition', 'cgu') }}">{{ 'conditions générales de vente'|t }}</a> *</label>
+			<div>
+				{{"Conformément à la loi 09-08, vous disposez d'un droit d'accès, de rectification et d'opposition au traitement de vos données personnelles. Ce traitement a été autorisé par la CNDP sous le n° D-CE-652/2019." |t }}
+			</div>
+			<div class="help-block with-errors"></div>
+  		</div>
+		{{ element.captcha }}
+		<span class="req_fields req_fields1">* champs requis</span>
+		{{ element.form_build_id }} {# required #}
+		{{ element.form_id }} {# required #}	
+		{{ element.actions }}  
+</form>

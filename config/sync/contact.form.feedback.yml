@@ -1,0 +1,23 @@
+uuid: dcee306e-38ef-4cd0-b9cd-4a3b48257f3d
+langcode: fr
+status: true
+dependencies:
+  module:
+    - contact_storage
+third_party_settings:
+  contact_storage:
+    submit_text: 'Envoyer le message'
+    show_preview: false
+    disabled_form_message: 'Ce formulaire de contact a déjà était envoyé.'
+    maximum_submissions_user: 0
+    page_autoreply_format: plain_text
+_core:
+  default_config_hash: c4zaT5cyPxuTXI6JOWt3qRtMvICT9tHB6d9a5VG-CmQ
+id: feedback
+label: Contact
+recipients:
+  - contact@palmadigitale.com
+reply: "Merci d'avoir nous contacter, nous prendrons contact avec vous dans les plus brefs délais.\r\n\r\nEquipe Palma,"
+weight: 0
+message: 'Votre message a été envoyé avec succès.'
+redirect: ''

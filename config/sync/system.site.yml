@@ -1,0 +1,15 @@
+uuid: 96645f08-1fe2-4cd6-8854-46758ff17550
+name: 'Palma digitale'
+mail: contact@palmadigitale.com
+slogan: ''
+page:
+  403: ''
+  404: ''
+  front: /home
+admin_compact_mode: false
+weight_select_max: 100
+langcode: fr
+default_langcode: fr
+_core:
+  default_config_hash: yXadRE77Va-G6dxhd2kPYapAvbnSvTF6hO4oXiOEynI
+mail_notification: ''

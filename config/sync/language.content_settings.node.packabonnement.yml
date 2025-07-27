@@ -1,0 +1,11 @@
+uuid: 61ead173-a4b6-4e0f-bef6-094b0389335d
+langcode: fr
+status: true
+dependencies:
+  config:
+    - node.type.packabonnement
+id: node.packabonnement
+target_entity_type_id: node
+target_bundle: packabonnement
+default_langcode: site_default
+language_alterable: false

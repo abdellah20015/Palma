@@ -1,0 +1,14 @@
+uuid: dd39f849-5a34-4a45-b124-a5e09e26a501
+langcode: fr
+status: true
+dependencies:
+  module:
+    - user
+id: user
+label: user
+type: 'canonical_entities:user'
+pattern: '[current-user:field_nom][current-user:field_prenom][current-user:uid]'
+selection_criteria: {  }
+selection_logic: and
+weight: 0
+relationships: {  }

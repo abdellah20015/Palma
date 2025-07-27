@@ -1,0 +1,28 @@
+uuid: d872a7f6-d337-495e-9426-6aa151992bbe
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_journal_revue
+    - node.type.abonner
+    - node.type.journal_revue
+id: node.abonner.field_journal_revue
+field_name: field_journal_revue
+entity_type: node
+bundle: abonner
+label: 'Journal / revue'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      journal_revue: journal_revue
+    sort:
+      field: _none
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

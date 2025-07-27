@@ -1,0 +1,29 @@
+uuid: 109137b7-adaf-488b-aebb-614a8efe4a9b
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.storage.user.field_sous_compte
+  module:
+    - user
+id: user.user.field_sous_compte
+field_name: field_sous_compte
+entity_type: user
+bundle: user
+label: 'Sous compte'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:user'
+  handler_settings:
+    include_anonymous: false
+    filter:
+      type: _none
+    target_bundles: null
+    sort:
+      field: _none
+    auto_create: true
+field_type: entity_reference

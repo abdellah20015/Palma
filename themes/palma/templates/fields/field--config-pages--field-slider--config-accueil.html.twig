@@ -1,0 +1,14 @@
+<section class="flexslider__content clearfx">
+    <div class="container-fluid p-0">
+        <div class="flexslider">
+          <ul class="slides">  
+              	 {% for item in items %}
+      	              <li>
+      		           	   {{ item.content }}
+      		            </li>
+                {% endfor %}
+          </ul>
+        </div>  
+    </div>
+</section>
+ 

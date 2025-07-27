@@ -1,0 +1,28 @@
+uuid: 7965bfec-e272-41b3-944e-5b5dda8dc852
+langcode: fr
+status: true
+dependencies:
+  module:
+    - config_pages
+    - system
+  theme:
+    - bartik
+id: config_pages_3
+theme: bartik
+region: content
+weight: -4
+provider: null
+plugin: config_pages_block
+settings:
+  id: config_pages_block
+  label: 'Nos partenaires'
+  provider: config_pages
+  label_display: '0'
+  config_page_type: config_accueil
+  config_page_view_mode: partenaires
+visibility:
+  request_path:
+    id: request_path
+    pages: '<front>'
+    negate: false
+    context_mapping: {  }

@@ -1,0 +1,14 @@
+uuid: 9b9f2657-b619-4532-baf7-27fa39e51861
+langcode: fr
+status: true
+dependencies:
+  config:
+    - user.role.sous_compte
+  module:
+    - user
+id: user_remove_role_action.sous_compte
+label: 'Enlever le rôle Sous compte des utilisateurs sélectionnés'
+type: user
+plugin: user_remove_role_action
+configuration:
+  rid: sous_compte

@@ -1,0 +1,23 @@
+uuid: 863486dd-81aa-4a15-b456-06dfec83137c
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_type_de_vente
+    - node.type.numero
+  module:
+    - options
+id: node.numero.field_type_de_vente
+field_name: field_type_de_vente
+entity_type: node
+bundle: numero
+label: 'type de vente'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: numero_complet
+default_value_callback: ''
+settings: {  }
+field_type: list_string

@@ -1,0 +1,14 @@
+uuid: f5923dcc-3c96-4e30-9f52-050ed9ed709d
+langcode: fr
+status: true
+dependencies:
+  config:
+    - user.role.admin_palma
+  module:
+    - user
+id: user_remove_role_action.admin_palma
+label: 'Enlever le rôle Admin palma des utilisateurs sélectionnés'
+type: user
+plugin: user_remove_role_action
+configuration:
+  rid: admin_palma

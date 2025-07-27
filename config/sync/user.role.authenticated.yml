@@ -1,0 +1,26 @@
+uuid: 9ec771ef-2c42-467f-9759-f2ed5a7978a4
+langcode: fr
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: dJ0L2DNSj5q6XVZAGsuVDpJTh5UeYkIPwKrUOOpr8YI
+id: authenticated
+label: 'Utilisateur authentifié'
+weight: 1
+is_admin: false
+permissions:
+  - 'access checkout'
+  - 'access comments'
+  - 'access content'
+  - 'access site-wide contact form'
+  - 'create field_carte'
+  - 'edit own field_carte'
+  - 'manage own commerce_payment_method'
+  - 'opt-in or out of google analytics tracking'
+  - 'post comments'
+  - 'search content'
+  - 'skip comment approval'
+  - 'subscribe to newsletters'
+  - 'view commerce_product'
+  - 'view own commerce_order'
+  - 'view own field_carte'

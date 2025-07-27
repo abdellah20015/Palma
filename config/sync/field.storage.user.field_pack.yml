@@ -1,0 +1,37 @@
+uuid: ce1aa1ce-75a2-4983-b233-5683d7f26218
+langcode: fr
+status: true
+dependencies:
+  module:
+    - field_permissions
+    - options
+    - user
+third_party_settings:
+  field_permissions:
+    permission_type: custom
+id: user.field_pack
+field_name: field_pack
+entity_type: user
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: professionnel
+      label: Professionnel
+    -
+      value: etudiant
+      label: Etudiant
+    -
+      value: premium
+      label: Premium
+    -
+      value: multi_connexion
+      label: Multi-connexions
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

@@ -1,0 +1,55 @@
+uuid: efb0e863-83fa-49bc-ad9d-c3df961a75bb
+langcode: fr
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.article_en_lsite
+    - field.field.node.article_numero.body
+    - field.field.node.article_numero.field_image
+    - field.field.node.article_numero.field_image_brouillard
+    - field.field.node.article_numero.field_prix
+    - node.type.article_numero
+  module:
+    - image
+    - text
+    - user
+id: node.article_numero.article_en_lsite
+targetEntityType: node
+bundle: article_numero
+mode: article_en_lsite
+content:
+  body:
+    label: hidden
+    type: text_default
+    weight: 1
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+  field_image_brouillard:
+    type: image
+    weight: 2
+    region: content
+    label: hidden
+    settings:
+      image_style: ''
+      image_link: ''
+    third_party_settings: {  }
+  field_prix:
+    type: number_decimal
+    weight: 3
+    region: content
+    label: hidden
+    settings:
+      thousand_separator: ''
+      decimal_separator: .
+      scale: 2
+      prefix_suffix: true
+    third_party_settings: {  }
+  links:
+    weight: 0
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  field_image: true
+  langcode: true

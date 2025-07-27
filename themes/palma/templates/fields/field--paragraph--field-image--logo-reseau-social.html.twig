@@ -1,0 +1,9 @@
+<div class="col-lg-6 order-lg-first text-center text-lg-left">
+	<span class="footer__copyright"> 
+              {% for item in items %}	
+                 <a href="/{{ path('<front>') }}" title="{{ 'Home'|t }}" rel="home"> 
+	                <img src="/{{ item.content }}"  alt="Palma Digital" class="img-fluid">  
+	            </a>
+			   {% endfor %}
+    </span>
+</div>

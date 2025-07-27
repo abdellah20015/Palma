@@ -1,0 +1,41 @@
+uuid: 25ea6962-1c70-436a-bf2d-503430f73d50
+langcode: fr
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.abonner.field_date
+    - field.field.node.abonner.field_journal_revue
+    - field.field.node.abonner.field_nbr_num
+    - field.field.node.abonner.field_numero
+    - field.field.node.abonner.field_periodicite
+    - field.field.node.abonner.field_prix
+    - field.field.node.abonner.field_thesubscribe
+    - field.field.node.abonner.field_type_numero
+    - field.field.node.abonner.field_user
+    - node.type.abonner
+  module:
+    - user
+id: node.abonner.teaser
+targetEntityType: node
+bundle: abonner
+mode: teaser
+content:
+  links:
+    weight: 100
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+hidden:
+  field_date: true
+  field_journal_revue: true
+  field_nbr_num: true
+  field_numero: true
+  field_numeros_pack: true
+  field_periodicite: true
+  field_prix: true
+  field_thesubscribe: true
+  field_type_abonnement: true
+  field_type_numero: true
+  field_user: true
+  langcode: true

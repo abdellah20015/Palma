@@ -1,0 +1,30 @@
+uuid: 70d0167f-f10f-42f9-82c1-7be59c88f4c9
+langcode: fr
+status: false
+dependencies:
+  config:
+    - views.view.packlist
+  module:
+    - system
+    - views
+  theme:
+    - palma
+id: views_block__packlist_blcpacklist_2
+theme: palma
+region: content
+weight: -12
+provider: null
+plugin: 'views_block:packlist-blcpacklist'
+settings:
+  id: 'views_block:packlist-blcpacklist'
+  label: ''
+  provider: views
+  label_display: visible
+  views_label: ''
+  items_per_page: none
+visibility:
+  request_path:
+    id: request_path
+    pages: /packs-abonnements
+    negate: false
+    context_mapping: {  }

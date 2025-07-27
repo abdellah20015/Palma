@@ -1,0 +1,42 @@
+<!--Header-->
+<div class="main_container numerokisque main_header"> 
+   <div class="container p-0">
+          <div class="page_title_inner">
+            {% if page.breadcrumb %}
+              <div class="breadcrumb">
+                 {{ page.breadcrumb }} 
+               </div>
+             {% endif %}
+
+              <div class="contenu_detail_numero">
+                  <h2 class="populaire__title"> 
+                      {{ 'Kiosque'|t }}  
+                  </h2>
+              </div>
+              
+              <div class="type_contegory">    
+                 <div class="type"> {{ '-'|t }} {{ field_type }} {{'-'|t}} </div> 
+                 <div class="cat__populaire"> {{ field_categorie }}</div>
+              </div> 
+
+              <div class="typecontegory"> 
+                 <div class="source">{{ field_source }}</div>
+                 <div class="numero_title">{{ 'N°'|t }} {{ label.0['#context'].value }} - {{ content.field_date|field_value }}</div>
+             </div>
+             
+             <div class="pull-right">
+              <div class="picture">
+    						<a href="{{ url }}" class="">
+    							<img src="{{ content.field_image|field_value }}" class="img-fluid">
+    						</a>
+              </div>
+    						 <a href="#" class="pg_link_mag_art">
+    						 	{{' Acheter le magazine entier av '|t }}
+    						 	{{ content.field_prix|field_value }} {{'MAD'|t }}
+    						 </a>
+    						<a href="#" class="pg_link pg_lk_sabonner"> {{ "S'abonner "}} </a>
+		         </div>
+          </div>
+     </div>
+</div>
+

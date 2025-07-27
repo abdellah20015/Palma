@@ -1,0 +1,29 @@
+uuid: 2abc65aa-4550-4386-af60-1d66a02b91a7
+langcode: fr
+status: false
+dependencies:
+  config:
+    - views.view.kiosque
+  module:
+    - system
+    - views
+  theme:
+    - palma
+id: formulaire_interne_jr_rv
+theme: palma
+region: header
+weight: -21
+provider: null
+plugin: 'views_exposed_filter_block:kiosque-page_1'
+settings:
+  id: 'views_exposed_filter_block:kiosque-page_1'
+  label: ''
+  provider: views
+  label_display: '0'
+  views_label: ''
+visibility:
+  request_path:
+    id: request_path
+    pages: '<front>'
+    negate: true
+    context_mapping: {  }

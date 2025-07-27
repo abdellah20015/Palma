@@ -1,0 +1,11 @@
+uuid: fa2bb47a-67a0-45c5-8db2-4baf1edeb4eb
+langcode: fr
+status: true
+dependencies:
+  config:
+    - block_content.type.contactez_nous
+id: block_content.contactez_nous
+target_entity_type_id: block_content
+target_bundle: contactez_nous
+default_langcode: site_default
+language_alterable: false

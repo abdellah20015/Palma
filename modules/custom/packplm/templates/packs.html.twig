@@ -1,0 +1,32 @@
+<!--affichage des variables du bloc au sur la page Pack-abonnement //-->
+<div class="view_content">
+    <div class="pack_three">
+        {% if packs is not empty %}
+            <div class="container min_container p-0">
+             {% for node in packs %}
+                <div class="cardpack">
+                        <div class="cardheader">
+                            <h2 class="title">{{ node.title.value }}</h2>
+                        </div>  
+                     
+                    <div class="bodyfeatures">
+                            {{ node.body.value|raw }}
+                    </div>  
+                    
+                    <a href="/abonneraupack/{{ node.id }}" class="btn_choisir active"> {{ 'choisir'|t }} </a>
+                </div> 
+             {% endfor %}
+            </div>			
+            {% else %}
+                <div class="container">
+                        <br /><br /><b> <h3> 
+                            {{ " Aucune information n'est disponible pour l'instant ! Merci d'informer l'administrateur" | t }}</b>
+                        </h3>
+                </div>
+        {% endif %}	
+    </div>
+</div>             
+
+
+ 
+

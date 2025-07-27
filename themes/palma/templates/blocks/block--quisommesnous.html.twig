@@ -1,0 +1,11 @@
+<div class="footer__center">
+	<div class="container pl_2 pr_0">
+		<div class="row">
+			{% set classes = [ 'col-lg-3', ] %}
+				<div{{ attributes.addClass(classes) }}>
+					<h3 class="footer__menu-title bold pb-4 pt-4 mb-0">
+					    {{ 'Qui sommes nous ?'|t}}
+					  <i class="footer__title-icon d-lg-none"></i>
+					</h3>
+					 {{ content }}
+				</div>

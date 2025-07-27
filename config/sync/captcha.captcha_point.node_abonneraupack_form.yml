@@ -1,0 +1,7 @@
+uuid: 0175dd6b-76a3-40ac-8fc0-8ca591d36015
+langcode: fr
+status: false
+dependencies: {  }
+formId: node_abonneraupack_form
+captchaType: default
+label: null

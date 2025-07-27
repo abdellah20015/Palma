@@ -1,0 +1,38 @@
+from-morelink: /gdpr
+user-register: 1
+user-login: 0
+contact_message-mode: all
+contact_message-bundles:
+  feedback: 0
+  personal: 0
+node-mode: disable
+node-bundles:
+  abonner: 0
+  abonneraupack: 0
+  acheter: 0
+  article_numero: 0
+  basique: 0
+  journal_revue: 0
+  numero: 0
+  pack: 0
+  packabonnement: 0
+  page_numero: 0
+  simplenews_issue: 0
+webform-mode: null
+webform-bundles: null
+popup-guests: 1
+popup-users: 1
+popup-position: bottom
+popup-morelink: /gdpr
+popup-custom-color: 0
+popup-color: '#33333a'
+popup-text: white
+button-color: '#9abc35'
+button-text: black
+popup-text-cookies: 'Nous utilisons des cookies sur notre site Web pour prendre en charge des fonctionnalités techniques qui améliorent votre expérience utilisateur.'
+popup-text-analytics: ' '
+popup-btn-agree: 'J''accepte'
+popup-btn-findmore: 'Plus d''informations'
+_core:
+  default_config_hash: P6YjZQN0wv2MHVDNRVc46Plx_OiZFESe-I78R-ovdVQ
+langcode: fr

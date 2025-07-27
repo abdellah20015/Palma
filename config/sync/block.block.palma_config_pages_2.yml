@@ -1,0 +1,28 @@
+uuid: c7a49bdd-3c8e-41ee-9276-ea0483a4c746
+langcode: fr
+status: true
+dependencies:
+  module:
+    - config_pages
+    - system
+  theme:
+    - palma
+id: palma_config_pages_2
+theme: palma
+region: homepage_content
+weight: -24
+provider: null
+plugin: config_pages_block
+settings:
+  id: config_pages_block
+  label: 'home Slider'
+  provider: config_pages
+  label_display: '0'
+  config_page_type: config_accueil
+  config_page_view_mode: slider
+visibility:
+  request_path:
+    id: request_path
+    pages: '<front>'
+    negate: false
+    context_mapping: {  }

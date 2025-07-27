@@ -1,0 +1,13 @@
+theme: palma
+defaults:
+  sender: htmlmail
+  formatter: htmlmail
+_core:
+  default_config_hash: IhwTepsVwtbtbcT5GzQKhCXDCRvbk3MNkWqPiuiZ10s
+langcode: fr
+modules:
+  swiftmailer: {  }
+  system:
+    none:
+      formatter: php_mail
+      sender: php_mail

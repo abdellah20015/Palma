@@ -1,0 +1,401 @@
+uuid: 66b84b2b-704c-45ad-9c03-5ac97577346d
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_categorie
+    - field.storage.node.body
+    - field.storage.node.field_date
+    - field.storage.node.field_journal_revue
+    - field.storage.node.field_langue
+    - field.storage.node.field_origine
+    - field.storage.node.field_periodicite
+    - field.storage.node.field_type
+    - field.storage.node.field_mot_cles
+    - field.storage.node.field_pages
+    - field.storage.node.field_les_articles
+    - search_api.server.kiosque
+  module:
+    - node
+    - path
+    - taxonomy
+    - search_api
+id: kiosque_index
+name: 'Kiosque index'
+description: ''
+read_only: false
+field_settings:
+  body:
+    label: Corps
+    datasource_id: 'entity:node'
+    property_path: body
+    type: text
+    dependencies:
+      config:
+        - field.storage.node.body
+  body_1:
+    label: 'Pages » Contenu » Les articles » Contenu » Corps'
+    datasource_id: 'entity:node'
+    property_path: 'field_pages:entity:field_les_articles:entity:body'
+    type: text
+    dependencies:
+      config:
+        - field.storage.node.field_pages
+        - field.storage.node.field_les_articles
+        - field.storage.node.body
+      module:
+        - node
+        - node
+  body_2:
+    label: 'Journal / revue » Contenu » Résumer'
+    datasource_id: 'entity:node'
+    property_path: 'field_journal_revue:entity:body'
+    type: text
+    dependencies:
+      config:
+        - field.storage.node.field_journal_revue
+        - field.storage.node.body
+      module:
+        - node
+  body_3:
+    label: 'Journal / revue » Contenu » Résumer'
+    datasource_id: 'entity:node'
+    property_path: 'field_journal_revue:entity:body'
+    type: text
+    dependencies:
+      config:
+        - field.storage.node.field_journal_revue
+        - field.storage.node.body
+      module:
+        - node
+  created:
+    label: 'Écrit le'
+    datasource_id: 'entity:node'
+    property_path: created
+    type: date
+    dependencies:
+      module:
+        - node
+  field_categorie:
+    label: 'Journal / revue » Contenu » Catégorie'
+    datasource_id: 'entity:node'
+    property_path: 'field_journal_revue:entity:field_categorie'
+    type: integer
+    dependencies:
+      config:
+        - field.storage.node.field_journal_revue
+        - field.storage.node.field_categorie
+      module:
+        - node
+  field_categorie_1:
+    label: Catégorie
+    datasource_id: 'entity:node'
+    property_path: field_categorie
+    type: integer
+    dependencies:
+      config:
+        - field.storage.node.field_categorie
+  field_date:
+    label: Date
+    datasource_id: 'entity:node'
+    property_path: field_date
+    type: date
+    dependencies:
+      config:
+        - field.storage.node.field_date
+  field_journal_revue:
+    label: 'Journal / revue'
+    datasource_id: 'entity:node'
+    property_path: field_journal_revue
+    type: integer
+    dependencies:
+      config:
+        - field.storage.node.field_journal_revue
+  field_langue:
+    label: 'Journal / revue » Contenu » Langue'
+    datasource_id: 'entity:node'
+    property_path: 'field_journal_revue:entity:field_langue'
+    type: integer
+    dependencies:
+      config:
+        - field.storage.node.field_journal_revue
+        - field.storage.node.field_langue
+      module:
+        - node
+  field_langue_1:
+    label: Langue
+    datasource_id: 'entity:node'
+    property_path: field_langue
+    type: integer
+    dependencies:
+      config:
+        - field.storage.node.field_langue
+  field_mot_cles:
+    label: 'Mot clés'
+    datasource_id: 'entity:node'
+    property_path: field_mot_cles
+    type: text
+    dependencies:
+      config:
+        - field.storage.node.field_mot_cles
+  field_origine:
+    label: 'Journal / revue » Contenu » Origine'
+    datasource_id: 'entity:node'
+    property_path: 'field_journal_revue:entity:field_origine'
+    type: integer
+    dependencies:
+      config:
+        - field.storage.node.field_journal_revue
+        - field.storage.node.field_origine
+      module:
+        - node
+  field_origine_1:
+    label: Origine
+    datasource_id: 'entity:node'
+    property_path: field_origine
+    type: integer
+    dependencies:
+      config:
+        - field.storage.node.field_origine
+  field_pages:
+    label: Pages
+    datasource_id: 'entity:node'
+    property_path: field_pages
+    type: integer
+    dependencies:
+      config:
+        - field.storage.node.field_pages
+  field_periodicite:
+    label: 'Journal / revue » Contenu » Périodicité'
+    datasource_id: 'entity:node'
+    property_path: 'field_journal_revue:entity:field_periodicite'
+    type: integer
+    dependencies:
+      config:
+        - field.storage.node.field_journal_revue
+        - field.storage.node.field_periodicite
+      module:
+        - node
+  field_periodicite_1:
+    label: Périodicité
+    datasource_id: 'entity:node'
+    property_path: field_periodicite
+    type: integer
+    dependencies:
+      config:
+        - field.storage.node.field_periodicite
+  field_type:
+    label: 'Journal / revue » Contenu » Type'
+    datasource_id: 'entity:node'
+    property_path: 'field_journal_revue:entity:field_type'
+    type: integer
+    dependencies:
+      config:
+        - field.storage.node.field_journal_revue
+        - field.storage.node.field_type
+      module:
+        - node
+  field_type_1:
+    label: Type
+    datasource_id: 'entity:node'
+    property_path: field_type
+    type: integer
+    dependencies:
+      config:
+        - field.storage.node.field_type
+  name:
+    label: 'Journal / revue » Contenu » Catégorie » Terme de taxonomie » Nom'
+    datasource_id: 'entity:node'
+    property_path: 'field_journal_revue:entity:field_categorie:entity:name'
+    type: text
+    dependencies:
+      config:
+        - field.storage.node.field_journal_revue
+        - field.storage.node.field_categorie
+      module:
+        - node
+        - taxonomy
+        - taxonomy
+  name_1:
+    label: 'Journal / revue » Contenu » Type » Terme de taxonomie » Nom'
+    datasource_id: 'entity:node'
+    property_path: 'field_journal_revue:entity:field_type:entity:name'
+    type: text
+    dependencies:
+      config:
+        - field.storage.node.field_journal_revue
+        - field.storage.node.field_type
+      module:
+        - node
+        - taxonomy
+        - taxonomy
+  name_2:
+    label: 'Journal / revue » Contenu » Périodicité » Terme de taxonomie » Nom'
+    datasource_id: 'entity:node'
+    property_path: 'field_journal_revue:entity:field_periodicite:entity:name'
+    type: text
+    dependencies:
+      config:
+        - field.storage.node.field_journal_revue
+        - field.storage.node.field_periodicite
+      module:
+        - node
+        - taxonomy
+        - taxonomy
+  name_3:
+    label: 'Journal / revue » Contenu » Origine » Terme de taxonomie » Nom'
+    datasource_id: 'entity:node'
+    property_path: 'field_journal_revue:entity:field_origine:entity:name'
+    type: text
+    dependencies:
+      config:
+        - field.storage.node.field_journal_revue
+        - field.storage.node.field_origine
+      module:
+        - node
+        - taxonomy
+        - taxonomy
+  name_4:
+    label: 'Journal / revue » Contenu » Langue » Terme de taxonomie » Nom'
+    datasource_id: 'entity:node'
+    property_path: 'field_journal_revue:entity:field_langue:entity:name'
+    type: text
+    dependencies:
+      config:
+        - field.storage.node.field_journal_revue
+        - field.storage.node.field_langue
+      module:
+        - node
+        - taxonomy
+        - taxonomy
+  nid:
+    label: 'Identifiant (ID)'
+    datasource_id: 'entity:node'
+    property_path: nid
+    type: integer
+    dependencies:
+      module:
+        - node
+  nid_1:
+    label: 'Journal / revue » Contenu » Identifiant (ID)'
+    datasource_id: 'entity:node'
+    property_path: 'field_journal_revue:entity:nid'
+    type: integer
+    dependencies:
+      config:
+        - field.storage.node.field_journal_revue
+      module:
+        - node
+        - node
+  node_grants:
+    label: 'Information d''accès du nœud.'
+    property_path: search_api_node_grants
+    type: string
+    indexed_locked: true
+    type_locked: true
+    hidden: true
+  path:
+    label: 'Journal / revue » Contenu » Alias d''URL'
+    datasource_id: 'entity:node'
+    property_path: 'field_journal_revue:entity:path'
+    type: text
+    dependencies:
+      config:
+        - field.storage.node.field_journal_revue
+      module:
+        - node
+        - path
+  status:
+    label: status
+    datasource_id: 'entity:node'
+    property_path: status
+    type: boolean
+    indexed_locked: true
+    type_locked: true
+    dependencies:
+      module:
+        - node
+  title:
+    label: Titre
+    datasource_id: 'entity:node'
+    property_path: title
+    type: text
+    dependencies:
+      module:
+        - node
+  title_1:
+    label: 'Journal / revue » Contenu » Titre'
+    datasource_id: 'entity:node'
+    property_path: 'field_journal_revue:entity:title'
+    type: text
+    dependencies:
+      config:
+        - field.storage.node.field_journal_revue
+      module:
+        - node
+        - node
+  type:
+    label: 'Type de contenu'
+    datasource_id: 'entity:node'
+    property_path: type
+    type: string
+    dependencies:
+      module:
+        - node
+  uid:
+    label: uid
+    datasource_id: 'entity:node'
+    property_path: uid
+    type: integer
+    indexed_locked: true
+    type_locked: true
+    dependencies:
+      module:
+        - node
+datasource_settings:
+  'entity:node':
+    bundles:
+      default: false
+      selected:
+        - journal_revue
+        - numero
+    languages:
+      default: true
+      selected: {  }
+processor_settings:
+  add_url: {  }
+  aggregated_field: {  }
+  content_access:
+    weights:
+      preprocess_query: -30
+  ignore_character:
+    ignorable: '[''¿¡!?,.:;]'
+    ignorable_classes:
+      - Pc
+      - Pd
+      - Pe
+      - Pf
+      - Pi
+      - Po
+      - Ps
+    all_fields: false
+    weights:
+      preprocess_index: -10
+      preprocess_query: -10
+  ignorecase:
+    all_fields: false
+    fields:
+      - body
+      - title
+    weights:
+      preprocess_index: -20
+      preprocess_query: -20
+  rendered_item: {  }
+  reverse_entity_references: {  }
+tracker_settings:
+  default:
+    indexing_order: fifo
+options:
+  index_directly: true
+  cron_limit: 50
+server: kiosque

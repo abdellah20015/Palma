@@ -1,0 +1,28 @@
+uuid: 381612a4-3e04-4402-95a2-53b495e4387f
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_user_scribe
+    - node.type.article_numero
+id: node.article_numero.field_user_scribe
+field_name: field_user_scribe
+entity_type: node
+bundle: article_numero
+label: 'user scribe'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:user'
+  handler_settings:
+    include_anonymous: true
+    filter:
+      type: _none
+    target_bundles: null
+    sort:
+      field: _none
+    auto_create: false
+field_type: entity_reference

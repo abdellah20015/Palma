@@ -1,0 +1,20 @@
+uuid: 4bf50b97-a85e-41a4-bf88-7f084f16c95e
+langcode: fr
+status: true
+dependencies:
+  theme:
+    - palma
+_core:
+  default_config_hash: 13GQpeITIJsp1kyPniXtWZfyFH87vb1xxJCHifL4UeE
+id: palma_local_actions
+theme: palma
+region: content
+weight: -22
+provider: null
+plugin: local_actions_block
+settings:
+  id: local_actions_block
+  label: 'Actions d''administration principales'
+  provider: core
+  label_display: '0'
+visibility: {  }

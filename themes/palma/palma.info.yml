@@ -1,0 +1,47 @@
+name: Palma
+type: theme
+description: 'Theme developper for website Palma'
+core: 8.x
+package: Custom
+base theme: false
+logo: logo.png
+
+stylesheets-remove:
+     - core/assets/vendor/normalize-css/normalize.css
+
+#Styles editeur
+ckeditor_stylesheets:
+  - vendor/css/ckeditor.css?id=1
+
+libraries:
+  - palma/bootstrap
+  - palma/font-awesome
+  - palma/smoothdivscroll
+  - palma/webfonts
+  - palma/flexslider
+  - palma/animate
+  - palma/base
+
+regions:
+     header: 'Header'
+     page_title: 'Page title'
+     content: Content
+     homepage_content: 'homepage Content'
+     page_top: 'Page top'
+     page_bottom: 'Page bottom'
+     breadcrumb: 'Breadcrumb'
+     sidebar_filter: 'Sidebar Filter'
+     toggle_sidebar: 'Toggle sidebar'
+     center_home: 'Content center'
+     newsletters: 'Newsletters'
+     footer:  'Pied de page'
+     help: Help
+     messages: Messages
+     aucun: 'None'
+
+# Information added by Drupal.org packaging script on 2019-05-08
+version: '8.7.1'
+
+# footer_second_one: 'Footer Second One'
+# footer_second_two: 'Footer Second Two'
+# footer_second_three: 'Footer second Three'

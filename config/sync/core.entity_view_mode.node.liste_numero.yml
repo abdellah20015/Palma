@@ -1,0 +1,10 @@
+uuid: 08be4bb1-c3c5-4c71-a6a6-f4edd71d2e37
+langcode: fr
+status: true
+dependencies:
+  module:
+    - node
+id: node.liste_numero
+label: 'Liste numéro'
+targetEntityType: node
+cache: true

@@ -1,0 +1,42 @@
+
+payment_gateway.cmi_form:
+  path: 'recharger_votre_compte'
+  defaults:
+    _form: '\Drupal\payment_gateway\Form\CmiForm'
+    _title: 'Cmi'
+  requirements:
+    _permission: 'access content'
+  
+
+payment_gateway.senddata_form:
+  path: 'sendData'
+  defaults:
+    _form: '\Drupal\payment_gateway\Form\SenddataForm'
+    _title: 'SenddataForm'
+  requirements:
+    _access: 'TRUE'
+  
+
+payment_gateway.callback_controller_Callback:
+  path: 'callback'
+  defaults:
+    _controller: '\Drupal\payment_gateway\Controller\CallbackController::Callback'
+    _title: 'Callback'
+  requirements:
+    _access: 'TRUE'
+
+payment_gateway.Ok:
+  path: 'cmiok'
+  defaults:
+    _controller: '\Drupal\payment_gateway\Controller\OkFailController::Ok'
+    _title: 'Page OK'
+  requirements:
+    _permission: 'access content'
+
+payment_gateway.Fail:
+  path: 'cmifail'
+  defaults:
+    _controller: '\Drupal\payment_gateway\Controller\OkFailController::Fail'
+    _title: 'ok fail'
+  requirements:
+    _permission: 'access content'

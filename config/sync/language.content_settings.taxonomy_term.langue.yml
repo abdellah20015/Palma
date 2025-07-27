@@ -1,0 +1,11 @@
+uuid: 5bc98cd1-ec4c-479f-b709-f868cd6e3f4c
+langcode: fr
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.langue
+id: taxonomy_term.langue
+target_entity_type_id: taxonomy_term
+target_bundle: langue
+default_langcode: site_default
+language_alterable: false

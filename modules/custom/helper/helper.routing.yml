@@ -1,0 +1,110 @@
+
+helper.numero_controller_allarticles:
+  path: '/helper/allarticles'
+  defaults:
+    _controller: '\Drupal\helper\Controller\NumeroController::allarticles'
+    _title: 'Numero'
+  requirements:
+    _permission: 'access content'
+
+helper.purchased_controller_purchasednumero:
+  path: '/acheter/numero/{node_id}'
+  defaults:
+    _controller: '\Drupal\helper\Controller\PurchasedController::purchasednumero'
+    _title: 'acheter numero'
+  requirements:
+    _permission: 'access content'
+
+helper.purchased_controller_purchasedarticle:
+  path: '/acheter/article/{node_id}'
+  defaults:
+    _controller: '\Drupal\helper\Controller\PurchasedController::purchasedarticle'
+    _title: 'acheter article'
+  requirements:
+    _permission: 'access content'
+
+helper.solde_form:
+  path: '/admin/palma/solde'
+  defaults:
+    _form: '\Drupal\helper\Form\SoldeForm'
+    _title: 'Solde Form'
+  requirements:
+    _role: 'admin_palma'
+
+helper.remise_form:
+  path: '/admin/palma/remise'
+  defaults:
+    _form: '\Drupal\helper\Form\RemiseForm'
+    _title: "Remise Pour l'étudiant"
+  requirements:
+    _role: 'admin_palma'
+    
+helper.pagerecharge_form:
+  path: '/admin/palma/pagerecharge'
+  defaults:
+    _form: '\Drupal\helper\Form\PagerechargeForm'
+    _title: 'PagerechargeForm'
+  requirements:
+    _role: 'admin_palma'
+
+helper.affecterachat_form:
+  path: '/admin/palma/affecterachat'
+  defaults:
+    _form: '\Drupal\helper\Form\AffecterachatForm'
+    _title: 'Affecter achat'
+  requirements:
+    _role: 'admin_palma'
+
+helper.affecterabonner_form:
+  path: '/admin/palma/affecterabonnement'
+  defaults:
+    _form: '\Drupal\helper\Form\AffecterabonnerForm'
+    _title: 'Abonner un client à un numéro - (du back Office).'
+  requirements:
+    _role: 'admin_palma'
+
+helper.abonnement_controller_abonnerNumero:
+  path: '/abonneraunumero/{node_id}/{pr}/{periode}/{nbr_numeros}'
+  defaults:
+    _controller: '\Drupal\helper\Controller\AbonnementController::abonnerNumero'
+    _title: 'abonner au numero'
+  requirements:
+    _permission: 'access content'
+
+helper.disableuser_controller_disableuser:
+  path: '/compte/desactiver-mon-compte'
+  defaults:
+    _controller: '\Drupal\helper\Controller\DisableuserController::disableuser'
+    _title: 'Desactiver mon compte'
+  requirements:
+    _permission: 'access content'
+
+helper.compte_management:
+  path: '/admin/config/compte-management'
+  defaults:
+    _form:  '\Drupal\helper\Form\EmailCompteManagement'
+    _title: "Message de Notification par Email"
+  requirements:
+    _permission: 'access content'
+
+helper.condition_form:
+  path: '/admin/palma/Liens'
+  defaults:
+    _form: '\Drupal\helper\Form\ConditionForm'
+    _title: 'ConditionForm'
+  requirements:
+    _role: 'admin_palma'
+  options:
+    _admin_route: TRUE
+
+helper.enable_controller_user:
+  path: '/activer-votre-compte/{uid}'
+  defaults:
+    _controller: '\Drupal\helper\Controller\DisableuserController::enableuser'
+    _title: 'Activer mon compte'
+  requirements:
+     _access: 'TRUE'
+  options:
+    parameters:
+      uid:
+        type: entity:user

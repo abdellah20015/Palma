@@ -1,0 +1,18 @@
+uuid: ad63d863-0f0e-46e9-aa48-25a498d259fe
+langcode: fr
+status: true
+dependencies:
+  config:
+    - node.type.numero
+id: node.numero.title
+field_name: title
+entity_type: node
+bundle: numero
+label: Numéro
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

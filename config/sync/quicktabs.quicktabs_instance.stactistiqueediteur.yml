@@ -1,0 +1,63 @@
+uuid: 8523a930-9b29-4f12-b36e-75cc37c7a967
+langcode: fr
+status: true
+dependencies: {  }
+id: stactistiqueediteur
+label: 'Editeur stactistique'
+renderer: quick_tabs
+options:
+  accordion_tabs:
+    jquery_ui:
+      collapsible: 0
+      heightStyle: auto
+  quick_tabs:
+    ajax: '1'
+hide_empty_tabs: 0
+default_tab: '9999'
+configuration_data:
+  -
+    title: 'Statistiques Vente'
+    weight: '0'
+    type: view_content
+    content:
+      block_content:
+        options:
+          bid: 'entity_view:node'
+          block_title: ''
+          display_title: 0
+      node_content:
+        options:
+          nid: ''
+          view_mode: full
+          hide_title: '1'
+      qtabs_content:
+        options:
+          machine_name: biblio
+      view_content:
+        options:
+          vid: editeurstatistic_ventre
+          display: block_1
+          args: ''
+  -
+    title: 'Statistiques Abonnement'
+    weight: '0'
+    type: view_content
+    content:
+      block_content:
+        options:
+          bid: 'entity_view:node'
+          block_title: ''
+          display_title: 0
+      node_content:
+        options:
+          nid: ''
+          view_mode: full
+          hide_title: '1'
+      qtabs_content:
+        options:
+          machine_name: biblio
+      view_content:
+        options:
+          vid: editeurstatistic_abonnement
+          display: block_1
+          args: ''

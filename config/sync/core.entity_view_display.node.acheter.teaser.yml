@@ -1,0 +1,21 @@
+uuid: beb6849c-1f02-4c61-9c68-8784c9ad2f86
+langcode: fr
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - node.type.acheter
+  module:
+    - user
+id: node.acheter.teaser
+targetEntityType: node
+bundle: acheter
+mode: teaser
+content:
+  links:
+    weight: 100
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+hidden:
+  langcode: true

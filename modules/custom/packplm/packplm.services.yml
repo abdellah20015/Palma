@@ -1,0 +1,4 @@
+services:
+  packplm.mail:
+    class: Drupal\packplm\Service\MailPack
+    arguments: ['@plugin.manager.mail','@config.factory','@current_user']

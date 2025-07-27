@@ -1,0 +1,23 @@
+uuid: bfd0a165-8268-4476-87e6-b8ec15131538
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_nbr_num
+    - node.type.abonner
+id: node.abonner.field_nbr_num
+field_name: field_nbr_num
+entity_type: node
+bundle: abonner
+label: 'Nombre de Numéros au Compteur'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer

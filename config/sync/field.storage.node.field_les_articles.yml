@@ -1,0 +1,19 @@
+uuid: b46371ec-fa07-47a6-b150-a8e757c18c74
+langcode: fr
+status: true
+dependencies:
+  module:
+    - node
+id: node.field_les_articles
+field_name: field_les_articles
+entity_type: node
+type: entity_reference
+settings:
+  target_type: node
+module: core
+locked: false
+cardinality: -1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

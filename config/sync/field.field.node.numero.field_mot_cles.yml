@@ -1,0 +1,19 @@
+uuid: 8e6bed29-4b9d-40c8-89f9-3122e4c98916
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_mot_cles
+    - node.type.numero
+id: node.numero.field_mot_cles
+field_name: field_mot_cles
+entity_type: node
+bundle: numero
+label: 'Mot clés'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long

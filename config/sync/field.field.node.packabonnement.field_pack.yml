@@ -1,0 +1,28 @@
+uuid: dfdadcbd-fc2a-45b1-833e-2f78412d636a
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_pack
+    - node.type.pack
+    - node.type.packabonnement
+id: node.packabonnement.field_pack
+field_name: field_pack
+entity_type: node
+bundle: packabonnement
+label: Pack
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      pack: pack
+    sort:
+      field: _none
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

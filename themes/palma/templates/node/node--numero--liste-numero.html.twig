@@ -1,0 +1,29 @@
+<!--list_numero-->
+<div class="main_item_biblio">
+    <div class="item_populaire">
+	     {% if field_categorie %} <span class="cat__populaire">{{ field_categorie }}</span>{% endif %}	
+		   <div class="element__lien">
+			{% if display == 'show' %}		
+				{% if display_link == 'show' %} 
+ 					<a href="{{ url }}" title="+ Info" class="pop_item_link plinfo">{{'+ info'|t }}</a>
+				{% else %}  
+					<a href="{{ url }}" class="pop_item_link">{{'Lire'|t }}</a>
+				{% endif %}
+			{% else %}
+				<a href="{{ url }}" class="pop_item_link">{{'Lire'|t }}</a>
+			{% endif %}  	   
+		   <div class="item__media_content">
+		         <div class="item__media">
+		             <img src="{{ content.field_image|field_value }}" class="img-fluid">
+		         </div> 
+		      </div>
+		  </div>
+	</div>
+ 	  <div class="populaire__content">
+            <span class="mag__item"> {{ '-'|t }} {{ field_type }} {{'-'|t}} </span>
+            <span class="mag__item"> {{ field_periodicite }} </span>
+            <span class="mag__item">{{ field_source }}</span>
+            <span class="mag__item">{{ 'N°'|t }} {{ label.0['#context'].value }} - {{ content.field_date|field_value }}</span>
+	  </div>
+</div>
+

@@ -1,0 +1,14 @@
+uuid: 7353e50a-64e7-4f01-8970-c6717091f55b
+langcode: fr
+status: true
+dependencies:
+  config:
+    - user.role.sous_compte
+  module:
+    - user
+id: user_add_role_action.sous_compte
+label: 'Ajouter le rôle Sous compte aux utilisateurs sélectionnés'
+type: user
+plugin: user_add_role_action
+configuration:
+  rid: sous_compte

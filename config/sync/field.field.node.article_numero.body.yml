@@ -1,0 +1,31 @@
+uuid: eb3603d2-2611-47e7-9815-3d1e277e7e89
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.storage.node.body
+    - node.type.article_numero
+  module:
+    - allowed_formats
+    - text
+third_party_settings:
+  allowed_formats:
+    full_html: full_html
+    restricted_html: '0'
+    basic_html: '0'
+    page: '0'
+    plain_text: '0'
+id: node.article_numero.body
+field_name: body
+entity_type: node
+bundle: article_numero
+label: Résumer
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  display_summary: false
+  required_summary: false
+field_type: text_with_summary

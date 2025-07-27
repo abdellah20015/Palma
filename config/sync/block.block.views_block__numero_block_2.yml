@@ -1,0 +1,33 @@
+uuid: 1ad7ad73-8955-4758-86d9-9381be452721
+langcode: fr
+status: true
+dependencies:
+  config:
+    - views.view.numero
+  module:
+    - node
+    - views
+  theme:
+    - bartik
+id: views_block__numero_block_2
+theme: bartik
+region: content
+weight: 0
+provider: null
+plugin: 'views_block:numero-block_2'
+settings:
+  id: 'views_block:numero-block_2'
+  label: Archive
+  provider: views
+  label_display: visible
+  views_label: Archive
+  items_per_page: none
+  context_mapping: {  }
+visibility:
+  node_type:
+    id: node_type
+    bundles:
+      numero: numero
+    negate: false
+    context_mapping:
+      node: '@node.node_route_context:node'

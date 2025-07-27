@@ -1,0 +1,26 @@
+uuid: c46a84a7-26cd-4072-9691-4a843b0eefdc
+langcode: fr
+status: true
+dependencies:
+  module:
+    - helper
+    - system
+  theme:
+    - seven
+id: numberuserblock
+theme: seven
+region: content
+weight: -4
+provider: null
+plugin: number_user_block
+settings:
+  id: number_user_block
+  label: 'Number User Block'
+  provider: helper
+  label_display: '0'
+visibility:
+  request_path:
+    id: request_path
+    pages: /admin/people
+    negate: false
+    context_mapping: {  }

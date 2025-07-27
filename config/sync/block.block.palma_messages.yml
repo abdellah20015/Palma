@@ -1,0 +1,22 @@
+uuid: 6703e2bc-b57e-4bdc-bc1d-ba3ceb89da78
+langcode: fr
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - palma
+_core:
+  default_config_hash: KHQIJ7Vfl25lTjzIc7qIvnuistt-Mw2O0kG4jCofmkI
+id: palma_messages
+theme: palma
+region: messages
+weight: -12
+provider: null
+plugin: system_messages_block
+settings:
+  id: system_messages_block
+  label: 'Messages de statut'
+  provider: system
+  label_display: '0'
+visibility: {  }

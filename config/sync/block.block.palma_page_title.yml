@@ -1,0 +1,20 @@
+uuid: 19a97e89-9c9a-405b-ae3e-f18c94a62ce5
+langcode: fr
+status: true
+dependencies:
+  theme:
+    - palma
+_core:
+  default_config_hash: 7rR9chwXvdM2H8OYMAYx9Zj3GGlPMrZp_M3ZA4thYTk
+id: palma_page_title
+theme: palma
+region: page_title
+weight: -17
+provider: null
+plugin: page_title_block
+settings:
+  id: page_title_block
+  label: 'Titre de page'
+  provider: core
+  label_display: '0'
+visibility: {  }

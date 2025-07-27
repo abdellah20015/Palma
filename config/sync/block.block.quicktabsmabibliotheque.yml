@@ -1,0 +1,26 @@
+uuid: 4bcead87-3bf8-4f6b-bdb5-3c1dfc3e7687
+langcode: fr
+status: true
+dependencies:
+  module:
+    - quicktabs
+    - system
+  theme:
+    - palma
+id: quicktabsmabibliotheque
+theme: palma
+region: content
+weight: -15
+provider: null
+plugin: 'quicktabs_block:mabibliotheque'
+settings:
+  id: 'quicktabs_block:mabibliotheque'
+  label: 'QuickTabs - Ma Bibliothèque'
+  provider: quicktabs
+  label_display: '0'
+visibility:
+  request_path:
+    id: request_path
+    pages: /bibliotheque
+    negate: false
+    context_mapping: {  }

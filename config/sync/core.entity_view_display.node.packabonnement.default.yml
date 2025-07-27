@@ -1,0 +1,56 @@
+uuid: c9431efd-9566-4161-be41-7044fe8b7653
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.field.node.packabonnement.body
+    - field.field.node.packabonnement.field_contenu_wrapper
+    - field.field.node.packabonnement.field_image
+    - field.field.node.packabonnement.field_pack
+    - node.type.packabonnement
+  module:
+    - image
+    - text
+    - user
+id: node.packabonnement.default
+targetEntityType: node
+bundle: packabonnement
+mode: default
+content:
+  body:
+    label: hidden
+    type: text_default
+    weight: 2
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+  field_contenu_wrapper:
+    weight: 4
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: content
+  field_image:
+    weight: 1
+    label: hidden
+    settings:
+      image_style: ''
+    third_party_settings: {  }
+    type: image_url
+    region: content
+  field_pack:
+    weight: 3
+    label: hidden
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+    region: content
+  links:
+    weight: 0
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  langcode: true

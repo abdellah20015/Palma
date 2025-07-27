@@ -1,0 +1,25 @@
+uuid: 1612a606-7aa1-43f7-8485-7577702591c1
+langcode: fr
+status: true
+dependencies:
+  content:
+    - 'block_content:basic:aee7f105-1dc6-4e67-a392-bad211cb48d8'
+  module:
+    - block_content
+  theme:
+    - palma
+id: logoetreseausocial
+theme: palma
+region: footer
+weight: -17
+provider: null
+plugin: 'block_content:aee7f105-1dc6-4e67-a392-bad211cb48d8'
+settings:
+  id: 'block_content:aee7f105-1dc6-4e67-a392-bad211cb48d8'
+  label: 'Logo et Réseau social'
+  provider: block_content
+  label_display: '0'
+  status: true
+  info: ''
+  view_mode: full
+visibility: {  }

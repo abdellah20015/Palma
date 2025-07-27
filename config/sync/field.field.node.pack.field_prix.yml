@@ -1,0 +1,23 @@
+uuid: 3faecb43-22d7-41f6-94bf-3028c7e3a00a
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_prix
+    - node.type.pack
+id: node.pack.field_prix
+field_name: field_prix
+entity_type: node
+bundle: pack
+label: 'Prix du Pack'
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: decimal

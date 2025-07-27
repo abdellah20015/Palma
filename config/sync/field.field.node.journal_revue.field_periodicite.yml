@@ -1,0 +1,29 @@
+uuid: 8003ac17-68fe-4667-b6b1-976c0bb8a9e5
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_periodicite
+    - node.type.journal_revue
+    - taxonomy.vocabulary.periodicite
+id: node.journal_revue.field_periodicite
+field_name: field_periodicite
+entity_type: node
+bundle: journal_revue
+label: Périodicité
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      periodicite: periodicite
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

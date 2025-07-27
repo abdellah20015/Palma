@@ -1,0 +1,20 @@
+helper.solde_form:
+  title: 'Solde par defaut'
+  route_name: helper.solde_form
+  description: 'A description for the menu entry'
+  parent: system.admin_config_system
+  weight: 99
+helper.pagerecharge_form:
+  title: 'Recharger votre compte'
+  route_name: helper.pagerecharge_form
+  description: 'A description for the menu entry'
+  parent: system.admin_config_system
+  weight: 99
+
+helper.condition_form:
+  title: 'Liens statiques'
+  route_name: helper.condition_form
+  description: 'A description for the menu entry'
+  parent: system.admin_config_system
+  weight: 99
+

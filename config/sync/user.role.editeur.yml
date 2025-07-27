@@ -1,0 +1,9 @@
+uuid: a0f2dacf-4b16-4b1d-9940-100f20add0a2
+langcode: fr
+status: true
+dependencies: {  }
+id: editeur
+label: Editeur
+weight: 6
+is_admin: null
+permissions: {  }

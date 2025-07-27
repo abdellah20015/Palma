@@ -1,0 +1,19 @@
+uuid: 336f8af6-dd00-4f61-9d00-56ca620f4d3c
+langcode: fr
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: hj6zGNwndnW_J6lKfFcg-tY5e5YqWfgXyt0qioGtXL8
+name: 'Default newsletter'
+id: default
+description: 'This is an example newsletter. Change it.'
+format: plain
+priority: 0
+receipt: true
+from_name: Palma
+subject: '[[simplenews-newsletter:name]] [node:title]'
+from_address: contact@palmadigitale.com
+hyperlinks: false
+new_account: none
+opt_inout: double
+weight: 0

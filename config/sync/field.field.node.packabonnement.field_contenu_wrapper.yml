@@ -1,0 +1,29 @@
+uuid: cbced524-b1e3-425f-8510-d8d1f8fd73b8
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_contenu_wrapper
+    - node.type.packabonnement
+  module:
+    - allowed_formats
+    - text
+third_party_settings:
+  allowed_formats:
+    full_html: full_html
+    restricted_html: '0'
+    basic_html: '0'
+    page: '0'
+    plain_text: '0'
+id: node.packabonnement.field_contenu_wrapper
+field_name: field_contenu_wrapper
+entity_type: node
+bundle: packabonnement
+label: 'Contenu Wrapper'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

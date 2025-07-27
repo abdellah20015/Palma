@@ -1,0 +1,86 @@
+uuid: 0cd6de61-6537-4ab1-ad8d-00c36ab9f7df
+langcode: fr
+status: true
+dependencies: {  }
+id: home_page
+label: 'Home page'
+renderer: quick_tabs
+options:
+  accordion_tabs:
+    jquery_ui:
+      collapsible: 0
+      heightStyle: auto
+  quick_tabs:
+    ajax: '0'
+hide_empty_tabs: 1
+default_tab: '9999'
+configuration_data:
+  -
+    title: Nouveauté
+    weight: '-10'
+    type: block_content
+    content:
+      block_content:
+        options:
+          bid: 'views_block:home_page-block_3'
+          block_title: ''
+          display_title: 0
+      node_content:
+        options:
+          nid: ''
+          view_mode: full
+          hide_title: '1'
+      qtabs_content:
+        options:
+          machine_name: biblio
+      view_content:
+        options:
+          vid: home_page
+          display: block_3
+          args: ''
+  -
+    title: 'Top lus'
+    weight: '-9'
+    type: block_content
+    content:
+      block_content:
+        options:
+          bid: 'views_block:home_page-block_2'
+          block_title: ''
+          display_title: 0
+      node_content:
+        options:
+          nid: ''
+          view_mode: full
+          hide_title: '1'
+      qtabs_content:
+        options:
+          machine_name: biblio
+      view_content:
+        options:
+          vid: block_content
+          display: default
+          args: ''
+  -
+    title: 'Pour vous'
+    weight: '-8'
+    type: block_content
+    content:
+      block_content:
+        options:
+          bid: 'views_block:home_page-block_4'
+          block_title: ''
+          display_title: 0
+      node_content:
+        options:
+          nid: ''
+          view_mode: full
+          hide_title: '1'
+      qtabs_content:
+        options:
+          machine_name: biblio
+      view_content:
+        options:
+          vid: block_content
+          display: default
+          args: ''

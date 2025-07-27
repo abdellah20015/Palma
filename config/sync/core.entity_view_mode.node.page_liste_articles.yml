@@ -1,0 +1,10 @@
+uuid: 05eb7f21-74ef-418e-9b15-8a66b511dff0
+langcode: fr
+status: true
+dependencies:
+  module:
+    - node
+id: node.page_liste_articles
+label: 'Page liste articles'
+targetEntityType: node
+cache: true

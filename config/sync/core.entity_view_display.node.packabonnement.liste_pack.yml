@@ -1,0 +1,31 @@
+uuid: 492f12f0-8ce8-40b7-a2f3-faf05ed6d5bf
+langcode: fr
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.liste_pack
+    - field.field.node.packabonnement.body
+    - field.field.node.packabonnement.field_image
+    - field.field.node.packabonnement.field_pack
+    - node.type.packabonnement
+  module:
+    - user
+id: node.packabonnement.liste_pack
+targetEntityType: node
+bundle: packabonnement
+mode: liste_pack
+content:
+  field_pack:
+    weight: 0
+    label: hidden
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+    region: content
+hidden:
+  body: true
+  field_contenu_wrapper: true
+  field_image: true
+  langcode: true
+  links: true

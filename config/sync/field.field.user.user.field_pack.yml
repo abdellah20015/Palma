@@ -1,0 +1,21 @@
+uuid: c7ee0333-bd26-4bc3-94d5-92a3fce3947c
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.storage.user.field_pack
+  module:
+    - options
+    - user
+id: user.user.field_pack
+field_name: field_pack
+entity_type: user
+bundle: user
+label: Pack
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

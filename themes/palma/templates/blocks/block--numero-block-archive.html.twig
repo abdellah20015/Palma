@@ -1,0 +1,24 @@
+{%  set classes = ['populaire__title'] %}
+{% block content %}
+  {% if content %}
+       <div id="main_archiver">
+           <div class="container pl_2"> 
+                 {% if label %}
+                   <h2 {{ attributes.addClass(classes) }}>{{ label }}</h2>
+                 {% endif %}
+                 {{ title_suffix }}
+
+               <div {{ content_attributes.addClass('content') }}>
+                 {{ content }}
+               </div>
+                <div class="pg_numero_content pb_88  text-center ">
+                    <div class="container">
+                       <a href="{{ page_archive }}"  id="pg_numero_link"> {{ 'Afficher tout' }}</a>
+                    </div>
+                </div>
+
+            </div>
+          </div>
+        </div>
+    {% endif %}
+{% endblock %}

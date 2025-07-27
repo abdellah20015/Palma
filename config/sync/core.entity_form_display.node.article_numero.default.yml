@@ -1,0 +1,72 @@
+uuid: c102852d-687d-4017-ac2f-b96d8422d5c6
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.field.node.article_numero.body
+    - field.field.node.article_numero.field_image
+    - field.field.node.article_numero.field_image_brouillard
+    - field.field.node.article_numero.field_prix
+    - field.field.node.article_numero.field_user_scribe
+    - image.style.thumbnail
+    - node.type.article_numero
+  module:
+    - image
+    - imce
+    - text
+id: node.article_numero.default
+targetEntityType: node
+bundle: article_numero
+mode: default
+content:
+  body:
+    type: text_textarea_with_summary
+    weight: 2
+    settings:
+      rows: 9
+      summary_rows: 3
+      placeholder: ''
+      show_summary: false
+    third_party_settings: {  }
+    region: content
+  field_image:
+    weight: 3
+    settings:
+      preview_image_style: thumbnail
+      progress_indicator: throbber
+    third_party_settings:
+      imce:
+        enabled: true
+    type: image_image
+    region: content
+  field_prix:
+    weight: 4
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+    type: number
+    region: content
+  langcode:
+    type: language_select
+    weight: 1
+    region: content
+    settings:
+      include_locked: true
+    third_party_settings: {  }
+  title:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  created: true
+  field_image_brouillard: true
+  field_user_scribe: true
+  path: true
+  promote: true
+  status: true
+  sticky: true
+  uid: true

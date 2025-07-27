@@ -1,0 +1,23 @@
+uuid: c421257f-7932-4476-a5df-cb8441c63a79
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_prix
+    - node.type.acheter
+id: node.acheter.field_prix
+field_name: field_prix
+entity_type: node
+bundle: acheter
+label: Prix
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: decimal

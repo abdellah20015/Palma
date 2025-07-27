@@ -1,0 +1,30 @@
+uuid: 740d847c-f0d8-4417-841b-c317c5f38071
+langcode: fr
+status: false
+dependencies:
+  module:
+    - simplenews
+    - system
+  theme:
+    - palma
+id: abonnementsimplenews
+theme: palma
+region: aucun
+weight: -18
+provider: null
+plugin: simplenews_subscription_block
+settings:
+  id: simplenews_subscription_block
+  label: 'Recevez nos meilleurs articles et nouveautés'
+  provider: simplenews
+  label_display: visible
+  newsletters:
+    default: default
+  message: 'Abonnez-vous à notres Newsletter pour recevoir des nouvelles et des mises à jour Nous vous promettons de ne pas spammer votre super promesse !'
+  unique_id: 21576808-efef-4d79-945b-4f4a4e655f38
+visibility:
+  request_path:
+    id: request_path
+    pages: ''
+    negate: true
+    context_mapping: {  }

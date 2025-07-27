@@ -1,0 +1,24 @@
+uuid: a6531d50-9dd5-4dfb-b0b7-b5348dd25256
+langcode: fr
+status: true
+dependencies:
+  module:
+    - field_permissions
+    - paragraphs
+    - taxonomy
+third_party_settings:
+  field_permissions:
+    permission_type: public
+id: paragraph.field_periodicite
+field_name: field_periodicite
+entity_type: paragraph
+type: entity_reference
+settings:
+  target_type: taxonomy_term
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

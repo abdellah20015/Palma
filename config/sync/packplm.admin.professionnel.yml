@@ -1,0 +1,6 @@
+two_mail_address: contact@palmadigitale.com
+two_mail_subject: 'Plus qu’une seule étape pour activer votre pack {pack}'
+two_mail_content: "Bonjour {name}, \r\n\r\nL’équipe Palma vous remercie d’avoir choisi le pack {pack}.\r\nUn de nos agents vous contactera par téléphone (si votre numéro de téléphone figure dans les informations de votre profil) ou par mail dans les prochaines 24H.\r\nLe pack {pack} vous permettra de véhiculer des informations de qualité au sein de votre établissement.\r\n\r\nN’hésitez pas à vous abonner à notre Newsletter pour recevoir gratuitement une revue de presse mensuelle contenant tous les événements marquants du mois."
+req_sent_subject: 'Pack multiconnexion/professionnel'
+req_sent_content: 'Un nouveau client a choisit le pack multiconnexion/professionel, merci de le vérifier et le valider stp!'
+req_sent_address: contact@palmadigitale.com

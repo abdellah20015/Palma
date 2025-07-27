@@ -1,0 +1,14 @@
+uuid: 88969589-e709-453b-8a00-e087b58346ff
+langcode: fr
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: 1noCXlegCr5HFehQRF1ViXy1jhU1jZ_sNN99a8Sj5jo
+id: front
+label: 'Front page'
+tags:
+  canonical_url: '[site:url]'
+  description: 'Abonnez-vous à vos journaux et magazines préférés et lisez les à tout moment, où que vous soyez !'
+  keywords: 'Presse digitale, Presse Maroc, Journal Maroc'
+  shortlink: '[site:url]'
+  title: 'Palma Digitale - Presse en ligne'

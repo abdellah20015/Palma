@@ -1,0 +1,12 @@
+name: OneLogin Integration
+type: module
+description: 'OneLogin integration for Drupal 8'
+package: OneLogin
+# core: 8.x
+configure: onelogin_integration.form
+autoload: true
+# Information added by Drupal.org packaging script on 2018-02-02
+version: '8.x-1.0'
+core: '8.x'
+project: 'onelogin_integration'
+datestamp: 1517576884

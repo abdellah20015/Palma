@@ -1,0 +1,21 @@
+uuid: 47bcc158-78a2-40ec-a4e8-b480773b7865
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_date
+    - node.type.acheter
+  module:
+    - datetime
+id: node.acheter.field_date
+field_name: field_date
+entity_type: node
+bundle: acheter
+label: Date
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: datetime

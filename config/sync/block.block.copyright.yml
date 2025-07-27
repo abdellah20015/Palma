@@ -1,0 +1,25 @@
+uuid: 2844d6f5-0e37-4a01-8369-7bb0a5f67216
+langcode: fr
+status: true
+dependencies:
+  content:
+    - 'block_content:basic:9dac83a9-616b-45db-b505-6d55ff3cc520'
+  module:
+    - block_content
+  theme:
+    - palma
+id: copyright
+theme: palma
+region: footer
+weight: 0
+provider: null
+plugin: 'block_content:9dac83a9-616b-45db-b505-6d55ff3cc520'
+settings:
+  id: 'block_content:9dac83a9-616b-45db-b505-6d55ff3cc520'
+  label: Copyright
+  provider: block_content
+  label_display: '0'
+  status: true
+  info: ''
+  view_mode: full
+visibility: {  }

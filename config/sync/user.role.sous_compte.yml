@@ -1,0 +1,9 @@
+uuid: 3b80224a-038a-428b-9ebb-387be1cce945
+langcode: fr
+status: true
+dependencies: {  }
+id: sous_compte
+label: 'Sous compte'
+weight: 3
+is_admin: null
+permissions: {  }

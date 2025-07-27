@@ -1,0 +1,17 @@
+<!--logo-main-website!-->
+<div class="col-lg-2 pl_2" >
+  <div class="header__logo uppercase text-center">
+     <a href="{{ path('<front>') }}" title="{{ 'Home'|t }}" rel="home">
+        {% if site_logo %}
+        <div class="home_logo">
+            <img src="{{ site_logo }}" alt="{{ 'Home'|t }}"  class="header__logo-image mr-3 dnone d-lg-block" />   
+            <img src="/{{ base_path ~ directory }}/vendor/img/minilogo.png" alt="{{ 'Home'|t }}"  class="header__logo-image mr-3 d_none_block">
+      	</div>
+        {% endif %}
+      </a>
+   </div>
+</div>
+
+ 
+     
+       

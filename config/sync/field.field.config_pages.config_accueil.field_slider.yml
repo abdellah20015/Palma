@@ -1,0 +1,34 @@
+uuid: 2fcf2540-5657-492c-947d-8c7221603ec6
+langcode: fr
+status: true
+dependencies:
+  config:
+    - config_pages.type.config_accueil
+    - field.storage.config_pages.field_slider
+    - paragraphs.paragraphs_type.slider
+  module:
+    - entity_reference_revisions
+id: config_pages.config_accueil.field_slider
+field_name: field_slider
+entity_type: config_pages
+bundle: config_accueil
+label: Slider
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    negate: 0
+    target_bundles:
+      slider: slider
+    target_bundles_drag_drop:
+      partenaires:
+        weight: 3
+        enabled: false
+      slider:
+        enabled: true
+        weight: 4
+field_type: entity_reference_revisions

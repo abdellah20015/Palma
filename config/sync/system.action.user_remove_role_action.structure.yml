@@ -1,0 +1,14 @@
+uuid: 3a475b04-8760-4408-9b48-4b4287243837
+langcode: fr
+status: true
+dependencies:
+  config:
+    - user.role.structure
+  module:
+    - user
+id: user_remove_role_action.structure
+label: 'Enlever le rôle Structure des utilisateurs sélectionnés'
+type: user
+plugin: user_remove_role_action
+configuration:
+  rid: structure

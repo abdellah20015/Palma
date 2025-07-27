@@ -1,0 +1,11 @@
+uuid: 0c2113cd-2f90-4184-86bc-a85c7efd48a5
+langcode: fr
+status: true
+dependencies:
+  config:
+    - node.type.numero
+id: node.numero
+target_entity_type_id: node
+target_bundle: numero
+default_langcode: site_default
+language_alterable: false

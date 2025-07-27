@@ -1,0 +1,19 @@
+uuid: 51c64409-8adb-4084-902e-035bec94f338
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_info
+    - paragraphs.paragraphs_type.slider
+id: paragraph.slider.field_info
+field_name: field_info
+entity_type: paragraph
+bundle: slider
+label: Info
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

@@ -1,0 +1,29 @@
+uuid: 22f69a45-0d87-4da0-9607-42d33d8169f6
+langcode: fr
+status: true
+dependencies:
+  config:
+    - config_pages.type.config_accueil
+    - field.storage.config_pages.field_categories
+    - taxonomy.vocabulary.categories
+id: config_pages.config_accueil.field_categories
+field_name: field_categories
+entity_type: config_pages
+bundle: config_accueil
+label: Catégories
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      categories: categories
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

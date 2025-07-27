@@ -1,0 +1,24 @@
+uuid: 9df85c0d-1d06-4c7d-9c05-13a8456027e3
+langcode: fr
+status: true
+dependencies:
+  module:
+    - field_permissions
+    - user
+third_party_settings:
+  field_permissions:
+    permission_type: custom
+id: user.field_nombre_achat_numero
+field_name: field_nombre_achat_numero
+entity_type: user
+type: decimal
+settings:
+  precision: 10
+  scale: 2
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

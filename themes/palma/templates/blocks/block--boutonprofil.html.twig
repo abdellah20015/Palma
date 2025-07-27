@@ -1,0 +1,27 @@
+<div class="block" id="block-palma-account-menu">
+	 <ul id="has_children" class="nav-menu sf-js-enabled sf-arrows"> 
+	      <li>
+	     {% if user_id == 0 %}
+	      	<a href="/user">{{"Mon profil"|t }}</a>
+		 {% else %}
+	      	<a href="#" onclick="return false;" class="user_in"></a>
+				   <ul>
+				   	 <li class="menu-has-children">
+					     <a href="/user">{{ "Mon profil"|t }} </a>
+					  </li>
+					  <li class="menu-has-children">
+					     <a href="/user#statistiques" class="scroll_make">{{ "Mes statistiques"|t }} </a>
+					  </li>
+				       <li class="menu-has-children">
+				      	 <a href="/user/logout">{{ "Me déconnecter"|t }}</a>
+				       </li>
+			       </ul>
+			   
+	       {% endif %}
+	   </li>
+	 </ul>
+</div>
+
+
+
+

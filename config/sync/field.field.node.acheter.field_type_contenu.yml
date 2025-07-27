@@ -1,0 +1,21 @@
+uuid: 8df3a86a-05cc-43a0-aa90-faebaae9ace2
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_type_contenu
+    - node.type.acheter
+  module:
+    - options
+id: node.acheter.field_type_contenu
+field_name: field_type_contenu
+entity_type: node
+bundle: acheter
+label: Type
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

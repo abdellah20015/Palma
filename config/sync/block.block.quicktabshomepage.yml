@@ -1,0 +1,26 @@
+uuid: cddfc40a-72eb-4e17-b060-d218663d57b6
+langcode: fr
+status: true
+dependencies:
+  module:
+    - quicktabs
+    - system
+  theme:
+    - bartik
+id: quicktabshomepage
+theme: bartik
+region: content
+weight: -5
+provider: null
+plugin: 'quicktabs_block:home_page'
+settings:
+  id: 'quicktabs_block:home_page'
+  label: 'QuickTabs - Home page'
+  provider: quicktabs
+  label_display: '0'
+visibility:
+  request_path:
+    id: request_path
+    pages: '<front>'
+    negate: false
+    context_mapping: {  }

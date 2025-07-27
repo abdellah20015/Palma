@@ -1,0 +1,25 @@
+uuid: 84259785-7f06-48bd-8807-20798a0aa357
+langcode: fr
+status: true
+dependencies:
+  content:
+    - 'block_content:basic:3232a8fb-c4e3-4a95-be95-90d9f241a2a9'
+  module:
+    - block_content
+  theme:
+    - palma
+id: contacteznous
+theme: palma
+region: footer
+weight: -14
+provider: null
+plugin: 'block_content:3232a8fb-c4e3-4a95-be95-90d9f241a2a9'
+settings:
+  id: 'block_content:3232a8fb-c4e3-4a95-be95-90d9f241a2a9'
+  label: 'Contactez Nous'
+  provider: block_content
+  label_display: visible
+  status: true
+  info: ''
+  view_mode: full
+visibility: {  }

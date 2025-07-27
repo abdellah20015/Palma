@@ -1,0 +1,71 @@
+uuid: d248f3e0-859c-45da-b7e3-6e1deaa5f0af
+langcode: fr
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.listing_biblio
+    - field.field.node.numero.body
+    - field.field.node.numero.field_date
+    - field.field.node.numero.field_image
+    - field.field.node.numero.field_journal_revue
+    - field.field.node.numero.field_mot_cles
+    - field.field.node.numero.field_pages
+    - field.field.node.numero.field_prix
+    - node.type.numero
+  module:
+    - image
+    - text
+    - user
+id: node.numero.listing_biblio
+targetEntityType: node
+bundle: numero
+mode: listing_biblio
+content:
+  body:
+    label: hidden
+    type: text_default
+    weight: 1
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+  field_image:
+    weight: 2
+    label: hidden
+    settings:
+      image_style: ''
+    third_party_settings: {  }
+    type: image_url
+    region: content
+  field_journal_revue:
+    weight: 4
+    label: hidden
+    settings:
+      link: true
+      view_mode: default
+    third_party_settings: {  }
+    type: entity_reference_entity_view
+    region: content
+  field_prix:
+    weight: 3
+    label: hidden
+    settings:
+      thousand_separator: ''
+      decimal_separator: .
+      scale: 2
+      prefix_suffix: true
+    third_party_settings: {  }
+    type: number_decimal
+    region: content
+  links:
+    weight: 0
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  field_date: true
+  field_mot_cles: true
+  field_numero_brouillard_pdf: true
+  field_numero_pdf: true
+  field_pages: true
+  field_type_de_vente: true
+  langcode: true

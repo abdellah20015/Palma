@@ -1,0 +1,117 @@
+uuid: bfea7def-b0ec-4c93-8669-e3cfd3925743
+langcode: fr
+status: true
+dependencies:
+  config:
+    - core.entity_form_mode.user.edit
+    - field.field.user.user.field_carte
+    - field.field.user.user.field_credit
+    - field.field.user.user.field_d_adresse_physique
+    - field.field.user.user.field_date_de_naissance_
+    - field.field.user.user.field_interesse_par
+    - field.field.user.user.field_nom
+    - field.field.user.user.field_photo
+    - field.field.user.user.field_prenom
+    - field.field.user.user.field_telephone
+    - field.field.user.user.field_type
+    - field.field.user.user.field_ville
+    - image.style.thumbnail
+  module:
+    - datetime
+    - image
+    - user
+_core:
+  default_config_hash: Aa0rnGnFvcpVmC8SGW68BNYde2tSrNzOmvfAzSeIUVI
+id: user.user.edit
+targetEntityType: user
+bundle: user
+mode: edit
+content:
+  account:
+    weight: 10
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_carte:
+    type: image_image
+    weight: 9
+    region: content
+    settings:
+      progress_indicator: throbber
+      preview_image_style: thumbnail
+    third_party_settings: {  }
+  field_d_adresse_physique:
+    type: string_textfield
+    weight: 4
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_date_de_naissance_:
+    type: datetime_default
+    weight: 2
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_interesse_par:
+    type: options_buttons
+    weight: 7
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_nom:
+    weight: 0
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_photo:
+    weight: 8
+    settings:
+      progress_indicator: throbber
+      preview_image_style: thumbnail
+    third_party_settings: {  }
+    type: image_image
+    region: content
+  field_prenom:
+    weight: 1
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_telephone:
+    type: string_textfield
+    weight: 3
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_type:
+    weight: 6
+    settings: {  }
+    third_party_settings: {  }
+    type: options_buttons
+    region: content
+  field_ville:
+    type: string_textfield
+    weight: 5
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  contact: true
+  field_credit: true
+  langcode: true
+  language: true
+  path: true
+  simplenews: true
+  timezone: true
+  user_picture: true

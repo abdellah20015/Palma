@@ -1,0 +1,313 @@
+<?php
+
+/**
+ * @file
+ * Contains helper.module.
+ */
+use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Routing\RouteMatchInterface;
+use Drupal\core\Entity\EntityInterface;
+use Drupal\node\Entity\Node;
+use Drupal\views\ViewExecutable;
+use Drupal\user\Entity\User;
+use Drupal\Component\Utility\Html;
+
+
+/**
+ * Implements hook_help().
+ */
+function helper_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the helper module.
+    case 'help.page.helper':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('Helper module') . '</p>';
+      return $output;
+
+    default:
+  }
+}
+
+/**
+ * Implements hook_theme().
+ */
+function helper_theme() {
+  return [
+    'helper' => [
+      'render element' => 'children',
+    ],
+  ];
+}
+
+ /**
+ * Implements hook_mail().
+ */
+function helper_mail($key, &$message, $params)
+{
+  switch ($key) {
+    case 'helper_my_status':
+      $message['subject'] = $params['subject'];
+      $message['body'][] = $params['message'];
+    case 'Notif_numero':
+      $message['subject'] = $params['subject'];
+      $message['body'][] =$params['message'];
+    break;
+  }  
+}
+
+
+/**
+ * Implements hook_form_alter() on form actualites.
+ */
+function helper_form_views_exposed_form_alter(&$form, FormStateInterface $form_state, $form_id) {
+$froms_id = ['views-exposed-form-home-page-block-1','views-exposed-form-home-page-block-2','views-exposed-form-home-page-block-3','views-exposed-form-home-page-block-4'];
+   
+  if (isset($form["#id"]) && in_array($form["#id"], $froms_id) ) {
+    $genre= [
+      'All' => 'Genre',
+      '16' => 'Journal',
+      '15' => 'Revue',
+    ];
+    $form['genre'] = [
+      '#type' => 'select',
+      '#options' => $genre,
+      '#size' => NULL,
+      '#default_value' => 'All',
+      '#weight' => 3,
+    ];
+  }
+  if (isset($form["#id"]) && $form["#id"]=='views-exposed-form-les-comptes-professionnel-page-1' ) {
+    
+  }
+
+   // Recuperation des informations par dans la form par id
+  $uid = \Drupal::currentUser()->id();
+  // chargement de id de l utilisateur courant
+  $user = User::load( $uid );
+  // chargement du role
+  $roles = $user->getRoles();
+  if (in_array('editeur', $roles)) {
+  if (isset($form["#id"]) && 
+   $form["#id"]=='views-exposed-form-editeurstatistic-abonnement-block-1'||
+   $form["#id"]=='views-exposed-form-editeurstatistic-ventre-block-1' ) {
+    // naffiche que si le roles est editeur
+     if ( $user->get('field_journalrevu') ) {
+      $nodejr = $user->get('field_journalrevu')->referencedEntities();
+      $sources[Null]=t('Sources');
+      foreach ($nodejr as $key => $value) {
+         $sources[$value->id()]=$value->title->value;  
+       }
+     }
+    // recuperation de la source dans la form sous forme de select
+    $form['source'] = [
+      '#type' => 'select',
+      '#options' => $sources,
+      '#size' => NULL,
+      '#default_value' => Null,
+    ];
+   }
+}
+
+
+
+  if (isset($form["#id"]) && 
+     $form["#id"]=='views-exposed-form-statistic-block-1' || 
+     $form["#id"]=='views-exposed-form-statistic-abonnement-block-1' || 
+     $form["#id"]=='views-exposed-form-content-numeros-page-1' ) {
+    $nids = \Drupal::entityQuery('node')->condition('type','journal_revue')->execute();
+    $nodes =  \Drupal\node\Entity\Node::loadMultiple($nids);
+    $sources[Null]=t(' Source ');
+    foreach ($nodes as $node) {
+      $sources[$node->id()]=$node->get('title')->value;     
+    }
+    $form['source'] = [
+      '#type' => 'select',
+      '#options' => $sources,
+      '#size' => NULL,
+      '#default_value' => Null,
+    ];
+  }
+  if (isset($form["#id"]) && ($form["#id"]=='views-exposed-form-liste-des-ventes-total' or $form["#id"]=='views-exposed-form-liste-des-ventes-dabonnements-total') ) {
+    $form['#attached']['library'][] = 'helper/helper_css';
+    $nids = \Drupal::entityQuery('node')->condition('type','journal_revue')->execute();
+    $nodes =  \Drupal\node\Entity\Node::loadMultiple($nids);
+    $sources[Null]=t('- Tout -');
+    foreach ($nodes as $node) {
+      $sources[$node->id()]=$node->get('title')->value;     
+    }
+    $form['source'] = [
+      '#type' => 'select',
+      '#options' => $sources,
+      '#size' => NULL,
+      '#default_value' => Null,
+    ];
+  }
+  
+}
+
+function helper_entity_view_mode_alter(&$view_mode, Drupal\Core\Entity\EntityInterface $entity, $context) {
+  $pages = \Drupal::request()->query->get('pages');
+  if ($entity->getEntityTypeId() == 'node' && $entity->bundle() == 'numero'  && isset($pages) && $pages=='liste') {
+    $view_mode = 'page_liste_articles';
+  }
+  if ($entity->getEntityTypeId() == 'node' && $entity->bundle() == 'numero'  && isset($pages) && $pages=='articles_acheter') {
+    $view_mode = 'articles_acheter';
+  }
+
+}
+
+/**
+ * Implements hook_entity_presave().
+ */
+function helper_entity_presave(EntityInterface $entity) {
+  // Affectation du solde par defaut au nouveau utilisateur
+  if ($entity->bundle() == 'user') {
+    if ($entity->id()==NULL) {
+      $config = \Drupal::config('helper.solde');
+      $entity->set('field_credit',$config->get('solde_par_defaut'));
+    }
+    
+  }
+  
+}
+ 
+
+/**
+ * Implements hook_entity_insert().
+ */
+function helper_entity_insert(EntityInterface $entity) {
+  if ($entity->bundle() == 'numero') { 
+    $idn = $entity->ID();
+    $numero_title = $entity->label(); 
+    $options = ['absolute' => TRUE];
+    $url_object = \Drupal\Core\Url::fromRoute('entity.node.canonical', ['node' => $idn], $options);
+    // recuperation du journal du numero 
+    if ( $entity->get('field_journal_revue') )  {
+      $node_jr = $entity->get('field_journal_revue')->entity;
+      if( $node_jr ) {
+        // id journal
+        $jr_id=$node_jr->id();
+        // date de sortie de numero
+        $date_db = ($entity->field_date) ? $entity->field_date->value : NULL;
+        // recuperation de tous les abonnements du journal
+        $query =  \Drupal::entityQuery('node')
+                  ->condition('status', 1)
+                  ->condition('type', 'abonner')
+                  ->condition('field_journal_revue',$jr_id,'=')
+                  ->condition('field_date',$date_db,'<='); 
+        // Execution de la requete
+        $nids = $query->execute();
+        // recupration des nodes abonnement
+        if( $nids ) {
+          $nodes = Node::loadMultiple($nids);
+          foreach($nodes as $node) {
+            // nombre de numeros de pack choisi
+            $nb_p = ($node->field_numeros_pack) ? $node->field_numeros_pack->value : NULL;
+            // nombre de numeros deja affecte
+            $nb_a = ($node->field_nbr_num) ? $node->field_nbr_num->value : NULL;   
+            if ($nb_p > $nb_a) {
+              $nb_a += 1;
+              $node->set('field_nbr_num',$nb_a);
+              $node->field_numero[]=$idn;
+              _send_notification_new_numero($numero_title,$url_object->toString(), $node->field_user->target_id , $node_jr->get('title')->value);
+            }
+            $node->save();
+          }
+        }
+      }
+    }
+  }
+
+}
+
+
+    
+function helper_form_user_register_form_alter(&$form, &$form_state, $form_id) {
+  $form['actions']['submit']['#submit'][] = 'helper_user_register_submit_handler';
+}
+
+function helper_user_register_submit_handler($form, &$form_state) {
+  $form_state->setRedirect('entity.node.canonical', ['node' => 66]);
+}
+
+function helper_form_user_form_alter(&$form, &$form_state, $form_id) {
+  $user = \Drupal::currentUser()->getRoles();
+  if(!in_array("administrator", $user) && !in_array("admin_palma", $user) ) {
+    $form['field_credit']['#access'] = FALSE;
+  }
+}
+
+function helper_views_pre_view(ViewExecutable $view, $display_id, array &$args) {
+  if ($view->id() == 'home_page' && $display_id == 'block_4') {
+    if (\Drupal::currentUser()->id()) {
+      $user = User::load(\Drupal::currentUser()->id());
+      $user_cat = $user->get('field_interesse_par')->target_id;
+      if ($user_cat==NULL) {
+        $user_cat = 18;
+      }
+    }else{
+      $user_cat = 'all' ;
+    } 
+    $args[0] = $user_cat;
+  }
+}
+
+
+
+
+
+function helper_form_alter(&$form, &$form_state, $form_id) {  
+  if ($form_id == 'node_numero_form' || $form_id == 'node_numero_edit_form') {
+    $form['#attached']['library'][] = 'helper/helper_ckeditor';
+    $form['field_numero_pdf']['#states'] =  [
+        'visible' => [
+          ':input[value=numero_complet]' => array('checked' => TRUE),
+        ],
+    ];
+    $form['field_numero_brouillard_pdf']['#states'] =  [
+        'visible' => [
+          ':input[value=numero_complet]' => array('checked' => TRUE),
+        ],
+    ];
+    $form['field_pages']['#states'] =  [
+        'visible' => [
+          ':input[value=par_article]' => array('checked' => TRUE),
+        ],
+    ];
+  }
+  if ($form_id == 'user_form') {
+    $form['actions']['submit']['#submit'][] = '_redirect_user_edit_form_submit';
+  } 
+  
+}
+
+function _redirect_user_edit_form_submit($form, &$form_state) {
+  $form_state->setRedirect('entity.user.canonical', ['user' => \Drupal::currentUser()->id()]);
+} 
+
+
+function _send_notification_new_numero($numero_title, $numero_url , $user_abonned_id, $type){
+  //------> Notifications New numero add <------//
+  $mailManager = \Drupal::service('plugin.manager.mail');
+  $user = User::load($user_abonned_id);
+  $requestEmail = $user->getEmail();
+  $module = 'helper';
+  $key = 'Notif_numero';
+  $params['message'] = 'Bonjour '.$user->get('field_nom')->value.' '.$user->get('field_prenom')->value.',
+  Le nouveau numéro '.$numero_title.' de '.$type.' est maintenant disponible. 
+  Connectez-vous à votre compte Palma Digitale pour accéder au numéro. 
+
+  '.$numero_url.'
+
+  Bonne lecture';
+  $params['subject'] = 'Nouveau numero '.$numero_title.' de '.$type;
+  $langcode = \Drupal::currentUser()->getPreferredLangcode();
+
+  $result = $mailManager->mail($module, $key, $requestEmail, $langcode, $params);
+  if ($result['result'] !== true) {
+      \Drupal::logger('Send_mail_notification')->notice('Problème de notifications par email : '.$requestEmail);
+  }else{
+      \Drupal::logger('Send_mail_notification')->notice($params['subject']);
+  }
+}

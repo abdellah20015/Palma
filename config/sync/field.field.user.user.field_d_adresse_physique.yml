@@ -1,0 +1,20 @@
+uuid: 70c719a9-1ff4-4b91-b7f4-0299f37a8d44
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.storage.user.field_d_adresse_physique
+  module:
+    - user
+id: user.user.field_d_adresse_physique
+field_name: field_d_adresse_physique
+entity_type: user
+bundle: user
+label: 'Adresse physique'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

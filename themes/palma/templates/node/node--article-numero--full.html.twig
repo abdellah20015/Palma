@@ -1,0 +1,73 @@
+<div class="numero_of_article">
+	<div class="detail_article_numero_header">
+	    <div class="container pl_2">
+		   <div class="row">
+			   	<div class="col-md-9">
+			   		<div class="numero_header_un">
+			   			<a href="{{ content.numero.more_articles }}" class="link_back_list"></a>
+				   			<div class="numero_header_img">
+								<img src="{{ content.numero.image.uri.value | image_style('thumbnail') }} ">
+						    </div>
+							<div class="numero_header_un_interne">
+								<div class="type_categorie">  
+									<span class="mytype">{{'- '|t}}{{ content.numero.field_type }}{{'-'|t}}</span>
+									<span class="mycate">{{ content.numero.field_categorie }}</span> 
+								</div>
+								 <div class="source_title">
+							    	<span class="source_item">{{ content.numero.field_source }}</span>
+									<span class="title_date">{{ content.numero.title }}</span>
+								  </div>
+							</div>
+						</div>
+					</div>
+				  	
+					   <div class="col-md-3">
+					   	<!--span class="price">
+				    	{{ content.numero_prix }} {{ ' MAD '|t }}
+				    	</span-->
+					   	{% if (content.allnumero) %}
+						   	<div class="numero_header_deux">
+								 <span class="total">{{ content.articles.total_price }} {{' MAD '|t }} </span>
+							     <span class="total_articles">{{ content.articles.total_article }} {{ 'Articles'|t }}</span>
+							     <span class="buy_numero_article">
+									 <a href="{{ content.numero.more_articles }}">
+									 	{{ 'Acheter d’autres articles'|t }}
+									 </a>
+								</span>
+							</div>
+							{% endif %}
+					   </div>
+				   	
+			</div>
+	    </div>
+   </div>
+
+    <div class="main_numero_content">		
+	   <div class="container pl_2">
+			<ul class="numero_content">
+				{% for article in content.articles %}
+				   <li class="item_list">
+					  	<a href="{{ article.url }}" class="{{ article.current }}">
+					  		{{ article.title }}
+					  	</a>
+				   </li>
+				{% endfor %}
+			</ul>
+	
+			 <div class="content_article_visuel mt-4">
+			 	<span class="title_nm">
+			 		{{ 'N°'|t }} {{ label.0['#context'].value }}
+			 	</span>
+				{% if (content.allnumero) %}			
+				    <span class="price">
+				    	{{ content.field_prix|field_value }} {{ ' MAD '|t }}
+				    </span>
+				{% endif %}			
+			    <div class="m_auto">
+			    	{{ content.field_image|field_value }}
+			    </div>
+			 </div>
+		</div>
+	 </div>
+</div>
+

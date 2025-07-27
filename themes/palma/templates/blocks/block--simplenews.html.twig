@@ -1,0 +1,8 @@
+<!--(Newsletter)--> 
+{% set classes = ['block','lanewsletter','text-center'] %}
+	<section {{ attributes.addClass(classes) }}>
+	        <div class="container p-0">
+	        	<h2 class="lanewsletter__title text semi-bold mb-4">{{ label }}</h2>
+	             {{ content }}
+	        </div>
+	</section>

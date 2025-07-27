@@ -1,0 +1,10 @@
+uuid: ac69ebc0-8849-4bf1-bccf-66421035903a
+langcode: fr
+status: true
+dependencies:
+  module:
+    - user
+id: user.sous_compte
+label: 'Sous compte'
+targetEntityType: user
+cache: true

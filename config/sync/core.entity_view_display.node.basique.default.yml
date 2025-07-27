@@ -1,0 +1,29 @@
+uuid: c22debc4-70ed-4074-817f-e592f970be2b
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.field.node.basique.body
+    - node.type.basique
+  module:
+    - text
+    - user
+id: node.basique.default
+targetEntityType: node
+bundle: basique
+mode: default
+content:
+  body:
+    label: hidden
+    type: text_default
+    weight: 101
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+  links:
+    weight: 100
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+hidden:
+  langcode: true

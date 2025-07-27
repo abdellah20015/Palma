@@ -1,0 +1,144 @@
+uuid: 284e1d5d-5b3a-4909-b4dd-8b78425f09ee
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.field.node.packabonnement.body
+    - field.field.node.packabonnement.field_contenu_wrapper
+    - field.field.node.packabonnement.field_image
+    - field.field.node.packabonnement.field_pack
+    - image.style.thumbnail
+    - node.type.packabonnement
+  module:
+    - field_group
+    - image
+    - imce
+    - inline_entity_form
+    - path
+    - text
+third_party_settings:
+  field_group:
+    group_pack:
+      children:
+        - field_pack
+      parent_name: ''
+      weight: 10
+      format_type: form_step
+      format_settings:
+        label: Pack
+        next_button_text: Suivant
+        show_step_title: '1'
+        back_button_show: '1'
+        back_button_text: Précédent
+        id: Pack
+        classes: ''
+      label: Pack
+      region: content
+id: node.packabonnement.default
+targetEntityType: node
+bundle: packabonnement
+mode: default
+content:
+  body:
+    type: text_textarea_with_summary
+    weight: 9
+    settings:
+      rows: 9
+      summary_rows: 3
+      placeholder: ''
+      show_summary: false
+    third_party_settings: {  }
+    region: content
+  created:
+    type: datetime_timestamp
+    weight: 3
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_contenu_wrapper:
+    weight: 26
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    type: text_textarea
+    region: content
+  field_image:
+    weight: 8
+    settings:
+      preview_image_style: thumbnail
+      progress_indicator: throbber
+    third_party_settings:
+      imce:
+        enabled: true
+    type: image_image
+    region: content
+  field_pack:
+    weight: 11
+    settings:
+      form_mode: default
+      label_singular: ''
+      label_plural: ''
+      allow_new: true
+      match_operator: CONTAINS
+      override_labels: false
+      collapsible: false
+      collapsed: false
+      allow_existing: false
+      allow_duplicate: false
+    third_party_settings: {  }
+    type: inline_entity_form_complex
+    region: content
+  langcode:
+    type: language_select
+    weight: 1
+    region: content
+    settings:
+      include_locked: true
+    third_party_settings: {  }
+  path:
+    type: path
+    weight: 6
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  promote:
+    type: boolean_checkbox
+    settings:
+      display_label: true
+    weight: 4
+    region: content
+    third_party_settings: {  }
+  status:
+    type: boolean_checkbox
+    settings:
+      display_label: true
+    weight: 7
+    region: content
+    third_party_settings: {  }
+  sticky:
+    type: boolean_checkbox
+    settings:
+      display_label: true
+    weight: 5
+    region: content
+    third_party_settings: {  }
+  title:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  uid:
+    type: entity_reference_autocomplete
+    weight: 2
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+      match_limit: 10
+    region: content
+    third_party_settings: {  }
+hidden: {  }

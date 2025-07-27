@@ -1,0 +1,27 @@
+uuid: c22104f6-c757-4669-acc8-af4f676fd492
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_numero_brouillard_pdf
+    - node.type.numero
+  module:
+    - file
+id: node.numero.field_numero_brouillard_pdf
+field_name: field_numero_brouillard_pdf
+entity_type: node
+bundle: numero
+label: 'Numéro brouillard PDF'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  file_directory: 'numerobrouillard/[date:custom:Y]-[date:custom:m]'
+  file_extensions: pdf
+  max_filesize: ''
+  description_field: false
+  handler: 'default:file'
+  handler_settings: {  }
+field_type: file

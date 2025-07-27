@@ -1,0 +1,18 @@
+packplm.admin:
+  title: 'Pack Palma'
+  description: 'Gestion des configurations des Emails'
+  parent: system.admin_config
+  route_name: packplm.admin
+  weight: -100
+packplm.student:
+  title: 'Gestion des Emails Etudiant'
+  description: 'Gestion des Emails Etudiant'
+  parent: packplm.admin
+  route_name: email.student
+  weight: 2
+packplm.multipro:
+  title: 'Gestion des Emails Professionnel et multi_connexion '
+  description: 'Gestion des Emails Professionnel et multi_connexion'
+  parent: packplm.admin
+  route_name: email.multipro
+  weight: 3

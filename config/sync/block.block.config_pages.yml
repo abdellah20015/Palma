@@ -1,0 +1,28 @@
+uuid: eeed2666-7757-4d35-91fa-cac6ef16b004
+langcode: fr
+status: true
+dependencies:
+  module:
+    - config_pages
+    - system
+  theme:
+    - bartik
+id: config_pages
+theme: bartik
+region: content
+weight: -6
+provider: null
+plugin: config_pages_block
+settings:
+  id: config_pages_block
+  label: Carousel
+  provider: config_pages
+  label_display: '0'
+  config_page_type: config_accueil
+  config_page_view_mode: carousel
+visibility:
+  request_path:
+    id: request_path
+    pages: '<front>'
+    negate: false
+    context_mapping: {  }

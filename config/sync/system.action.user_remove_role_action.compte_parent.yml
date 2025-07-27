@@ -1,0 +1,14 @@
+uuid: b7dec4ee-44a1-4c76-a64f-4b45495ab9ff
+langcode: fr
+status: true
+dependencies:
+  config:
+    - user.role.compte_parent
+  module:
+    - user
+id: user_remove_role_action.compte_parent
+label: 'Enlever le rôle compte parent des utilisateurs sélectionnés'
+type: user
+plugin: user_remove_role_action
+configuration:
+  rid: compte_parent

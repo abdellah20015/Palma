@@ -1,0 +1,9 @@
+helper_ckeditor:
+  css:
+    theme:
+      ckeditor-dlg.css: {}
+
+helper_css:
+  css:
+    theme:
+      helper.css: {}

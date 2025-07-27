@@ -1,0 +1,89 @@
+<!--Palma (Header)  -->  
+<main id="site">   
+    <header class="header desktop">
+      <div class="container">
+         <div class="row align-items-center justify_content">
+       
+             {% if page.header %}
+                 {{ page.header}}
+             {% endif %} 
+             
+                   {% if page.primary_menu %}
+                         {{ page.primary_menu  }}       
+                   {% endif %}
+
+              {% if page.header_right %}
+                    {{page.header_right}}
+              {% endif %}
+
+        </div>
+    </div>
+</header>
+<div class="main_wrapper">
+         <div class="main_container"> 
+            {% if page.breadcrumb  %} 
+                <div class="container pl_2">
+                  <div class="page_title_inner">
+                      <div class="breadcrumb">
+                        {{ page.breadcrumb }} 
+                      </div>
+                  </div>
+                </div>
+            {% endif %}  
+        </div>
+    <div class="content_inside">
+        <div class="container pl_2">
+           <div class="messages_help" style="display:none"> 
+              {% if page.messages or page.help %}
+                      {{ page.messages }}
+                  {{ page.help }}
+              {% endif %}
+            </div>
+          </div>
+          <div class="content_interne container pl_2">
+              <div class="content_title_page">
+                  <h2 class="populaire__title ">
+                       {{ page.page_title }}
+                  </h2>
+              </div>
+    		    <div class="row">    
+                  <div class="col-12 col-md-3">
+                   
+                      {% if page.sidebar_filter %}
+					    <div class="content_filter_reset">
+                          <div class="btn_reset filter">{{ ' Filtre '|t }}</div>
+                          <a href="{{ path('<front>') }}kiosque" class="btn_reset uncheck-all">
+                             {{ 'All'|t }}
+                          </a>
+						</div>
+                         {{ page.sidebar_filter }}
+                      {% endif %}
+
+                  </div>
+
+    		           <div class="col-12 col-md-9">
+                        <div id="kiosque_content">
+          			           {% if page.content %}
+          			               {{ page.content }}
+          			           {% endif %}
+        		           </div>
+                   </div>
+
+    			   </div>   
+        </div>
+    </div>
+</div>
+ 
+<!--\Palma\(Newsletter-->
+   {% if page.newsletters %}
+       {{ page.newsletters  }}       
+   {% endif %}  
+
+<!--\Palma\(Newsletter\logo et reseau social\footer)-->
+<footer class="footer">   
+       {% if page.footer %}
+             {{ page.footer  }}       
+       {% endif %}        
+</footer>
+
+</main>

@@ -1,0 +1,7 @@
+user_reference_field_name: field_user_scribe
+user_reference_grants_view: '1'
+user_reference_grants_edit: '0'
+user_reference_grants_delete: '0'
+node_author_grants_view: '1'
+node_author_grants_edit: '1'
+node_author_grants_delete: '1'

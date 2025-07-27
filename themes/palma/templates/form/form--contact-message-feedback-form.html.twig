@@ -1,0 +1,66 @@
+<form {{ attributes }}   data-toggle="validator" novalidate="true"> 
+<div class="row">
+<div class="col-md-3"></div>
+<div class="col-md-6">
+<div class="form-group">
+<div class="js-form-item form-item js-form-type-textfield form-item-name js-form-item-name">
+<label for="edit-name" class="js-form-required form-required"> {{'Votre nom  *'|t }} </label>
+<div class="col-md-6 m-t-14 m-b-14">
+<input class="form-control form-text required sizefull titinput txt10 p-l-20" placeholder="Votre nom*" 
+type="text" id="edit-name" name="name"  size="60" maxlength="255"
+value="" placeholder="Votre nom" required="required" data-error="le champ nom est requis">
+<div class="help-block with-errors"></div>
+</div>
+</div> 
+</div>
+
+
+<div class="form-group"> 
+<div class="js-form-item form-item js-form-type-email form-item-mail js-form-item-mail"> 
+<label for="edit-mail" class="js-form-required form-required"> {{'Votre adresse de courriel  *'|t }} </label> 
+<div class="col-md-6 m-t-14 m-b-14">
+<input data-twig-suggestion="contact-message-feedback-form" placeholder="Votre e-mail  *" class="form-control form-email required sizefull titinput txt10 p-l-20" 
+data-drupal-selector="edit-mail" type="email" id="edit-mail" name="mail" value="" 
+size="60" maxlength="254"  required="required" data-error="le champ email est requis.">
+<div class="help-block with-errors"></div>   
+</div>  
+</div>  
+</div>
+
+<div class="field--type-string field--name-subject field--widget-string-textfield js-form-wrapper form-wrapper" data-twig-suggestion="contact-message-feedback-form" data-drupal-selector="edit-subject-wrapper" id="edit-subject-wrapper">
+<div class="form-group">
+<div class="js-form-item form-item js-form-type-textfield form-item-subject-0-value js-form-item-subject-0-value">
+<label for="edit-subject-0-value" class="js-form-required form-required">{{'Objet  *'|t }}  </label>
+<div class="col-md-6 m-t-14 m-b-14">
+<input class="js-text-full text-full form-control form-text required sizefull titinput txt10 p-l-20" placeholder="Objet*" data-drupal-selector="edit-subject-0-value" type="text" id="edit-subject-0-value" name="subject[0][value]" value="" size="60" maxlength="100" required="required" aria-required="true">
+<div class="help-block with-errors"></div>
+</div>  
+</div>
+</div>  
+</div>
+
+<div class="field--type-string-long field--name-message field--widget-string-textarea js-form-wrapper form-wrapper" data-twig-suggestion="contact-message-feedback-form" data-drupal-selector="edit-message-wrapper" id="edit-message-wrapper">
+<div class="form-group">
+<div class="js-form-item form-item js-form-type-textarea form-item-message-0-value js-form-item-message-0-value">
+<label for="edit-message-0-value" class="js-form-required form-required">{{'Message  *'|t }} </label>
+   <div>
+   <textarea class="js-text-full text-full formcontrol form-textarea required"
+   placeholder="Message*" data-drupal-selector="edit-message-0-value" 
+   id="edit-message-0-value" name="message[0][value]" rows="12" cols="60" 
+   required="required" aria-required="true"></textarea>
+   <div class="help-block with-errors"></div>
+</div>
+</div>
+</div>
+</div>
+
+</div>  
+</div>
+
+
+{{ element.form_build_id }} {# required #}
+{{ element.form_id }} {# required #}	
+{{ element.actions }}  
+</form>
+    
+      

@@ -1,0 +1,29 @@
+uuid: 7eb799cc-0a52-4997-81ae-ec1d4c2a93aa
+langcode: fr
+status: false
+dependencies:
+  config:
+    - views.view.kiosque
+  module:
+    - system
+    - views
+  theme:
+    - palma
+id: palma_formulaireexposekiosquepage_1
+theme: palma
+region: homepage_content
+weight: -22
+provider: null
+plugin: 'views_exposed_filter_block:kiosque-page_1'
+settings:
+  id: 'views_exposed_filter_block:kiosque-page_1'
+  label: ''
+  provider: views
+  label_display: visible
+  views_label: ''
+visibility:
+  request_path:
+    id: request_path
+    pages: '<front>'
+    negate: false
+    context_mapping: {  }

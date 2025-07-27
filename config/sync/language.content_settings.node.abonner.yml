@@ -1,0 +1,11 @@
+uuid: ced07622-376d-4748-90a9-352392b37bcd
+langcode: fr
+status: true
+dependencies:
+  config:
+    - node.type.abonner
+id: node.abonner
+target_entity_type_id: node
+target_bundle: abonner
+default_langcode: site_default
+language_alterable: false

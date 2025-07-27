@@ -1,0 +1,31 @@
+uuid: d49a388d-4f21-48ab-861b-690676331a3e
+langcode: fr
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.journal_revue.body
+    - node.type.journal_revue
+  module:
+    - text
+    - user
+id: node.journal_revue.teaser
+targetEntityType: node
+bundle: journal_revue
+mode: teaser
+content:
+  body:
+    label: hidden
+    type: text_summary_or_trimmed
+    weight: 101
+    settings:
+      trim_length: 600
+    third_party_settings: {  }
+    region: content
+  links:
+    weight: 100
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+hidden:
+  langcode: true

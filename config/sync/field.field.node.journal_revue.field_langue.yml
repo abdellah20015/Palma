@@ -1,0 +1,29 @@
+uuid: b66de3ea-d756-466a-b5e6-f433f0d23a05
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_langue
+    - node.type.journal_revue
+    - taxonomy.vocabulary.langue
+id: node.journal_revue.field_langue
+field_name: field_langue
+entity_type: node
+bundle: journal_revue
+label: Langue
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      langue: langue
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

@@ -1,0 +1,75 @@
+.view-liste-des-ventes .view-header .view-content td,.view-liste-des-ventes .view-header .view-content thead , .view-liste-des-ventes .view-header .view-content table.sticky-header{
+    display: none;
+}
+.view-liste-des-ventes .view-header .view-content tfoot td {
+        display: block;
+}
+.view-liste-des-ventes-dabonnements .view-content table.cols-1 tbody,
+.view-liste-des-ventes-dabonnements .view-content table.cols-1 thead {
+    display: none;
+}
+
+nav#block-palma ul > li {
+    float: left;
+    list-style: none;
+    position: relative;
+    display: block;
+}
+
+nav#block-palma > ul {
+    float: left;
+}
+
+nav#block-palma ul > li a {
+    padding: 10px;
+    background-color: #2b2626;
+    color: #fff;
+}
+
+nav#block-palma ul > li.menu-item.menu-item--expanded > ul {
+    display: none;
+    position: absolute;
+    z-index: 9;
+}
+
+nav#block-palma ul > li.menu-item.menu-item--expanded:hover > ul {
+    display: inline-block;
+    margin: 0;
+    z-index: 9999;
+    left: 0;
+    top: 32px;
+}
+
+nav#block-palma {
+    display: inline-block;
+}
+
+nav#block-palma .menu-item--expanded li.menu-item {
+    width: 200px;
+    display: inline-block;
+    background-color: #2b2626;
+}
+
+nav#block-palma .menu-item--expanded li.menu-item a {
+    float: left;
+    line-height: 17px;
+}
+.content-header {
+    overflow: visible !important;
+    padding-top: 0!important;
+}
+
+/*Style form email redimensionner */
+form#packplm-admin-email-professionnel,
+form#packplm-admin-email-management,
+form#helper-admin-emailcompteconfiguration {
+    width: 36%;
+    margin:0 auto;
+}
+
+/*Style button form email a droit */
+form#packplm-admin-email-professionnel div#edit-actions ,
+form#packplm-admin-email-management div#edit-actions ,
+form#helper-admin-emailcompteconfiguration div#edit-actions {
+    float: right;
+}

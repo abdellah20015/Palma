@@ -1,0 +1,9 @@
+{% for item in items|batch(2, 0) %}
+	<div class="grid">
+		{% for column in item %}
+			{{ column.content }}     
+		{% endfor %} 
+	</div>  
+{% endfor %}
+
+ 

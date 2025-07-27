@@ -1,0 +1,26 @@
+uuid: c29d5e76-c756-4f6a-aff7-478cee6b55ae
+langcode: fr
+status: true
+dependencies:
+  module:
+    - packplm
+    - system
+  theme:
+    - palma
+id: blocpacketabonnenment
+theme: palma
+region: content
+weight: -14
+provider: null
+plugin: pksub_block
+settings:
+  id: pksub_block
+  label: 'Bloc Pack et abonnenment'
+  provider: packplm
+  label_display: '0'
+visibility:
+  request_path:
+    id: request_path
+    pages: /packs-abonnements
+    negate: false
+    context_mapping: {  }

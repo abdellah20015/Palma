@@ -1,0 +1,7 @@
+uuid: 5ee2d960-44d9-4e3b-a99b-732123bf0f42
+langcode: fr
+status: false
+dependencies: {  }
+formId: node_journal_revue_form
+captchaType: default
+label: null

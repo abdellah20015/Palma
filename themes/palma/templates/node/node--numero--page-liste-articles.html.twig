@@ -1,0 +1,120 @@
+<!--Header-->
+<div class="main_container numerokisque main_header"> 
+       <div class="container p-0">
+              <div class="page_title_inner">
+                  <div class="breadcrumb">
+                     {{ page.breadcrumb }} 
+                   </div>
+                
+                  <div class="contenu_detail_numero">
+                    <h2 class="populaire__title"> 
+                      {{ 'Kiosque'|t }}  
+                    </h2>
+                  </div>
+                  
+                  <div class="type_contegory">    
+                     <div class="type"> {{ '-'|t }} {{ field_type }} {{'-'|t}} </div> 
+                     <div class="cat__populaire"> {{ field_categorie }}</div>
+                  </div> 
+
+                   <div class="typecontegory"> 
+	                   <div class="source">{{ field_source }}</div>
+	                   <div class="numero_title">{{ 'N°'|t }} {{ label.0['#context'].value }} - {{ content.field_date|field_value }}</div>
+	               </div>
+	               
+	               <div class="numero_art_acheter"> 
+						<a href="{{ url }}" class="link_img_mini_article">
+							<img src="{{ content.field_image|field_value }}" class="img-fluid">
+						</a>
+						<div class="boutton_action">
+				    	{% if display == 'show' %}
+									{% if display_link == 'show' %}
+										<a href="/acheter/numero/{{node.id}}" class="pg_link_mag_art">
+											{{' Acheter ' ~ field_type ~ ' entier a '|t }}
+											{{ content.field_prix|field_value }} {{ 'MAD'|t }}
+										</a>
+										{% else %}
+										<a href="javascript:return false;"class="pg_link_mag_art S">
+											{{ 'Déjà acheter'|t }}
+										</a>
+									{% endif %}
+
+							<a href="javascript:void(0)" id="packs-open" class="pg_link pg_lk_sabonner -"> 
+									{{ "S'abonner "}} 
+								</a>
+							<div class="mysearch">
+									<div id="packs-overlay" class="block aboner">
+									    <div class="centered">
+									        <div id='packs-box'>
+									            <i id="packs-close" class="fa fa-times fa-2x"></i> 
+											     <div id="item_abonnement">
+
+													{% for item in results.lesabonnes %}
+														<div class="views-row-pack">
+															<div class="cardpack">
+																	<div class="cardheader">
+																		<h2 class="title">{{ item.letitre }}</h2>
+																	</div>
+																	<div class="nombre">
+																		<span class="nbr">{{ item.leprix|round }}</span>
+																		<span class="mad">{{' MAD'|t}}</span>
+																		<span class="month">{{'/'|t}} {{ item.periodicite }} </span>
+																	</div> 
+																	{{ item.lebody|raw }}
+																<a href="/abonneraunumero/{{node.id}}/{{ item.leprix|trim('0')|trim('.') }}/{{ item.periodicite }}" class="btn_choisir active"> {{ 'choisir'|t }} </a>
+															</div>
+														</div>
+															{% else %}
+																	<p class="pem"> {{"Aucun element dans le Journal/Revu "|t }}</p>	
+													  {% endfor %}
+												 </div>
+										    </div>
+										  </div>
+								     </div>
+								</div> 
+
+							  {% else %}
+						  <a href="javascript:return false;" class="pg_link T pg_lk_sabonner"> {{"Abonné"|t }}</a>
+						  {% endif %}
+						</div>
+				   </div>
+					 
+              </div>
+         </div>
+ </div>
+
+<div class="wrapper_contenu_list_pg">
+	<div class="container pl_2">
+		<div class="item_content_list_page">
+			{% if display_link == 'show' %}
+			<h3 class="titre_h3">{{'Acheter juste l’article dont vous avez besoin'|t }}</h3>
+			{% endif %}
+		</div>
+       <!--<div class="row">
+	   </div>  -->
+	</div> 
+</div>
+
+<br> <br> <br> <br> <br> <br> 
+
+<div id="ScrollableMake"> 
+		<div id="makeMeScrollable"> 
+				{{ content.field_pages|field_value }}
+		</div>
+	</div> 
+
+<br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br>  
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+

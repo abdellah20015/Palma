@@ -1,0 +1,63 @@
+uuid: 64d5a66e-882a-40e3-806d-1e499339c2ac
+langcode: fr
+status: true
+dependencies: {  }
+id: statistic
+label: Statistiques
+renderer: quick_tabs
+options:
+  accordion_tabs:
+    jquery_ui:
+      collapsible: 0
+      heightStyle: auto
+  quick_tabs:
+    ajax: '1'
+hide_empty_tabs: 0
+default_tab: '9999'
+configuration_data:
+  -
+    title: 'Statistiques Achat'
+    weight: '0'
+    type: view_content
+    content:
+      block_content:
+        options:
+          bid: 'views_block:statistic-block_1'
+          block_title: ''
+          display_title: 0
+      node_content:
+        options:
+          nid: ''
+          view_mode: full
+          hide_title: '1'
+      qtabs_content:
+        options:
+          machine_name: home_page
+      view_content:
+        options:
+          vid: statistic
+          display: block_1
+          args: ''
+  -
+    title: 'Statistiques Abonnement'
+    weight: '0'
+    type: view_content
+    content:
+      block_content:
+        options:
+          bid: local_actions_block
+          block_title: ''
+          display_title: 0
+      node_content:
+        options:
+          nid: ''
+          view_mode: full
+          hide_title: '1'
+      qtabs_content:
+        options:
+          machine_name: home_page
+      view_content:
+        options:
+          vid: statistic_abonnement
+          display: block_1
+          args: ''

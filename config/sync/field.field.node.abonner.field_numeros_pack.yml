@@ -1,0 +1,23 @@
+uuid: 925c8ce5-6ff6-499b-8bad-ce4312f74497
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_numeros_pack
+    - node.type.abonner
+id: node.abonner.field_numeros_pack
+field_name: field_numeros_pack
+entity_type: node
+bundle: abonner
+label: "Quantité de Numéro\t"
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer

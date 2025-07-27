@@ -1,0 +1,14 @@
+uuid: 623d9f90-942f-438e-a2b7-ad2675ba3fe1
+langcode: fr
+status: true
+dependencies:
+  config:
+    - user.role.compte_parent
+  module:
+    - user
+id: user_add_role_action.compte_parent
+label: 'Ajouter le rôle compte parent aux utilisateurs sélectionnés'
+type: user
+plugin: user_add_role_action
+configuration:
+  rid: compte_parent

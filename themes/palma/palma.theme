@@ -1,0 +1,713 @@
+<?php 
+use Drupal\Core\Url;
+use Drupal\helper\Controller\NumeroController; 
+use Drupal\helper\Controller\PurchasedController;
+use \Drupal\block\Entity\Block;   
+use Drupal\node\Entity\NodeType;
+use Drupal\file\Entity\File;
+use Drupal\image\Entity\ImageStyle;
+use Drupal\user\Entity\User;
+use Drupal\node\Entity\Node;
+use Drupal\helper\Controller\AbonnementController;
+use Drupal\Core\Form\FormStateInterface;
+use Drupal\packplm\Controller\MyMypackController;
+
+// Implement hook_html ()
+function palma_preprocess_html(&$variables) {
+
+   
+    $current_path = \Drupal::service('path.current')->getPath();
+    $variables['current_path'] = \Drupal::service('path.alias_manager')->getAliasByPath($current_path);
+    
+    // Recuperation de la Variable is_front
+    $variables['is_front'] =  \Drupal::service('path.matcher')->isFrontPage();
+    //Add class if is front page
+    if ($variables['is_front']) {
+      $variables['attributes']['class'][] = 'front';
+    } 
+    else {
+      $variables['attributes']['class'][] = 'not-front';
+    }
+
+    $user = \Drupal::currentUser();
+
+    if ($user->isAnonymous()) {
+        $variables['attributes']['class'][] ='user_isAnonymous';
+    }else {
+        $variables['attributes']['class'][]='user_logged_in';
+        $user = User::load(\Drupal::currentUser()->id());
+        if (in_array('structure', $user->getRoles())) {
+          if (!$user->get('field_sous_compte')->isEmpty()) {
+            if (!empty($_SERVER['HTTP_CLIENT_IP'])) {
+                $ip = $_SERVER['HTTP_CLIENT_IP'];
+              } elseif (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])) {
+                  $ip = $_SERVER['HTTP_X_FORWARDED_FOR'];
+              } else {
+                $ip = $_SERVER['REMOTE_ADDR'];
+              }
+
+            $user->set('field_adresses_ip', $ip);
+            $user->save();
+          }
+        }
+        if (in_array('multi_connexions', $user->getRoles())) {
+                $query = \Drupal::entityQuery('user')->condition('field_sous_compte', $user->id());
+                $uidp = $query->execute();
+                foreach ($uidp as $key => $value) {
+                  $user_p = User::load($key);
+                  break;
+                }
+
+                if (!empty($_SERVER['HTTP_CLIENT_IP'])) {
+                    $ip = $_SERVER['HTTP_CLIENT_IP'];
+                } elseif (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])) {
+                    $ip = $_SERVER['HTTP_X_FORWARDED_FOR'];
+                } else {
+                    $ip = $_SERVER['REMOTE_ADDR'];
+                }
+                if ($user_p && $user_p->get('field_adresses_ip')->value == $ip) {
+                    $request        = \Drupal::request();
+                    $session        = $request->getSession();
+                    $variables['attributes']['class'][] = 'multi-connexion';
+                    if( ! $session->get('show-message') ) {
+                      \Drupal::messenger()->addStatus(t('Votre compte vous permet de consulter la bibliothèque et lire les numéros déjà sélectionnés, mais pour bénéficier de tout notre catalogue, vous devez créer un compte avec nous et commencez à implémenter votre bibliothèque.'));
+                      $session->set('show-message', 'yes');
+                    }
+                } else {
+                  user_logout();
+                  \Drupal::messenger()->addStatus("Vous n'avez pas le droit d'accèder!");
+                  //die('stop');
+                } 
+          }
+    }
+}
+
+
+/**
+ * Implements hook_library_info_alter().
+ */
+function palma_library_info_alter(&$libraries, $extension) {
+  // Add our own extension to drupal.ajax, which is aware of the page markup so
+  // can add AJAX progress loaders in the page.
+  if ($extension == 'core' && isset($libraries['drupal.ajax'])) {
+    $libraries['drupal.ajax']['js']['/' . drupal_get_path('theme', 'palma') . '/vendor/js/ajax-overrides.js'] = [];
+  }
+}
+
+
+// Implementation  psuggestions page alter 
+function palma_theme_suggestions_page_alter(array &$suggestions, array $variables) {
+  if ($node = \Drupal::request()->attributes->get('node')) {
+     array_splice($suggestions, 1, 0, 'page__node__' . $node->getType());
+  }
+
+   /**
+   * 404 /403 template suggestion.
+   */
+  if (!is_null(Drupal::requestStack()->getCurrentRequest()->attributes->get('exception'))) {
+    $status_code = Drupal::requestStack()->getCurrentRequest()->attributes->get('exception')->getStatusCode();
+    switch ($status_code) {
+      case 404: {
+        $suggestions[] = 'page__' . (string) $status_code;
+        break;
+      }
+      case 403: {
+        $suggestions[] = 'page__' . (string) $status_code;
+        break;
+      }
+      default:
+        break;
+    }
+  }
+}
+
+// Implements hook_preprocess_node() for NODE numero templates.
+function palma_preprocess_node(array &$variables){
+    $node=$variables['node'];
+    // suppression cache
+    //$variables['#cache']['tags'][] = 'node:' . $node->id();
+    $helper = new PurchasedController();
+    if($node->bundle() == 'numero'){
+      $variables['#attached']['library'][] = 'palma/pdf';
+      $variables['theid'] = $node->id();
+      $config = \Drupal::config('helper.remise');
+      $rms= $config->get('remise_par_defaut');
+      $variables['multi_users'] = 'FALSE';
+      if (\Drupal::currentUser()->id()) {
+        $user = User::load(\Drupal::currentUser()->id());
+        $roles = $user->getRoles();
+        if (in_array('multi_connexions', $roles)) {
+          $variables['multi_users'] = 'TRUE';
+        }
+        if (in_array('etudiant', $roles)) {
+          $image_carte= (!empty($user->field_carte) && $user->field_carte->entity != NULL) ? 
+          file_create_url($user->get('field_carte')->entity->getFileUri()) : "";
+          if (!empty($image_carte)) {
+            $variables['carte']=$image_carte;
+          }
+          $variables['etudiant'] = (in_array('etudiant', $roles)) ? 'etudiant': NULL;
+          $variables['remise']= $rms /100;
+        }
+      }
+
+      //recuperation des donnees
+      $node_jr = $node->get('field_journal_revue')->entity;
+      if ( $node_jr ) {
+        if( !empty( $node_jr->get('field_type') ) ) {
+          $type = $node_jr->get('field_type')->entity;
+          if( $type ) $variables['field_type'] = $type->get('name')->value;
+        }
+        $categorie = $node_jr->get('field_categorie')->entity;
+        $periodicite = $node_jr->get('field_periodicite')->entity;
+        $variables['field_source'] = $node_jr->get('title')->value;
+        $variables['field_description_jnl_revue'] = $node_jr->get('body')->value;
+        if( $categorie && $categorie->get('name') ) $variables['field_categorie'] = $categorie->get('name')->value;
+        if( $periodicite && $periodicite->get('name') ) $variables['field_periodicite'] = $periodicite->get('name')->value;
+      }
+      $variables['datenum']=$node->get('field_date')->value; 
+      $variables['prix_numero']= $node->get('field_prix')->value;
+      $variables['link_articles'] =  $node->toUrl()->setAbsolute()->toString().'?pages=liste';
+      $variables['display_link'] = 'show';
+
+      if ( $helper->checknode(\Drupal::currentUser()->id(),$node->id()) > 0 || \Drupal::currentUser()->id() == 92 ) {
+        $variables['display_link'] = 'none';
+      }
+
+      // les packs d abonnement du journal du numero
+      if ( $node_jr && $node_jr->get('field_lesabonnements') ) {
+        $abonner_jr = $node_jr->get('field_lesabonnements')->referencedEntities();
+        if ( $abonner_jr ) {
+          foreach ($abonner_jr as $abonner) {  
+            $ab = $abonner->getType();
+            $typelabel = $abonner->type->entity->label();
+            $letitre=$abonner->get('field_titre')->value;
+            $lebody=$abonner->get('field_body')->value;
+            $leprix=$abonner->get('field_prix')->value;
+            $nbrenum= ($abonner->field_nbr_numpack) ? $abonner->field_nbr_numpack->value: NULL;
+            $periodicite = '';
+            $periodicite_id = '';
+            if ( $abonner->get('field_periodicite') ) {
+              $period = $abonner->get('field_periodicite')->entity;
+              if ( $period ) {
+                //echo '<pre>'; print_r($period); die;
+                $periodicite= strip_tags( $period->get('description')->value );
+                $periodicite_id= $period->id();
+              }
+            }
+            
+            $variables['results'][$ab][] = [
+              'type' => $ab,
+              'nametype' => $typelabel,
+              'lebody' => $lebody,
+              'letitre' => $letitre,
+              'leprix' => $leprix,                
+              'periodicite'=> $periodicite,
+              'periodicite_id'=> $periodicite_id,
+              'nbrenum'=> $nbrenum,
+            ];
+          }
+        }
+      }
+
+      // Activation l'abonnement
+      if ( $node_jr ) {
+        $jr_id = $node_jr->id();
+        $datdb = ($node->field_date) ? $node->field_date->value : NULL;
+        $user = \Drupal::currentUser()->id();
+        $current_date= \Drupal::time()->getCurrentTime();
+        $variables['current_date']=$current_date;
+        $variables['display'] = 'show';
+        $today = date('Y-m-d', $current_date); 
+        $query =  \Drupal::entityQuery('node')->condition('status',1)
+                  ->condition('type','abonner')
+                  ->condition('field_journal_revue',$jr_id,'=')
+                  //->condition('field_date',$datdb,'<=')
+                  ->condition('field_user',$user,'=');
+        $nids = $query->execute();
+        if( $nids ) {
+          $datas=entity_load_multiple('node', $nids);
+          foreach ($datas as $data) {
+            if( $data->get('field_numero') ) {
+              $keys = $data->get('field_numero')->referencedEntities();
+              foreach ($keys as $key => $value) {
+                $idnumbr[]=$value->nid->value;  
+              }
+            }
+          }
+          if( in_array( $node->id(), $idnumbr ) ) {
+            $variables['display'] = 'none';
+          }
+          $variables['id_numero']=$idnumbr; 
+        }
+      }
+    }
+
+    if ($node->bundle()=='page_numero') {
+        $cnumero = new NumeroController();
+        $articles = $node->get('field_les_articles')->referencedEntities();
+        $articles_list = array();
+        $user_subscrib = false;
+        $i=0;
+        $host = \Drupal::request()->getSchemeAndHttpHost();
+        foreach ($articles as $article) {
+
+           $articles_list[$i]['titre']= $article->get('title')->value;
+           $articles_list[$i]['body']= $article->get('body')->value;
+           $articles_list[$i]['page']= $node->get('title')->value;
+           $articles_list[$i]['prix']= $article->get('field_prix')->value;
+           $articles_list[$i]['image']= $article->get('field_image_brouillard')->entity;
+
+           $user_access = $article->get('field_user_scribe')->referencedEntities();
+           $articles_list[$i]['url']=$host.'/acheter/article/'.$article->id();
+           $articles_list[$i]['link_label']="Acheter";
+            foreach ($user_access as $user_ac) {
+               if ($user_ac->id() == \Drupal::currentUser()->id()) {
+                 $user_subscrib = true;
+                 $articles_list[$i]['link_label'] = "Lire l'article";
+                 $articles_list[$i]['url']=$article->toUrl()->setAbsolute()->toString();
+               }
+             }
+           
+            $numero = $cnumero->getnumerobyarticle($article->id());
+            $node_jr = $numero->get('field_journal_revue')->entity;
+            $jr_id=$node_jr->id();
+            $articles_list[$i]['numero'] = $numero->get('title')->value.' - '.$numero->field_date->date->format('d M Y');
+            $articles_list[$i]['source'] = $node_jr->get('title')->value;        
+            $i++;
+        }
+
+        $variables['content']['articles'] = $articles_list;
+        $variables['remise']= $rms /100; 
+    }
+
+    if($node->bundle() == 'article_numero'){ 
+         $cnumero = new NumeroController();
+         $articles = $cnumero->allarticles($node->id());
+         $variables['content']['articles'] = $articles;
+
+         $numero = $cnumero->getnumerobyarticle($node->id());
+         $user_access = $node->get('field_user_scribe')->referencedEntities();
+         $options = ['absolute' => TRUE];
+
+         $variables['url']='/acheter/article/'.$node->id();
+         $variables['content']['link_label']="Acheter";
+         foreach ($user_access as $user_ac) {
+           if ($user_ac->id() == \Drupal::currentUser()->id()) {
+             $variables['content']['link_label'] = "Lire l'article";
+             $variables['url']=$node->toUrl()->setAbsolute()->toString();
+           }
+         }
+         
+         $node_jr = $numero->get('field_journal_revue')->entity;
+         $type = $node_jr->get('field_type')->entity;
+         $categorie = $node_jr->get('field_categorie')->entity;
+         $variables['content']['numero']['title'] = $numero->get('title')->value.' - '.$numero->field_date->date->format('d M Y');
+         $variables['content']['numero']['image'] = $numero->get('field_image')->entity;
+         $variables['content']['numero']['more_articles'] = $numero->toUrl()->setAbsolute()->toString();
+         $variables['content']['numero']['field_type'] = $type->get('name')->value;
+         $variables['content']['numero']['field_source'] = $node_jr->get('title')->value;
+         $variables['content']['numero']['field_categorie'] = $categorie->get('name')->value;
+         $helper = new PurchasedController();
+         $variables['content']['allnumero'] = true;
+         if ($helper->checknode(\Drupal::currentUser()->id(),$numero->id()) > 0) {
+           $variables['content']['allnumero'] = false;
+           $variables['content']['numero_prix'] = $numero->get('field_prix')->value;
+         }
+         $variables['remise']= $rms /100; 
+    }
+
+    if($node->bundle() == 'acheter') {
+      $type = $node->get('field_type_contenu')->value;
+      $numero = $node->get('field_numero')->entity;
+      $valeur = $node->get('field_contenu')->entity;
+      if($type == 'article') {
+        foreach ($node->field_numero as $nid) {
+          $id = $nid->get('target_id')->getValue();
+          $nod = node_load((int)$id);
+          $nod->getType();
+          $node_jr = $nod->get('field_journal_revue')->entity;
+          $type = $node_jr->get('field_type')->entity;
+          $categorie = $node_jr->get('field_categorie')->entity;
+          $variables['field_categorie']=$categorie->get('name')->value;
+          $variables['field_source'] = $node_jr->get('title')->value;
+          $variables['field_type'] = $type->get('name')->value;
+          $variables['picture'] = $valeur->get('field_image')->entity->getFileUri();
+          $imageurl=file_create_url($variables['picture']);
+          $variables['image_url']=$imageurl;
+          $variables['titre'] = $nod->get('title')->value;
+          $variables['titre_article'] = $valeur->get('title')->value;
+          //recuperation du  nom de la periodicite
+          if ($node_jr->get('field_periodicite')) {
+              $periodicite = $node_jr->get('field_periodicite')->entity;  
+              $variables['periodicite']  = ($periodicite->name) ? $periodicite->name->value : NULL;
+            } 
+          $variables['id']=$node->get('field_contenu')->target_id;
+          $variables['prix']=$valeur->get('field_prix')->value;
+        } 
+      }
+      elseif ($type == 'numero') {
+        foreach ($node->field_numero as $nid) {
+          $id = $nid->get('target_id')->getValue();
+          $nod = node_load((int)$id);
+          $nod->getType();
+          $typelabel = $nod->type->entity->label();
+          $node_jr = $nod->get('field_journal_revue')->entity;
+          $type = $node_jr->get('field_type')->entity;
+          $variables['field_type'] = $type->get('name')->value;
+          $categorie = $node_jr->get('field_categorie')->entity;
+          $variables['field_categorie']=$categorie->get('name')->value;
+          $variables['field_source'] = $node_jr->get('title')->value;
+          $variables['picture'] = $numero->get('field_image')->entity->getFileUri();
+          $imageurl=file_create_url($variables['picture']);
+          $variables['image_url']=$imageurl;
+          $variables['titre'] = $nod->get('title')->value;
+          $variables['titre_article'] = ' - '.$nod->field_date->date->format('d M Y');
+          //recuperation du  nom de la periodicite
+          if ($node_jr->get('field_periodicite')) {
+            $periodicite = $node_jr->get('field_periodicite')->entity;  
+            $variables['periodicite']  = ($periodicite->name) ? $periodicite->name->value : NULL;
+          } 
+          $variables['prix']=$valeur->get('field_prix')->value;
+          $variables['id'] = $id;
+        } 
+      } 
+    }
+
+    if ($node->bundle() == 'abonner') {
+        $variables['current_date'] = \Drupal::time()->getCurrentTime();
+        $t=$node->get('field_type_numero')->target_id;
+        $prix=$node->get('field_prix')->value;
+        $user_access = $node->get('field_user')->referencedEntities();
+        foreach ($user_access as $user_ac) {
+            $numtitle = $tc = $title = $nametype = $source = $image = $urllink = $date_beg = $date_end = $thedate = $categorie = $perdiode = '';
+            if ($user_ac->id() == \Drupal::currentUser()->id()){
+              //recuperation de la reference journal/revue
+              $node_jr = $node->get('field_journal_revue')->entity; 
+              if ($node_jr) {
+             //recuperation du titre
+              $source = $node_jr->get('title')->value;
+              //recuperation du  nom de la categorie
+              if ($node_jr->get('field_categorie')) {
+                $catg = $node_jr->get('field_categorie')->entity;  
+                $categorie  = ($catg->name) ? $catg->name->value : NULL;
+              } 
+
+               //recuperation du  nom de la periodicite
+               if ($node_jr->get('field_periodicite')) {
+                $priod = $node_jr->get('field_periodicite')->entity;  
+                $perdiode  = ($priod->name) ? $priod->name->value : NULL;
+                $variables['field_periodicite'] = $priod->get('name')->value;
+
+              } 
+
+              //recuperation du du nom du journal ou de la  revu
+              if ($node_jr->get('field_type')) {
+                  $type = $node_jr->get('field_type')->entity;  
+                  $numtitle = ($type->name) ? $type->name->value : NULL;
+              } 
+              $v=$node_jr->id(); 
+                //requete du type numero et comparaison des variables
+              $query=\Drupal::entityQuery('node')->condition('status', 1)
+                      ->condition('type',$t)
+                      ->condition('field_journal_revue',$v,'=') 
+                      ->sort('field_date','desc')
+                      ->range( 0, 1 );
+                  $nids=$query->execute();
+                  $donnees=entity_load_multiple('node', $nids);
+                  foreach ($donnees as $rep) {
+                  $tc = $rep->getType();
+                  $typelabel = $rep->type->entity->label();
+                  $title = $rep->getTitle();
+                  $urllink = $rep->toUrl()->setAbsolute()->toString();  
+                  $image = (!empty($rep->field_image) && $rep->field_image->entity != NULL) ?
+                  file_create_url($rep->get('field_image')->entity->getFileUri()) : "";
+                  $variables['image']=$image;       
+                  $thedate  = ($rep->field_date) ? $rep->field_date->value : NULL;
+                }
+              }
+            } 
+            $variables['resultats'][] = [
+              'numtitle' => $numtitle,
+              'type' => $tc,
+              'title' => $title,
+              'nametype' => $nametype,
+              'source' => $source,
+              'image' => $image,
+              'urllink'=> $urllink,
+              'prix' => $prix,
+              'date_beg'=> $date_beg,
+              'date_end'=> $date_end,
+              'thedate'=> $thedate,
+              'categorie'=> $categorie,
+              'perdiode'=> $perdiode, 
+            ];
+        }
+    }
+}
+
+
+function palma_preprocess_page(array &$variables) {
+  $current_uri = \Drupal::request()->getRequestUri();
+  $variables['display_form'] = 'none';
+  $variables['login_form'] = FALSE;
+  $variables['register_form'] = FALSE;
+  $variables['base_path'] = base_path();
+  if (!\Drupal::currentUser()->id() && ($current_uri == '/user/register' || $current_uri == '/user/login')) {
+    $formlogin = Drupal::formBuilder()->getForm(Drupal\user\Form\UserLoginForm::class) ; 
+    $renderlogin = Drupal::service('renderer');
+    $variables['login_form'] = $renderlogin->renderPlain($formlogin);
+    $entity = \Drupal::entityManager()
+      ->getStorage('user')
+      ->create(array());
+    $formObject = \Drupal::entityManager()
+      ->getFormObject('user', 'register')
+      ->setEntity($entity);
+    $form = \Drupal::formBuilder()->getForm($formObject);
+    $variables['register_form'] = $form;
+
+    if (\Drupal::request()->request->get('form_id') == 'user_register_form') {
+      $variables['display_form'] = 'block';
+    }
+  }
+  
+}
+
+
+//Implementation theme suggestions page alter
+function palma_theme_suggestions_input_alter(&$suggestions, array $variables) {
+    $element = $variables['element'];
+    if (isset($element['#attributes']['data-twig-suggestion'])) {
+      $suggestion_suffix = str_replace(['-'], '_', $element['#attributes']['data-twig-suggestion']);
+      $suggestions[] = 'input__' . $element['#type'] . '__' . $suggestion_suffix;
+    }
+}
+
+ //Implementation form alter  
+function palma_form_alter(&$form, FormStateInterface $form_state, $form_id) {
+  foreach (\Drupal\Core\Render\Element::children($form) as $key) {
+    $form[$key]['#attributes']['data-twig-suggestion'] = $form['#id'];
+  }
+
+  $form['actions']['submit']['#attributes']['data-twig-suggestion'] = $form['#id'];
+
+  if ($form_id =='user_register_form--2' || $form_id=='user_register_form' || $form_id=='user_login_form'
+     || $form_id=='contact_message_feedback_form') {
+        $form['#attached']['library'][] = 'palma/formreg';
+  } 
+
+}
+
+   // Implementation du formulaire de contact
+function palma_form_contact_message_feedback_form_alter(&$form, FormStateInterface $form_state, $form_id) {
+  // masquer les informations .
+  $form['actions']['preview']['#access'] = FALSE;
+  $form['copy']['#access'] = FALSE;
+  $form['gdpr-warning']['#access'] = FALSE;
+  //$form['#attributes']['novalidate'] = 'true';
+
+  // Changer les titres.
+  $form['name']['#title'] = 'Votre nom *';
+  $form['mail']['#title'] = 'Votre adresse de courriel *';
+  $form['subject']['widget'][0]['value']['#title'] = 'Subject *';
+  $form['message']['widget'][0]['value']['#title'] = 'Message *';
+
+  // Name
+  $form['name']['#prefix'] = '<div class="row bloc-form-ctc"><div class="col-md-6"><div class="col-md-12 p-0"><div class="form-group">';
+  $form['name']['#suffix'] = '</div></div>';
+  $form['name']['#attributes']['placeholder'][] = $form['name']['#title'];
+  $form['name']['#attributes']['class'][] = 'form-control';
+
+  // Mail
+  $form['mail']['#prefix'] = '<div class="col-md-12 p-0"><div class="form-group">';
+  $form['mail']['#suffix'] = '</div></div>';
+  $form['mail']['#attributes']['placeholder'][] = $form['mail']['#title'];
+  $form['mail']['#attributes']['class'][] = 'form-control';
+
+  // Subject
+  $form['subject']['widget'][0]['value']['#attributes']['class'][] = 'form-control';
+  $form['subject']['widget'][0]['value']['#attributes']['placeholder'][] = $form['subject']['widget'][0]['#title'];
+  $form['subject']['widget'][0]['#title'] = '';
+  $form['subject']['widget'][0]['#prefix'] = '<div class="form-group">';
+  $form['subject']['widget'][0]['#suffix'] = '</div>';
+
+  // Message
+  $form['message']['widget'][0]['value']['#attributes']['class'][] = 'formcontrol';
+  $form['message']['widget'][0]['value']['#attributes']['placeholder'][] = $form['message']['widget'][0]['#title'];
+  $form['message']['widget'][0]['#title'] = '';
+  $form['message']['widget'][0]['#prefix'] = '<div class="form-group">';
+  $form['message']['widget'][0]['#suffix'] = '</div></div></div>';
+
+  
+  // Submit
+  $form['actions']['#prefix'] = '<div class="col-md-6 mt-4 pl-0">';
+  $form['actions']['#suffix'] = '</div>';
+  $form['actions']['submit']['#attributes']['class'][] = 'btn';
+  $form['actions']['submit']['#attributes']['class'][] = 'btn-success';
+  $form['actions']['submit']['#attributes']['class'][] = 'creer_un_compte';
+}
+ 
+   // Implementation de la CMI form
+function palma_form_cmi_form_alter(&$form, FormStateInterface $form_state, $form_id) {
+   // amount
+    $form['amount']['#prefix'] = '<div class="form-group">';
+    $form['amount']['#suffix'] = '</div>';
+    $form['amount']['#attributes']['placeholder'][] = 'Votre montant *';
+    $form['amount']['#attributes']['class'][] = 'formcontrol';
+     
+    // Submit
+    $form['submit']['#prefix'] = '<div class="col-md-4 mt-1 p-0">';
+    $form['actions']['#suffix'] = '</div>';
+    $form['actions']['submit']['#attributes']['class'][] = 'creer_un_compte';
+}
+
+
+//Implementation preprocess block 
+function palma_preprocess_block(&$variables) {
+
+  if (!empty($variables['elements']['#id'])) {
+    if($variables['elements']['#id']=='numero_block_archive'){
+       if ($node = \Drupal::routeMatch()->getParameter('node')) {
+        $variables['node'] = $node;
+         if($node->bundle() == 'numero'){ 
+          $pages = \Drupal::request()->query->get('pages');
+            if (isset($pages) && $pages=='liste' || $pages=='articles_acheter') {
+              $variables['content'] = '';
+            }else{
+              $node_jr = $node->get('field_journal_revue')->entity;
+              $querynumero = \Drupal::entityQuery('node')
+              ->condition('type','numero')
+              ->condition('field_journal_revue',$node_jr->id())
+              ->condition('status', 1);
+              $nidnumero = $querynumero->execute();
+              $variables['page_archive'] = '';
+              if (count($nidnumero) > 1) {
+
+                $variables['content']= views_embed_view('numero', 'block_archive', $node_jr->id());
+                $variables['page_archive'] = $node_jr->toUrl()->setAbsolute()->toString();
+                
+              }else{
+                 $variables['content'] = '';
+              }              
+             }  
+           }
+        }
+      }
+
+      // Afficher le sous-menu user : tester si l'utilisateur est connecte ou non
+        if($variables['elements']['#id']=='boutonprofil'){
+            if (\Drupal::currentUser()->id()) {
+                $variables['user_id'] =\Drupal::currentUser()->id(); 
+            }
+         }
+
+       if($variables['elements']['#id']=='walletblock'){
+          if (\Drupal::currentUser()->id()) {
+              $variables['multi_users'] = FALSE;
+               $user = User::load(\Drupal::currentUser()->id());
+              $roles = $user->getRoles();
+              if (in_array('sous_compte', $roles)) {
+                  $variables['display'] = 'ss_compte';
+              }
+              if (in_array('multi_connexions', $roles)) {
+                   $variables['multi_users'] = TRUE;
+              }
+          }
+       }
+       
+    }
+
+}
+
+
+/**
+ * hook_theme_suggestions_form_alter().
+ */
+function palma_theme_suggestions_form_alter(array &$suggestions, array $variables) {
+
+  if (in_array(trim($variables['element']['#id']), array('user-register-form--2','user-register-form')) ) {
+    $suggestions[] = 'form__user_register_form';
+  }
+
+  if (in_array(trim($variables['element']['#id']), array('user-login-form--2','user-login-form'))) {
+    $suggestions[] = 'form__user_login_form';
+  }  
+
+  if (in_array(trim($variables['element']['#id']), array('contact-message-feedback-form--2','contact-message-feedback-form'))) {
+    //$suggestions[] = 'form__contact_message_feedback_form'; 
+  }
+
+  if (trim($variables['element']['#id']) == 'user-pass') {
+    $suggestions[] = 'form__user_pass';
+  }
+   if (trim($variables['element']['#id']) == 'user-form') {
+      $suggestions[] = 'form__user_edit';
+   } 
+}
+
+/**
+ * Implements hook_preprocess_user().
+ */
+function palma_preprocess_user(&$variables) {
+  $help = new AbonnementController();
+  $helper = new PurchasedController();
+  $account = $variables['elements']['#user'];
+  $variables['useremail'] = $account->getEmail();
+  $variables['uid'] = $account->id();
+  $variables['date_created'] = $variables['user']->getCreatedTime();
+  // obtenir l id de l utilisateur actuellement connecte
+  $uid =\Drupal::currentUser()->id();
+  //charge l objet utilisateur en spécifiant l'ID utilisateur à charger
+  $user = User::load($uid);
+  $variables['multi_users'] = FALSE;
+  $roles = $account->getRoles();
+  if (in_array('compte_parent', $roles)) {
+      $variables['total_achat'] = $helper->gettotalachatparent() + $helper->gettotalachat($account->id());
+      $variables['achat'] = $helper->getachatparent() + $helper->getachat($account->id());
+      $variables['total_abonner'] = $help->gettotalabonnerparent() + $help->gettotalabonner($user->id());
+      $variables['abonner'] =$help->getabonnerparent() + $help->getabonner($user->id());   
+  }else{
+      $variables['total_achat'] = $helper->gettotalachat($account->id());
+      $variables['achat'] = $helper->getachat($account->id());
+      $variables['total_abonner'] = $help->gettotalabonner($user->id());
+      $variables['abonner'] = $help->getabonner($user->id());
+  }
+  if (in_array('multi_connexions', $roles)) {
+          $variables['multi_users'] = TRUE;
+  }
+  $block = Block::load('quicktabsstatistiques');
+  $variables['statistic'] = \Drupal::entityManager()->getViewBuilder('block')->view($block);
+  $variables['user_url'] = Url::fromRoute('entity.user.canonical', ['user' => $account->id()])->toString();
+      
+  // afficher  tab du role Editeur
+  $blocked = Block::load('quicktabsediteurstactistique');
+  if (isset($blocked)) {
+    $variables['tabediteur'] = \Drupal::entityManager()->getViewBuilder('block')->view($blocked);
+  }
+   
+  // recupere la pack actif
+  $variables['pack_type'] = ($user->field_pack) ? $user->field_pack->value: NULL;
+
+  if ($account->hasField('field_journalrevu')) {
+    $var= $account->get('field_journalrevu')->entity;
+    if ( $var ) {
+      $variables['source'] =$var->id();
+    }
+  }
+
+  //recupere l image dans le champ  carte et test si le champ est vide  
+  $image_carte= (!empty($user->field_carte) && $user->field_carte->entity != NULL) ? 
+  file_create_url($user->get('field_carte')->entity->getFileUri()) : "";
+  if (!empty($image_carte)) {
+    $variables['carte']=$image_carte;
+  }
+  $variables['role_etudiant'] = (in_array('etudiant', $roles)) ? 'etudiant': NULL;       
+  //recupere le type d'utilisateur actuellement connecte
+  $variables['student'] = ($user->field_type) ? $user->field_type->value: NULL;
+  //recupere l id d utilisateur actuellement connecte
+  $variables['uid'] = $uid;
+  //recupere  l url de d'utilisateur actuellement connecte
+  $variables['user_url'] = Url::fromRoute('entity.user.canonical', ['user' => $uid])->toString();
+  $variables['etudiant'] = $variables['role_etudiant'];
+}
+
+

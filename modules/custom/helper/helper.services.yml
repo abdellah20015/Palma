@@ -1,0 +1,7 @@
+services:
+  helper.palma:
+    class: Drupal\helper\HelperService
+    arguments: []
+  helper.palmamail:
+    class: Drupal\helper\Service\StatusService
+    arguments: ['@plugin.manager.mail','@config.factory','@current_user']

@@ -1,0 +1,6 @@
+services:
+  ctwigfilters.twig_extension:
+    arguments: ['@renderer']
+    class: Drupal\ctwigfilters\TwigExtension\CustomFilters1
+    tags:
+      - { name: twig.extension }

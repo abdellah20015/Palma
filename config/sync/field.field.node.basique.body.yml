@@ -1,0 +1,31 @@
+uuid: 8db0513c-ff37-4bc0-8dc6-691cb6a53a0c
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.storage.node.body
+    - node.type.basique
+  module:
+    - allowed_formats
+    - text
+third_party_settings:
+  allowed_formats:
+    full_html: full_html
+    restricted_html: '0'
+    basic_html: '0'
+    page: '0'
+    plain_text: '0'
+id: node.basique.body
+field_name: body
+entity_type: node
+bundle: basique
+label: Body
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  display_summary: false
+  required_summary: false
+field_type: text_with_summary

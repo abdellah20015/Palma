@@ -1,0 +1,33 @@
+uuid: 5aff5418-6156-4521-b588-016f694d118b
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_categorie
+    - node.type.journal_revue
+    - taxonomy.vocabulary.categories
+  content:
+    - 'taxonomy_term:categories:a6da8782-c728-4311-8749-afd3b8063c3b'
+id: node.journal_revue.field_categorie
+field_name: field_categorie
+entity_type: node
+bundle: journal_revue
+label: Catégorie
+description: ''
+required: true
+translatable: true
+default_value:
+  -
+    target_uuid: a6da8782-c728-4311-8749-afd3b8063c3b
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      categories: categories
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

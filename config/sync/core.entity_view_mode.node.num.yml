@@ -1,0 +1,10 @@
+uuid: f9f1ae2e-9054-4024-b995-79fc5ee169ae
+langcode: fr
+status: true
+dependencies:
+  module:
+    - node
+id: node.num
+label: Numéro
+targetEntityType: node
+cache: true

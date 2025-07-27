@@ -1,0 +1,14 @@
+uuid: c63326c5-c345-447b-86ca-82c1df9474a9
+langcode: fr
+status: true
+dependencies: {  }
+name: couverture
+label: 'Couverture liste'
+effects:
+  9f2dca00-346d-43bb-8606-954f145295b4:
+    uuid: 9f2dca00-346d-43bb-8606-954f145295b4
+    id: image_resize
+    weight: 2
+    data:
+      width: 180
+      height: 260

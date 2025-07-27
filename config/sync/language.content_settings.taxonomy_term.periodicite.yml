@@ -1,0 +1,11 @@
+uuid: 47b8e58e-7434-461d-b988-c0cc8840e312
+langcode: fr
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.periodicite
+id: taxonomy_term.periodicite
+target_entity_type_id: taxonomy_term
+target_bundle: periodicite
+default_langcode: site_default
+language_alterable: false

@@ -1,0 +1,14 @@
+uuid: 71513e7d-44f9-4ba7-ad0e-f57082e2905f
+langcode: fr
+status: true
+dependencies:
+  config:
+    - user.role.admin_palma
+  module:
+    - user
+id: user_add_role_action.admin_palma
+label: 'Ajouter le rôle Admin palma aux utilisateurs sélectionnés'
+type: user
+plugin: user_add_role_action
+configuration:
+  rid: admin_palma

@@ -1,0 +1,24 @@
+uuid: b1385a50-362f-461b-a1e3-41694b0e1a68
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.storage.user.field_abonnement
+  module:
+    - user
+id: user.user.field_abonnement
+field_name: field_abonnement
+entity_type: user
+bundle: user
+label: 'Nombre d''abonnements'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer

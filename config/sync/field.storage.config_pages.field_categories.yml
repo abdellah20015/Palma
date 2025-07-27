@@ -1,0 +1,20 @@
+uuid: b60717f8-b379-46c1-bae3-4ba3a744fd31
+langcode: fr
+status: true
+dependencies:
+  module:
+    - config_pages
+    - taxonomy
+id: config_pages.field_categories
+field_name: field_categories
+entity_type: config_pages
+type: entity_reference
+settings:
+  target_type: taxonomy_term
+module: core
+locked: false
+cardinality: -1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

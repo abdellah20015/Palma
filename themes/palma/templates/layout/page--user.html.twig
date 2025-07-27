@@ -1,0 +1,97 @@
+<!--Palma (Header)  -->  
+<main id="site">   
+    <header class="header desktop">
+      <div class="container">
+         <div class="row align-items-center justify_content">
+       
+             {% if page.header %}
+                 {{ page.header}}
+             {% endif %} 
+             
+                   {% if page.primary_menu %}
+                         {{ page.primary_menu  }}       
+                   {% endif %}
+
+              {% if page.header_right %}
+                    {{page.header_right}}
+              {% endif %}
+
+        </div>
+    </div>
+</header>
+
+ 
+    <div class="main_wrapper">
+        <div class="main_container"> 
+            {% if page.breadcrumb  %}
+                <div class="container p-0 pl_2">
+                  <div class="page_title_inner">
+                    <div class="breadcrumb">
+                      {{ page.breadcrumb }} 
+                    </div>
+                  </div>
+                </div>
+            {% endif %}  
+      </div>
+    {% if logged_in %}
+    <div class="detailCompte_inside">
+            <div class="detailCompte_wrapper"> 
+                  {% if page.content %}
+                        {{ page.content }}
+                  {% endif %}
+               </div>
+         </div>
+    {% endif %}
+    
+    {% if login_form and register_form %}
+      <div class="mon_compte_inside">
+        <div class="mon_compte_wrapper">
+             <div class="mon_compte_header">
+                  <div class="mon_compte_title_page">
+                    <h2 class="title_mon_compte">{{'Mon compte '|t }} </h2> 
+                  </div>
+             </div>
+
+              <div class="main_mon_compte_content">
+                <div class="container">
+                   <div class="row">
+                    <div class="col-md-6">
+                      <div class="moncompte_conn">
+                        <h3 class="title_compte">{{'Nouveau client ?'|t }} </h3>
+                        <p class="para_compte"></p>
+                        {% if display_form == 'none' %}
+                          {% set display = 'block' %}
+                        {% else %}
+                          {% set display = 'none' %}
+                        {% endif %}
+                        <a href="#" style="display: {{ display }}" class="creer_un_compte">{{'Créer un compte'|t }}</a>
+                        <div class="user-register-form-div" style="display: {{display_form}}">
+                          {{ register_form }}
+                        </div>
+                          
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="content_compte">
+                        <h3 class="title_compte">{{'Déja client ?'|t }} </h3>
+                        <p class="para_compte">
+                          {{'Si vous avez déja un compte, veuillez vous connecter .'|t }} 
+                        </p>
+                          {{ login_form }}
+                      </div>
+                    </div>
+                  </div>
+                </div>   
+            </div>
+        </div>
+     </div>
+     {% endif %}
+    </div>
+<!--\Palma\(Newsletter\logo et reseau social\footer)-->
+<footer class="footer">    
+           {% if page.footer %}
+                 {{ page.footer  }}       
+           {% endif %}  
+</footer>
+
+</main>

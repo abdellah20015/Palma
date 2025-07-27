@@ -1,0 +1,9 @@
+uuid: d4fc7dde-9f78-461d-8c53-48a967b46c93
+langcode: fr
+status: true
+dependencies: {  }
+id: lesabonnes
+label: 'Pack d''abonnement '
+icon_uuid: null
+description: ''
+behavior_plugins: {  }

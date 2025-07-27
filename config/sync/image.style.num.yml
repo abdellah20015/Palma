@@ -1,0 +1,15 @@
+uuid: eec2dcae-cc4f-4206-a773-a2eca257f315
+langcode: fr
+status: true
+dependencies: {  }
+name: num
+label: Numéro
+effects:
+  286c4a5c-8efa-4d88-8137-ef1aa9da38ec:
+    uuid: 286c4a5c-8efa-4d88-8137-ef1aa9da38ec
+    id: image_scale
+    weight: 1
+    data:
+      width: 385
+      height: 498
+      upscale: false

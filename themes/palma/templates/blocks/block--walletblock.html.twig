@@ -1,0 +1,21 @@
+<!---Wallet-->
+<div class="col-lg-auto d-none d-lg-block pr-lg-25px pl-lg-0 bloc-wallet {% if display  %}{{ display }}{% endif %}" >
+	<!-- If User is connected => Add class connected to hidden -->
+	<div class="header__account uppercase  menu_wallet">
+		{% block content %}
+				{% if content.sous_compte %}
+				<span class="sous_compte"> {{ 'Achat'|t }} : {{ content.numero[0] }} | {{ 'Abonnement'|t }} : {{ content.abonnoment[0] }}</span>
+				{% else %}
+					{% if not multi_users  %}
+						<!-- Default icon -->
+						<img src="/{{ base_path ~ directory }}/vendor/img/header/wallet.svg" alt="Mon compte" class="header__account-image ">
+						<a href="/recharger_votre_compte" title="recharger votre compte">
+						<img src="/{{ base_path ~ directory }}/vendor/img/header/pictoplus.png" alt="Mon compte" 
+						class="header__account_plus" width="20px"></a>
+						
+						<span class="connected_mad">{{ content.credit }} {{ ' MAD'|t }}</span>
+					{% endif %}
+				{% endif %}
+		{% endblock %}
+	</div>
+</div>

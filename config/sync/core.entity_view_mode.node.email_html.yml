@@ -1,0 +1,15 @@
+uuid: b79be29d-fac3-4682-99a4-903e5afa2cf1
+langcode: fr
+status: false
+dependencies:
+  enforced:
+    module:
+      - simplenews
+  module:
+    - node
+_core:
+  default_config_hash: iQNOEsNlbBFbVMOoSwtfUd8YC0XpRLzTjXv48HYfxwE
+id: node.email_html
+label: 'Courriel : HTML'
+targetEntityType: node
+cache: true

@@ -1,0 +1,25 @@
+uuid: aec25854-7dbe-4d64-a328-fd41d7baea9b
+langcode: fr
+status: false
+dependencies:
+  module:
+    - system
+  theme:
+    - palma
+id: quicktabsbiblio
+theme: palma
+region: aucun
+weight: -17
+provider: null
+plugin: 'quicktabs_block:biblio'
+settings:
+  id: 'quicktabs_block:biblio'
+  label: 'Ma bibliothèque'
+  provider: quicktabs
+  label_display: visible
+visibility:
+  request_path:
+    id: request_path
+    pages: '/*'
+    negate: true
+    context_mapping: {  }

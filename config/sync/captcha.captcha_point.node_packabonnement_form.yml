@@ -1,0 +1,7 @@
+uuid: f12c341c-ff35-49f1-97a3-26ce4228d848
+langcode: fr
+status: false
+dependencies: {  }
+formId: node_packabonnement_form
+captchaType: default
+label: null

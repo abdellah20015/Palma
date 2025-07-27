@@ -1,0 +1,52 @@
+uuid: b6869fde-af9f-4162-9750-ab8117db3f62
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.field.taxonomy_term.periodicite.field_nbre_jr
+    - taxonomy.vocabulary.periodicite
+  module:
+    - path
+    - text
+id: taxonomy_term.periodicite.default
+targetEntityType: taxonomy_term
+bundle: periodicite
+mode: default
+content:
+  description:
+    type: text_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_nbre_jr:
+    weight: 31
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+    type: number
+    region: content
+  langcode:
+    type: language_select
+    weight: 2
+    region: content
+    settings:
+      include_locked: true
+    third_party_settings: {  }
+  name:
+    type: string_textfield
+    weight: -5
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  path:
+    type: path
+    weight: 30
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden: {  }

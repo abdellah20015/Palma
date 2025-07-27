@@ -1,0 +1,82 @@
+<!--Palma (Header)  -->  
+<main id="site">   
+    <header class="header desktop">
+      <div class="container">
+         <div class="row align-items-center justify_content">
+       
+             {% if page.header %}
+                 {{ page.header}}
+             {% endif %} 
+             
+                   {% if page.primary_menu %}
+                         {{ page.primary_menu  }}       
+                   {% endif %}
+
+              {% if page.header_right %}
+                    {{page.header_right}}
+              {% endif %}
+
+        </div>
+    </div>
+</header>
+
+   <div class="main_wrapper">
+      <div class="main_container">
+        {% if page.breadcrumb  %} 
+           <div class="container pl_2">
+              <div class="page_title_inner">
+                 <div class="breadcrumb">
+                   {{ page.breadcrumb }} 
+                 </div>
+              </div>
+           </div>
+       {% endif %} 
+      </div>
+ 
+
+      <div class="bibliotheque_content_interne">
+        <div class="bibliotheque_wrapper">
+             <div class="bibliotheque_header">
+                <div class="container">
+                   <div class="row">
+                       <div class="bibliotheque_title_page">
+                             <h2 class="title_bibliotheque">
+                                {{ page.page_title }}                     
+                             </h2>
+                             
+                             {% if logged_in == true %}
+                                 <span class="nbre_achat">{{ total_achat }} {{'Articles achetés'|t }}</span>
+                                {% else %}
+                             
+                             {% endif %}
+                     </div>
+                   </div>
+                 </div>
+             </div>
+
+             <div class="main_bibliotheque_content">
+                <div class="container pl-0">
+                     {% if logged_in == true %}
+                        {{ page.content }} 
+                       {% else %}
+                       <div class="veuillezconnect">
+                          {{'Veuillez-vous <a href="/user/login">s\'inscrire</a> ou <a href="/user/login">se connecter</a> pour pouvoir voir le contenu de cette page!'|t }} 
+                       </div>
+                     {% endif %}
+                 </div>
+             </div>
+          </div>
+      </div>
+   </div>
+
+
+
+
+  <!--\Palma\(Newsletter\logo et reseau social\footer)-->
+  <footer class="footer">   
+         {% if page.footer %}
+               {{ page.footer  }}       
+         {% endif %}        
+  </footer>
+
+</main>

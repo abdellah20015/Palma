@@ -1,0 +1,29 @@
+uuid: 80d621bc-5d20-450e-8593-00df40a6f53f
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_periodicite
+    - node.type.abonner
+    - taxonomy.vocabulary.periodicite
+id: node.abonner.field_periodicite
+field_name: field_periodicite
+entity_type: node
+bundle: abonner
+label: Périodicité
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      periodicite: periodicite
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

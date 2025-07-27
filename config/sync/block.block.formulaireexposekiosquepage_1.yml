@@ -1,0 +1,29 @@
+uuid: 8a4a5d53-c087-4bd6-9043-70d8c4c6ee6d
+langcode: fr
+status: true
+dependencies:
+  config:
+    - views.view.kiosque
+  module:
+    - system
+    - views
+  theme:
+    - bartik
+id: formulaireexposekiosquepage_1
+theme: bartik
+region: content
+weight: -11
+provider: null
+plugin: 'views_exposed_filter_block:kiosque-page_1'
+settings:
+  id: 'views_exposed_filter_block:kiosque-page_1'
+  label: ''
+  provider: views
+  label_display: visible
+  views_label: ''
+visibility:
+  request_path:
+    id: request_path
+    pages: '<front>'
+    negate: false
+    context_mapping: {  }

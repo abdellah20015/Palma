@@ -1,0 +1,19 @@
+uuid: c4163bd6-a3b5-4a06-a953-f6f4148b02c3
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_titre_machine
+    - node.type.pack
+id: node.pack.field_titre_machine
+field_name: field_titre_machine
+entity_type: node
+bundle: pack
+label: 'Titre machine'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

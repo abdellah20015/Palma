@@ -1,0 +1,23 @@
+uuid: acea5ce1-1d50-458c-b27a-a26ecfa1b5a9
+langcode: fr
+status: true
+dependencies:
+  config:
+    - facets.facet.periodicite
+  module:
+    - facets
+  theme:
+    - palma
+id: palma_periodicite
+theme: palma
+region: sidebar_filter
+weight: -15
+provider: null
+plugin: 'facet_block:periodicite'
+settings:
+  id: 'facet_block:periodicite'
+  label: Périodicité
+  provider: facets
+  label_display: '0'
+  block_id: palma_periodicite
+visibility: {  }

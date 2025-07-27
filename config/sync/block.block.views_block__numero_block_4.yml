@@ -1,0 +1,33 @@
+uuid: ee95a54b-6f3c-4dd6-bf6e-24225bce8e2b
+langcode: fr
+status: true
+dependencies:
+  config:
+    - views.view.numero
+  module:
+    - node
+    - views
+  theme:
+    - palma
+id: views_block__numero_block_4
+theme: palma
+region: content
+weight: -18
+provider: null
+plugin: 'views_block:numero-block_4'
+settings:
+  id: 'views_block:numero-block_4'
+  label: ''
+  provider: views
+  label_display: '0'
+  views_label: ''
+  items_per_page: none
+  context_mapping: {  }
+visibility:
+  node_type:
+    id: node_type
+    bundles:
+      journal_revue: journal_revue
+    negate: false
+    context_mapping:
+      node: '@node.node_route_context:node'

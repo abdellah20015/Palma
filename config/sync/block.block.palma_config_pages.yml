@@ -1,0 +1,28 @@
+uuid: c5bb132d-5889-4acb-af16-802ef4b1c7b2
+langcode: fr
+status: true
+dependencies:
+  module:
+    - config_pages
+    - system
+  theme:
+    - palma
+id: palma_config_pages
+theme: palma
+region: homepage_content
+weight: -21
+provider: null
+plugin: config_pages_block
+settings:
+  id: config_pages_block
+  label: Carousel
+  provider: config_pages
+  label_display: '0'
+  config_page_type: config_accueil
+  config_page_view_mode: carousel
+visibility:
+  request_path:
+    id: request_path
+    pages: '<front>'
+    negate: false
+    context_mapping: {  }

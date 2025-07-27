@@ -1,0 +1,29 @@
+uuid: 32497638-c38f-436b-9251-92a562c380e0
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_la_page_en_image
+    - node.type.page_numero
+  module:
+    - allowed_formats
+    - text
+third_party_settings:
+  allowed_formats:
+    page: page
+    plain_text: plain_text
+    full_html: '0'
+    restricted_html: '0'
+    basic_html: '0'
+id: node.page_numero.field_la_page_en_image
+field_name: field_la_page_en_image
+entity_type: node
+bundle: page_numero
+label: 'La page en image'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

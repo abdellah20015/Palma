@@ -1,0 +1,19 @@
+uuid: e87aee6c-6a02-4e84-b5f3-37805c6db1eb
+langcode: fr
+status: true
+dependencies:
+  module:
+    - node
+id: node.field_mot_cles
+field_name: field_mot_cles
+entity_type: node
+type: string_long
+settings:
+  case_sensitive: false
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

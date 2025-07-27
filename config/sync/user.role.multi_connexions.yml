@@ -1,0 +1,9 @@
+uuid: 7aee2485-35ff-487b-af23-fa5a1fd15536
+langcode: fr
+status: true
+dependencies: {  }
+id: multi_connexions
+label: Multi-connexions
+weight: 6
+is_admin: null
+permissions: {  }

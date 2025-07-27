@@ -1,0 +1,43 @@
+uuid: d8b11d37-0bcc-426b-9f82-997c86aab3d1
+langcode: fr
+status: true
+dependencies:
+  config:
+    - config_pages.type.config_accueil
+    - field.field.config_pages.config_accueil.field_categories
+    - field.field.config_pages.config_accueil.field_partenaires
+    - field.field.config_pages.config_accueil.field_slider
+  module:
+    - entity_reference_revisions
+id: config_pages.config_accueil.default
+targetEntityType: config_pages
+bundle: config_accueil
+mode: default
+content:
+  field_categories:
+    weight: 3
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+    region: content
+  field_partenaires:
+    type: entity_reference_revisions_entity_view
+    weight: 1
+    label: above
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    region: content
+  field_slider:
+    type: entity_reference_revisions_entity_view
+    weight: 0
+    label: above
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    region: content
+hidden: {  }

@@ -1,0 +1,14 @@
+uuid: e5df9b9e-7718-4756-9dc5-46517b70804c
+langcode: fr
+status: true
+dependencies:
+  config:
+    - user.role.multi_connexions
+  module:
+    - user
+id: user_remove_role_action.multi_connexions
+label: 'Enlever le rôle Multi-connexions des utilisateurs sélectionnés'
+type: user
+plugin: user_remove_role_action
+configuration:
+  rid: multi_connexions

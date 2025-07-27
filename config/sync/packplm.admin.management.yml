@@ -1,0 +1,6 @@
+new_mail_address: contact@palmadigitale.com
+new_mail_subject: 'Plus qu’une étape pour bénéficier du Pack Étudiant'
+new_mail_content: "Bonjour {name},\r\n\r\nL’équipe Palma Digitale vous remercie d’avoir choisi le Pack Étudiant.\r\n\r\nIl vous reste plus qu’une seule étape pour bénéficier des réductions : Insérer votre carte d’étudiant ou certificat scolaire dans votre espace client (Profil → Modifier vos informations). Par la suite, il faut attendre la validation de votre carte ou certificat par l’équipe Palma Digitale.\r\nUne fois votre carte validée, vous pourrez bénéficier de toutes nos offres spéciales étudiant !\r\nN’hésitez pas à vous abonner à notre Newsletter pour recevoir gratuitement une revue de presse mensuelle contenant tous les événements marquants du mois.\r\n\r\nPour toute information complémentaire, n’hésitez pas à nous contacter au contact@palmadigitale.com ou au 0537260544."
+request_sent_subject: 'Pack etudiant'
+request_sent_content: 'Un nouveau client vient de choisir le pack étudiant, merci de le vérifier et le valider stp!'
+request_sent_address: contact@palmadigitale.com

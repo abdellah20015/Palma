@@ -1,0 +1,27 @@
+uuid: 0930f267-7c1f-4c1f-a22e-6d90991de220
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_numero_pdf
+    - node.type.numero
+  module:
+    - file
+id: node.numero.field_numero_pdf
+field_name: field_numero_pdf
+entity_type: node
+bundle: numero
+label: 'Numéro PDF'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  file_directory: 'numerocomplet/[date:custom:Y]-[date:custom:m]'
+  file_extensions: pdf
+  max_filesize: ''
+  description_field: false
+  handler: 'default:file'
+  handler_settings: {  }
+field_type: file

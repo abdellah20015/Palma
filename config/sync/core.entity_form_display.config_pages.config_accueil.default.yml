@@ -1,0 +1,73 @@
+uuid: 1d707355-ef7b-4c74-80b4-75d561743597
+langcode: fr
+status: true
+dependencies:
+  config:
+    - config_pages.type.config_accueil
+    - field.field.config_pages.config_accueil.field_categories
+    - field.field.config_pages.config_accueil.field_partenaires
+    - field.field.config_pages.config_accueil.field_slider
+  module:
+    - inline_entity_form
+    - paragraphs
+id: config_pages.config_accueil.default
+targetEntityType: config_pages
+bundle: config_accueil
+mode: default
+content:
+  field_categories:
+    weight: 1
+    settings:
+      form_mode: default
+      label_singular: ''
+      label_plural: ''
+      collapsible: true
+      allow_new: true
+      match_operator: CONTAINS
+      override_labels: false
+      collapsed: false
+      allow_existing: false
+      allow_duplicate: false
+    third_party_settings: {  }
+    type: inline_entity_form_complex
+    region: content
+  field_partenaires:
+    type: paragraphs
+    weight: 3
+    settings:
+      title: Paragraph
+      title_plural: Paragraphs
+      edit_mode: closed
+      closed_mode: preview
+      autocollapse: all
+      closed_mode_threshold: 0
+      add_mode: button
+      form_display_mode: default
+      default_paragraph_type: partenaires
+      features:
+        duplicate: duplicate
+        collapse_edit_all: collapse_edit_all
+        add_above: '0'
+    third_party_settings: {  }
+    region: content
+  field_slider:
+    type: paragraphs
+    weight: 0
+    settings:
+      title: Paragraph
+      title_plural: Paragraphs
+      edit_mode: closed
+      closed_mode: preview
+      autocollapse: all
+      closed_mode_threshold: 0
+      add_mode: button
+      form_display_mode: default
+      default_paragraph_type: slider
+      features:
+        duplicate: duplicate
+        collapse_edit_all: collapse_edit_all
+        add_above: '0'
+    third_party_settings: {  }
+    region: content
+hidden:
+  label: true

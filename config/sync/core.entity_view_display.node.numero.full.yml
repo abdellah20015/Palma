@@ -1,0 +1,93 @@
+uuid: be5c3308-fdb5-466a-bcee-c8164682c8d0
+langcode: fr
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.full
+    - field.field.node.numero.body
+    - field.field.node.numero.field_date
+    - field.field.node.numero.field_image
+    - field.field.node.numero.field_journal_revue
+    - field.field.node.numero.field_mot_cles
+    - field.field.node.numero.field_pages
+    - field.field.node.numero.field_prix
+    - image.style.num
+    - node.type.numero
+  module:
+    - datetime
+    - image
+    - text
+    - user
+id: node.numero.full
+targetEntityType: node
+bundle: numero
+mode: full
+content:
+  body:
+    label: hidden
+    type: text_default
+    weight: 101
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+  field_date:
+    weight: 111
+    label: hidden
+    settings:
+      timezone_override: ''
+      format_type: numero
+    third_party_settings: {  }
+    type: datetime_default
+    region: content
+  field_image:
+    weight: 103
+    label: hidden
+    settings:
+      image_style: num
+    third_party_settings: {  }
+    type: image_url
+    region: content
+  field_journal_revue:
+    weight: 110
+    label: hidden
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+    region: content
+  field_mot_cles:
+    weight: 109
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: basic_string
+    region: content
+  field_pages:
+    weight: 105
+    label: hidden
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+    region: content
+  field_prix:
+    weight: 106
+    label: hidden
+    settings:
+      thousand_separator: ''
+      decimal_separator: .
+      scale: 2
+      prefix_suffix: true
+    third_party_settings: {  }
+    type: number_decimal
+    region: content
+  links:
+    weight: 100
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  field_numero_brouillard_pdf: true
+  field_numero_pdf: true
+  field_type_de_vente: true
+  langcode: true

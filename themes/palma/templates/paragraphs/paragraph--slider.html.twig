@@ -1,0 +1,22 @@
+ 
+{% block paragraph %}
+   {% block content %}
+      <div class="overlay_image"></div>
+      <img src="{{ content.field_image|field_value }}" class="img-fluid">
+      <div class="meta"> 
+         <div class="row flex-fill align-items-center">
+            <div class="col-10 offset-1 offset-lg-0 col-lg-8 text-center text-lg-left pr-lg-0">
+               <div class="cat">{{ content.field_titre|field_value }}</div>
+               <h2 class="flex__title text black bold  pb-5">
+                  {{ content.field_info|field_value }}
+               </h2> 
+            </div>
+         </div> 
+      </div>
+   {% endblock %}
+{% endblock paragraph %}
+
+
+  
+ 
+ 

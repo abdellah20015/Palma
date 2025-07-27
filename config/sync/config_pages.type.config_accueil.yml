@@ -1,0 +1,14 @@
+uuid: 60756ab6-bd66-486f-ae9f-584493045be4
+langcode: fr
+status: true
+dependencies: {  }
+id: config_accueil
+label: 'Config Accueil'
+context:
+  show_warning: true
+  group:
+    language: false
+menu:
+  path: /admin/home
+  weight: -50
+  description: 'Configuration de la page d''accueil'

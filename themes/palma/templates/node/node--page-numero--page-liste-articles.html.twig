@@ -1,0 +1,51 @@
+<div class="clmd4 col-lg-3">	
+	<div class="contentItem">	
+		<div class="content_pg_liste">
+				  {{ content.field_la_page_en_image|field_value }}
+		</div>
+		<div class="item_list_pg">
+					{% for article in content.articles  %}
+							<div class="contentDetail">
+							<div class="content_det_top">
+							<div class="source">{{ article.source }}</div>
+							<div class="numero_title">{{ 'N°'|t }} {{ article.numero }}</div>
+							<div class="page"><span></span></div>
+							</div>
+					    	<h3 class="label_title">
+								{% if article.titre is not empty %}
+								    {% set titre = article.titre %}
+										{{ titre }}
+								{% endif %}	
+						    </h3>
+							<div class="article_page">							 
+							 {% if article.body is not empty %}
+							<p>
+							    {% set body = article.body|striptags %}
+								{{ body|length > 30 ? body|slice(0, 183) ~ '' : body }}<br />
+							</p>
+							{% endif %}	
+								 {% if (file_url(article.image.fileuri)!= '/') %}
+								    <img src="{{ article.image.uri.value | image_style('large') }} ">
+								 {% endif %} 
+									{% set photo = carte %}
+										{% if etudiant == "Etudiant"  and  photo is not null  %}
+										{% set prix = article.prix %}
+										{% set price = prix - (prix * remise) %}
+											{% if display == 'show' %}
+												<div> {{ price }} {{' MAD'|t }}</div>
+												{% else %}
+												{{' VIDE'|t }}
+												{{ remise }}
+											{% endif %}	
+										{% else %}
+										<div> {{ article.prix }} {{' MAD'|t }}</div>
+									{% endif %}	
+							</div>
+							<a href="{{ article.url }}" class="buy_article" rel="bookmark">{{ article.link_label }}
+							</a>
+						  </div>
+					{% endfor %}
+		</div>
+	</div>
+	<div class="numero_page"><span>{{ label.0['#context'].value }}</span></div>
+</div>

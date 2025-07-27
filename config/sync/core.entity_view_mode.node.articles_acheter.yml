@@ -1,0 +1,10 @@
+uuid: 07c10c32-494d-49bd-ad87-a0e8ac1517f0
+langcode: fr
+status: true
+dependencies:
+  module:
+    - node
+id: node.articles_acheter
+label: 'articles acheter'
+targetEntityType: node
+cache: true

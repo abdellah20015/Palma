@@ -1,0 +1,28 @@
+uuid: 37bf205a-9827-45b7-a020-770a8cec5dbf
+langcode: fr
+status: true
+dependencies:
+  module:
+    - config_pages
+    - system
+  theme:
+    - palma
+id: palma_config_pages_3
+theme: palma
+region: homepage_content
+weight: -19
+provider: null
+plugin: config_pages_block
+settings:
+  id: config_pages_block
+  label: 'Nos partenaires'
+  provider: config_pages
+  label_display: '0'
+  config_page_type: config_accueil
+  config_page_view_mode: partenaires
+visibility:
+  request_path:
+    id: request_path
+    pages: '<front>'
+    negate: false
+    context_mapping: {  }

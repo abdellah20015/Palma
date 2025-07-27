@@ -1,0 +1,15 @@
+uuid: de68009e-1b37-4cb5-ac7a-c0f44d2de427
+langcode: fr
+status: true
+dependencies: {  }
+name: numero_header
+label: 'Numéro header'
+effects:
+  79ca8f25-e479-4a8d-b776-e27706f2458a:
+    uuid: 79ca8f25-e479-4a8d-b776-e27706f2458a
+    id: image_scale
+    weight: 1
+    data:
+      width: 98
+      height: 141
+      upscale: false

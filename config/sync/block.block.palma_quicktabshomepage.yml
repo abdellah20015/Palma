@@ -1,0 +1,26 @@
+uuid: ce40f2dd-0457-476c-b861-633ae7176a98
+langcode: fr
+status: true
+dependencies:
+  module:
+    - quicktabs
+    - system
+  theme:
+    - palma
+id: palma_quicktabshomepage
+theme: palma
+region: homepage_content
+weight: -20
+provider: null
+plugin: 'quicktabs_block:home_page'
+settings:
+  id: 'quicktabs_block:home_page'
+  label: 'QuickTabs - Home page'
+  provider: quicktabs
+  label_display: '0'
+visibility:
+  request_path:
+    id: request_path
+    pages: '<front>'
+    negate: false
+    context_mapping: {  }

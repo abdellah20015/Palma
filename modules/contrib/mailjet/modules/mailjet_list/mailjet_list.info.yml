@@ -1,0 +1,13 @@
+name: Mailjet Lists
+description: Add support for MailJet Lists.
+package: Mailjet
+type: module
+# version: 8.x-1.1
+core: 8.x
+
+dependencies:
+  - mailjet:mailjet
+# Information added by Drupal.org packaging script on 2019-09-25
+version: '8.x-2.7'
+project: 'mailjet'
+datestamp: 1569413591

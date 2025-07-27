@@ -1,0 +1,30 @@
+uuid: 0a92376a-15c5-4e69-a623-77d5f8fcb616
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.storage.user.field_interesse_par
+    - taxonomy.vocabulary.categories
+  module:
+    - user
+id: user.user.field_interesse_par
+field_name: field_interesse_par
+entity_type: user
+bundle: user
+label: 'Intéressé par'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      categories: categories
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

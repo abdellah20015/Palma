@@ -1,0 +1,11 @@
+uuid: af06c071-589e-4d14-aba7-99746fcfd068
+langcode: fr
+status: true
+dependencies:
+  config:
+    - node.type.acheter
+id: node.acheter
+target_entity_type_id: node
+target_bundle: acheter
+default_langcode: zxx
+language_alterable: false

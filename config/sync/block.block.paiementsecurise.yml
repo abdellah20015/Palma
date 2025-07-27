@@ -1,0 +1,25 @@
+uuid: e2dc9fd8-e034-4518-8176-680f819fd58f
+langcode: fr
+status: true
+dependencies:
+  config:
+    - system.menu.paiement-securise
+  module:
+    - system
+  theme:
+    - palma
+id: paiementsecurise
+theme: palma
+region: footer
+weight: -15
+provider: null
+plugin: 'system_menu_block:paiement-securise'
+settings:
+  id: 'system_menu_block:paiement-securise'
+  label: 'Paiement sécurisé'
+  provider: system
+  label_display: visible
+  level: 1
+  depth: 0
+  expand_all_items: false
+visibility: {  }

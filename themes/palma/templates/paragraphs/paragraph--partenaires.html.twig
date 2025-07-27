@@ -1,0 +1,13 @@
+{% block paragraph %}
+    {% block content %} 
+            {% if  content.field_titre|field_value is not empty %} 
+          <div class="single_client_logo"> 
+                <a href="{{ content.field_titre|field_value }}" target="_blank">
+                  <img src="{{ content.field_image|field_value }}"  alt="" class="img-fluid">
+                </a> 
+         </div>
+            {% endif %} 
+    {% endblock %}
+{% endblock paragraph %}
+
+

@@ -1,0 +1,31 @@
+uuid: 48e14542-494f-49ce-a422-96a71f4f675e
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.storage.node.body
+    - node.type.pack
+  module:
+    - allowed_formats
+    - text
+third_party_settings:
+  allowed_formats:
+    full_html: full_html
+    restricted_html: '0'
+    basic_html: '0'
+    page: '0'
+    plain_text: '0'
+id: node.pack.body
+field_name: body
+entity_type: node
+bundle: pack
+label: Body
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  display_summary: false
+  required_summary: false
+field_type: text_with_summary

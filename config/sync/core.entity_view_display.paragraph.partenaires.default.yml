@@ -1,0 +1,32 @@
+uuid: 1b6d7934-555b-4c0d-803e-9773f7daa19a
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.partenaires.field_image
+    - field.field.paragraph.partenaires.field_titre
+    - paragraphs.paragraphs_type.partenaires
+  module:
+    - image
+id: paragraph.partenaires.default
+targetEntityType: paragraph
+bundle: partenaires
+mode: default
+content:
+  field_image:
+    weight: 0
+    label: hidden
+    settings:
+      image_style: ''
+    third_party_settings: {  }
+    type: image_url
+    region: content
+  field_titre:
+    weight: 1
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+hidden: {  }

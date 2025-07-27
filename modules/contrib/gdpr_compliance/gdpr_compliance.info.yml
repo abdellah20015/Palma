@@ -1,0 +1,11 @@
+name: GDPR Compliance
+description: 'General Data Protection Regulation Compliance'
+type: module
+# core: 8.x
+configure: gdpr_compliance.settings_form
+
+# Information added by Drupal.org packaging script on 2019-03-25
+version: '8.x-1.14'
+core: '8.x'
+project: 'gdpr_compliance'
+datestamp: 1553500384

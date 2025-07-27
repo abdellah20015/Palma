@@ -1,0 +1,62 @@
+uuid: 1994a26d-1b77-40f9-8a2f-1c2f444d2f7b
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.lesabonnes.field_body
+    - field.field.paragraph.lesabonnes.field_nbr_numpack
+    - field.field.paragraph.lesabonnes.field_periodicite
+    - field.field.paragraph.lesabonnes.field_prix
+    - field.field.paragraph.lesabonnes.field_titre
+    - paragraphs.paragraphs_type.lesabonnes
+  module:
+    - text
+id: paragraph.lesabonnes.default
+targetEntityType: paragraph
+bundle: lesabonnes
+mode: default
+content:
+  field_body:
+    weight: 3
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: content
+  field_nbr_numpack:
+    weight: 4
+    label: above
+    settings:
+      thousand_separator: ''
+      prefix_suffix: true
+    third_party_settings: {  }
+    type: number_integer
+    region: content
+  field_periodicite:
+    weight: 2
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+    region: content
+  field_prix:
+    weight: 1
+    label: above
+    settings:
+      thousand_separator: ''
+      decimal_separator: .
+      scale: 2
+      prefix_suffix: true
+    third_party_settings: {  }
+    type: number_decimal
+    region: content
+  field_titre:
+    weight: 0
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+hidden: {  }

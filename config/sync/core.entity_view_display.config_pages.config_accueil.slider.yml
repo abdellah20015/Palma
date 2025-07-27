@@ -1,0 +1,29 @@
+uuid: 39efc7e9-e985-4a67-9e75-0ded7fe228ba
+langcode: fr
+status: true
+dependencies:
+  config:
+    - config_pages.type.config_accueil
+    - core.entity_view_mode.config_pages.slider
+    - field.field.config_pages.config_accueil.field_categories
+    - field.field.config_pages.config_accueil.field_partenaires
+    - field.field.config_pages.config_accueil.field_slider
+  module:
+    - entity_reference_revisions
+id: config_pages.config_accueil.slider
+targetEntityType: config_pages
+bundle: config_accueil
+mode: slider
+content:
+  field_slider:
+    type: entity_reference_revisions_entity_view
+    weight: 0
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    region: content
+hidden:
+  field_categories: true
+  field_partenaires: true

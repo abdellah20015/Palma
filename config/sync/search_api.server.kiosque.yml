@@ -1,0 +1,17 @@
+uuid: 9f9d8c51-da53-46b5-9daa-9e7793ea374a
+langcode: fr
+status: true
+dependencies:
+  module:
+    - search_api_db
+id: kiosque
+name: kiosque
+description: ''
+backend: search_api_db
+backend_config:
+  database: 'default:default'
+  min_chars: 1
+  matching: partial
+  autocomplete:
+    suggest_suffix: true
+    suggest_words: true

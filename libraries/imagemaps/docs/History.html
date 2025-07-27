@@ -1,0 +1,127 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Image Maps plugin</title>
+<link href="styles.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+<h1>Image Maps Plugin for CKEditor</h1>
+
+<h2>Introduction</h2>
+<p>This is a dialog-based plugin to handle insertion and modification of image map areas in <a href="http://www.ckeditor.com">CKEditor</a>.</p>
+
+<h3 id="contact">Author:</h3>
+<p><a href="mailto:amla70@gmail.com">Alfonso Mart&iacute;nez de Lizarrondo</a></p>
+
+<h2>Version history: </h2>
+<ol>
+	<li>2.0: 1-March-2011. First version ported from the FCKeditor version.</li>
+	<li>2.1: 18-September-2011. Adjustments of resizing the dialog.</li>
+	<li>2.2: 15-October-2011. IE8 bug that didn't allow to show the contents of the dialog since [7185].</li>
+	<li>3.0.0 5-November-2011. Rewritten to fit correctly with the CKEditor dialogs without using the iframe as that's not properly supported by CKEditor (see versions 2.1 and 2.2)<br>
+	The browser functionality requires a CKEditor version &gt; 3.6.2, because there was <a href="http://dev.ckeditor.com/changeset/7296">a bug</a> that I fixed for this plugin.</li>
+	<li>3.1.0 15-November-2011. Automatically detect CKEditor version to avoid problems with "browse server" button<br>
+	Reorganize structure and simplify some parts</li>
+	<li>3.2.0 31-May-2012. Use a single sprite for the icons</li>
+	<li>3.2.1 3-June-2012. Fix problem with the detection of CKEditor version</li>
+	<li>3.3.0 9-July-2012. Fix problems with IE (first click while drawing and double click in the editor)</li>
+	<li>3.3.1 10-July-2012. Fix problems with Chrome. Switched to use the uncompressed imgmap.js as some changes were required there.</li>
+	<li>3.3.2 11-July-2012. Avoid drag&drop of the image.</li>
+	<li>3.3.3 8-September-2012. If the main page was scrolled, drawing of polygons failed in all browsers != IE.</li>
+	<li>3.4.0 12-September-2012. Added compatibility with CKEditor 4 beta. <br>
+								IE8 <a href="http://code.google.com/p/explorercanvas/issues/detail?id=79">didn't initialize the excanvas library</a> correctly and so circles and polygons were not visible.</li>
+	<li>3.4.1 21-September-2012. Fixed compatibility problems with the old CKEditor 3.4.1, it's ugly but now the dialog works.<br>
+		Tooltips for area actions were missing.</li>
+	<li>3.4.2 Simplification of the <a href="#hiddenOptions">dialog options</a>.<br>
+			Create name attribute for the map if IE is in quirks mode.</li>
+	<li>3.4.3 13-October-2012 Added an event <a href="#validate">"imagemaps.validate"</a> to perform custom validation before creating the map.</li>
+	<li>3.4.4 Swedish translation.</li>
+	<li>3.5.0 23-February-2013 Integration with CKEditor 4.1 data filtering.<br>
+				Draw the shapes over the image in the editor (this is a native feature for IE)</li>
+	<li>3.5.1 3rd-March-2013 I was breaking the selectionChange event in v4 :-(<br>
+				Handle maps where the name attribute has been removed<br>
+				IE compatibility bug with the new shape drawing</li>
+	<li>3.5.2 12-March-2013 Compatibility with devTools plugin.</li>
+	<li>3.5.3 13-March-2013 Allow the "imagemaps.validate" event to modify the data.</li>
+	<li>3.5.4 16-March-2013 Remove orphan maps if the image is deleted from the editor.</li>
+	<li>3.5.5 19-April-2013 Show the image correctly if it was resized with attributes instead of inline styles.<br>
+				Adjust correctly the 4.1 ACF (the "url" attribute doesn't exist, I'm stupid).<br>
+				Detect correctly v4 to avoid huge dialogs and provide better layout<br>
+				Adjusted the language files so the plugin can be compiled correctly with a local install of CKBuilder<br>
+				Set 'insert' as the toolbargroup for the button (besides image button) instead of the default 'others'<br>
+				</li>
+	<li>3.5.6 1st-April-2013 Handle better the hover and cursor effects while editing a map in Chrome if the page has been scrolled<br>
+				Resizing of the preview was disabled in CKEditor 4</li>
+	<li>3.5.10 24-August-2013 Improved compatibility with CKBuilder (merge icon into the main toolbar strip)<br>
+				Restrict operations to the editor content (for inline and divarea modes, skip maps and images outside the editor)<br>
+				Improved drawing of the areas with the image in Chrome</li>
+	<li>3.5.11 9-December-2013<br>
+		Adjusted compatibility with IE11<br>
+		Adjusted for compatibility with the image2 widget in CKEditor 4.3 (still not perfect, but it seems to mostly work)<br>
+		Remove overlaid areas when removing a map on an image<br>
+		Set dialog to use Strict mode<br>
+		Corrected context menu state (it was always "on")<br>
+		If the window wasn't tall enough to display the whole dialog, most of the times the areas were drawn incorrectly<br>
+		Removed commented out code and unused methods (preview mode, Bezier curves) in the imgmap library (~24Kb)<br>
+	</li>
+	<li>3.5.12 18-December-2013<br>
+		Adjusted the imgmap library to handle existing maps with decimal precision in the coordinates
+	</li>
+	<li>3.5.13 20-January-2014<br>
+		Corrected compatibility with CKEditor 3.6 that was broken due to the changed for the "image2" widget.<br>
+		Corrected regression: if the main page is scrolled, the areas were created misplaced.
+	</li>
+	<li>3.5.14 22-January-2014<br>
+		Highlight the currently selected area while editing
+	</li>
+	<li>3.5.15 1st-February-2014<br>
+		Modify the detection of the new "Enhanced image"/image2 widget to take into account its internal rename.
+	</li>
+	<li>3.5.16 21-August-2014<br>
+		Add CSS rule to avoid conflicts with max-width or max-height for images<br>
+		Fix scrolling issues in older IEs
+	</li>
+	<li>3.5.17 2-September-2014<br>
+		Added protection in case the img has been directly inserted into the DOM and it's missing the data-cke-src attribute<br>
+		Integration with the "image2" widget: Disable the check for clicks on the area because it makes impossible to edit the caption
+	</li>
+	<li>3.5.18 4-November-2014<br>
+		Added French translation
+	</li>
+	<li>3.5.19 3-April-2015<br>
+		Corrected compatibility with IE11 to work with existing areas<br>
+		Corrected drawing of polygons on IE9<br>
+		Removed 5px offset while drawing polygons<br>
+		Removed unused code in imgmap library<br>
+		Improved highlighting when moving the mouse over the areas
+	</li>
+	<li>3.5.20 25-May-2015<br>
+		Preserve id and class attributes on the &lt;area&gt; elements<br>
+		Updated German translation by Stefan Berger
+		</li>
+	<li>3.6.0 26-July-2015<br>
+		Removed compatibility with CKEditor 3.<br>
+		Avoid marking the editor as "dirty" due to the internal changes to the image to draw the areas<br>
+		Use of Blobs instead of Base64 data URIs to draw the areas, avoiding this way to bloat the innerHTML (--&gt;Undo stack)<br>
+		General code clean up<br>
+		</li>
+	<li>3.6.1 26-July-2015<br>
+		Avoid overwritting Function.prototype.bind .<br>
+		EsLint of the code<br>
+		Adjusted spacing of some elements to better fit with CKEditor 4 skins
+	</li>
+	<li>3.6.2 1-November-2015<br>
+		Editing of areas didn't work correctly in Chrome if the main window was scrolled
+	</li>
+	<li>3.6.3 21-February-2016<br>
+		Avoid resizing handles when the dialog is opened
+	</li>
+</ol>
+
+<h2>Disclaimers</h2>
+<p>CKEditor is  &copy; CKSource.com</p>
+<p>The core imgmap code is  &copy; Adam Maschek </p>
+</body>
+</html>

@@ -1,0 +1,10 @@
+uuid: 224cfb57-0b8e-4fc9-9793-3c37e68fe687
+langcode: fr
+status: true
+dependencies:
+  module:
+    - node
+id: node.liste_pack
+label: 'liste de Pack'
+targetEntityType: node
+cache: true

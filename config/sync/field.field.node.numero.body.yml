@@ -1,0 +1,31 @@
+uuid: d60e623a-43ee-4785-9d15-6a92dd0413f8
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.storage.node.body
+    - node.type.numero
+  module:
+    - allowed_formats
+    - text
+third_party_settings:
+  allowed_formats:
+    full_html: full_html
+    restricted_html: '0'
+    basic_html: '0'
+    page: '0'
+    plain_text: '0'
+id: node.numero.body
+field_name: body
+entity_type: node
+bundle: numero
+label: Description
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  display_summary: false
+  required_summary: false
+field_type: text_with_summary

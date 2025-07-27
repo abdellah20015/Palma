@@ -1,0 +1,24 @@
+uuid: 80eccfac-fbec-483a-a3ac-f2c9ebe0018e
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.storage.user.field_nombre_achat_numero
+  module:
+    - user
+id: user.user.field_nombre_achat_numero
+field_name: field_nombre_achat_numero
+entity_type: user
+bundle: user
+label: 'Nombre d''achats'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: decimal

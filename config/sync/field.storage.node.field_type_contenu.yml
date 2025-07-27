@@ -1,0 +1,27 @@
+uuid: 06d08c0b-a2e7-4fd2-9324-38dcb28dcfb4
+langcode: fr
+status: true
+dependencies:
+  module:
+    - node
+    - options
+id: node.field_type_contenu
+field_name: field_type_contenu
+entity_type: node
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: article
+      label: Article
+    -
+      value: numero
+      label: Numéro
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

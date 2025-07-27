@@ -1,0 +1,58 @@
+<!--Palma (Header)  -->  
+<main id="site">   
+    <header class="header desktop">
+      <div class="container">
+         <div class="row align-items-center justify_content">
+       
+             {% if page.header %}
+                 {{ page.header}}
+             {% endif %} 
+             
+                   {% if page.primary_menu %}
+                         {{ page.primary_menu  }}       
+                   {% endif %}
+
+              {% if page.header_right %}
+                    {{page.header_right}}
+              {% endif %}
+
+        </div>
+    </div>
+</header>
+
+
+<div class="col-md-12">
+    <div class="container">
+        <div class="row">
+            <div class="layout-content">
+ 
+               {% if page.content %}
+                 {{ page.content }}
+               {% endif %}
+
+
+              <div class="text-center msg-error-404">
+                {% trans %}
+                <p class="text-center">
+                  <a href="{{ front_page }}" class="button">
+                    {{'GO to home page'|t }}
+                    </a></p>
+                {% endtrans %}
+              </div>
+            </div> 
+        </div>
+     <div>
+</div>
+ 
+
+ 
+
+
+
+<!--\Palma\(Newsletter\logo et reseau social\footer)-->
+<footer class="footer">    
+           {% if page.footer %}
+                 {{ page.footer  }}       
+           {% endif %} 
+</footer>
+</main>

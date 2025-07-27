@@ -1,0 +1,28 @@
+uuid: 68f67c03-339c-4f3c-b8f2-cc6d84eaa47a
+langcode: fr
+status: true
+dependencies:
+  module:
+    - helper
+    - user
+  theme:
+    - palma
+id: walletblock
+theme: palma
+region: header
+weight: -20
+provider: null
+plugin: wallet_block
+settings:
+  id: wallet_block
+  label: 'Wallet block'
+  provider: helper
+  label_display: '0'
+visibility:
+  user_role:
+    id: user_role
+    roles:
+      authenticated: authenticated
+    negate: false
+    context_mapping:
+      user: '@user.current_user_context:current_user'

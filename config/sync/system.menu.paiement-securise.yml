@@ -1,0 +1,8 @@
+uuid: 1b9de8a2-6966-4725-972f-9fcd6ef8ef8a
+langcode: fr
+status: true
+dependencies: {  }
+id: paiement-securise
+label: 'Paiement sécurisé'
+description: ''
+locked: false

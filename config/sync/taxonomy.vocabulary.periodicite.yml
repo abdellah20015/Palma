@@ -1,0 +1,8 @@
+uuid: 45d4f7d9-4357-48cf-bea5-350b182ed4ee
+langcode: fr
+status: true
+dependencies: {  }
+name: Périodicité
+vid: periodicite
+description: ''
+weight: 0

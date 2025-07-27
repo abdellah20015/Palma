@@ -1,0 +1,22 @@
+uuid: 3cc8cc45-c813-4f48-838d-7d1a2ccb6c19
+langcode: fr
+status: true
+dependencies:
+  config:
+    - node.type.acheter
+id: node.acheter.status
+field_name: status
+entity_type: node
+bundle: acheter
+label: Published
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: Activé
+  off_label: Désactivé
+field_type: boolean

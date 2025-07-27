@@ -1,0 +1,15 @@
+{% set classes = ['populaire', ] %}
+	<!--Palma (Populaires) border-bottom -->
+<section {{ attributes.addClass(classes) }}>
+     <div class="container p-0">
+         <h2 class="populaire__title box_title text-center">{{ 'Populaire'|t }} </h2> 
+            {{ content }}
+    </div>
+	<div class="col-md-12 btn_more">
+	 		<div class="loadmore">
+	 		   	 <a  href="{{ path('<front>') }}kiosque" class="loadmore-button">
+	 		   	 	{{'Voir tous les produits'|t}}
+	 		   	 </a>
+	 		 </div>
+	  </div>	
+</section>

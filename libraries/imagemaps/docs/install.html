@@ -1,0 +1,115 @@
+﻿<!DOCTYPE HTML>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Image Maps plugin</title>
+<link href="styles.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<h1>Image Maps Plugin for CKEditor</h1>
+
+<h2>Introduction</h2>
+<p>This is a dialog-based plugin to handle insertion and modification of image map areas in <a href="http://www.ckeditor.com">CKEditor</a>.</p>
+
+<h3 id="contact">Author:</h3>
+<p><a href="mailto:amla70@gmail.com">Alfonso Mart&iacute;nez de Lizarrondo</a></p>
+
+<h2>Installation</h2>
+<p>Important: Since version 3.6.0 this plugin is compatible only with CKEditor 4, if you need an old version for CKEditor 3, send me an email</p>
+
+<h3>1. Copying the files</h3>
+<p>Extract the contents of the zip in you plugins directory, so it ends up like
+    this<br>
+    <!--<img src="installation.png" alt="Screenshot of installation" width="311" height="346" longdesc="#install">-->
+    </p>
+<pre id="--install">
+ckeditor\
+	...
+	images\
+	lang\
+	plugins\
+		...
+		imagemaps\
+			icon.png
+			plugin.js
+			dialog\
+			docs\
+			images\
+			lang\
+		...
+	skins\
+	themes\
+</pre>
+<h3>2. Adding it to CKEditor</h3>
+<p>Now add the plugin in your <em>config.js</em> or custom js configuration
+file:
+<code>config.extraPlugins='imagemaps'; </code>
+If you are already using other additional plugins, then you must have a single extraPlugins statements with all the plugins separated by commas:
+<code>config.extraPlugins='confighelper,imagemaps'; </code>
+</p>
+
+<h3>3. Add it to your toolbar</h3>
+<p>In your toolbar configuration, add a new 'ImageMaps' item in the place where you want the button to show up.</p>
+
+<h3>4. Configuration</h3>
+<p id="validate">When the user presses OK in the dialog, if the data is correct a custom "imagemaps.validate" event will be fired, allowing you to add custom validation
+according to your specific needs. If you cancel that event then the dialog won't close until the user changes the map to pass your validation.</p>
+<p>Example of usage: force all links to start with "http://":
+<code>// Let's add this to every editor on the page. You can instead add it only to a specific editor.
+CKEDITOR.on('instanceReady', function(e) {
+	// the real listener
+	e.editor.on( 'imagemaps.validate' , function(ev) {
+		// the "imgmap" object is passed as the data property of the event
+		var imgmap = ev.data;
+		for (var i = 0; i < imgmap.areas.length; i++)
+		{
+			if (imgmap.areas[i].ahref.substring(0, 7) != "http://")
+			{
+				alert("All links must start with 'http://'");
+				// Cancel the event to mark that the validation has failed
+				ev.cancel();
+			}
+		}
+	});
+});</code></p>
+
+<p id="hiddenOptions">Since version 3.4.2 two options have been set as hidden by default to avoid confusion for the users: map name and alt attribute of each area.<br>
+The options are still there ready to be used, and you can enable them by using the typical code that it's used to hide options, but reversed:
+<code>CKEDITOR.on( 'dialogDefinition', function( ev )
+{
+	var dialogName = ev.data.name,
+		dialogDefinition = ev.data.definition;
+
+	if (dialogName != 'ImageMaps')
+		return;
+
+	var tab = dialogDefinition.getContents( 'info' );
+	tab.get( 'ContainerMapName' ).hidden = false;
+	tab.get( 'alt' ).hidden = false;
+});</code></p>
+
+<h3>5. Use it</h3>
+<p>Clear your cache and reload your editor. Now when you select an image the new button will be enabled so you can map the active regions.
+If you select an image with an existing map the button will be highlighted.</p>
+
+<h3>6. Translations</h3>
+<p>To add a new translation open plugin.js and search for "translations", it's at line 6 and add your language (the example is based on adding Polish ('pl')
+  <code>    // translations
+    lang : ['en', 'el', 'es'],</code>
+to<code>    // translations
+    lang : ['en', 'el', 'es', 'pl'],</code></p>
+<p>
+Then in the lang folder copy the en.js to pl.js, edit that file and in the first line set your language:
+<code>CKEDITOR.addPluginLang( 'imagemaps', 'pl',</code>
+and finally, translate all the text between quotes :-)</p>
+<p>If you send it back to me I'll include it in the next versions.</p>
+
+<h2>Final notes</h2>
+<p>Check my blog for any further info, you can take a look at <a href="http://alfonsoml.blogspot.com/2014/10/list-of-plugins-for-ckeditor.html">other plugins that I've created for CKEditor</a>. Most of them are free and they can fix little annoying issues</p>
+
+<h2>Disclaimers</h2>
+<p>CKEditor is  &copy; CKSource.com</p>
+<p>The core imgmap code is  &copy; Adam Maschek </p>
+</body>
+</html>

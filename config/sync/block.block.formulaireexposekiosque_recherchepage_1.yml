@@ -1,0 +1,23 @@
+uuid: e2d1d562-642f-44d0-8065-1d060468d820
+langcode: fr
+status: true
+dependencies:
+  config:
+    - views.view.kiosque_recherche
+  module:
+    - views
+  theme:
+    - palma
+id: formulaireexposekiosque_recherchepage_1
+theme: palma
+region: header
+weight: -20
+provider: null
+plugin: 'views_exposed_filter_block:kiosque_recherche-page_1'
+settings:
+  id: 'views_exposed_filter_block:kiosque_recherche-page_1'
+  label: ''
+  provider: views
+  label_display: '0'
+  views_label: ''
+visibility: {  }

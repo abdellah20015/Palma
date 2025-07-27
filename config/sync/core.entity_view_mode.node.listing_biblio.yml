@@ -1,0 +1,10 @@
+uuid: 24ac78a5-6eea-495a-8608-bc26f6a46a53
+langcode: fr
+status: true
+dependencies:
+  module:
+    - node
+id: node.listing_biblio
+label: 'listing biblio'
+targetEntityType: node
+cache: true

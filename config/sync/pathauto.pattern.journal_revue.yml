@@ -1,0 +1,22 @@
+uuid: 10ec04bf-0b50-4e0b-910e-3ff8fe2fbb26
+langcode: fr
+status: true
+dependencies:
+  module:
+    - node
+id: journal_revue
+label: 'Journal / revue'
+type: 'canonical_entities:node'
+pattern: 'kiosque/[node:title]'
+selection_criteria:
+  7805d228-b9d5-4136-89e1-5127728592e2:
+    id: node_type
+    bundles:
+      journal_revue: journal_revue
+    negate: false
+    context_mapping:
+      node: node
+    uuid: 7805d228-b9d5-4136-89e1-5127728592e2
+selection_logic: and
+weight: -10
+relationships: {  }

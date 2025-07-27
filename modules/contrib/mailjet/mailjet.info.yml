@@ -1,0 +1,15 @@
+name: Mailjet
+description: Send your emails by your Mailjet API.
+package: Mailjet
+type: module
+# version: 8.x-2.7
+core: 8.x
+configure: mailjet.settings
+
+dependencies:
+  - libraries:libraries
+
+# Information added by Drupal.org packaging script on 2019-09-25
+version: '8.x-2.7'
+project: 'mailjet'
+datestamp: 1569413591

@@ -1,0 +1,29 @@
+uuid: bd9f78fc-14a6-4a2e-887e-bc162c918033
+langcode: fr
+status: true
+dependencies:
+  config:
+    - facets.facet.origine
+  module:
+    - facets
+    - system
+  theme:
+    - bartik
+id: origine
+theme: bartik
+region: sidebar_second
+weight: 0
+provider: null
+plugin: 'facet_block:origine'
+settings:
+  id: 'facet_block:origine'
+  label: Origine
+  provider: facets
+  label_display: '0'
+  block_id: origine
+visibility:
+  request_path:
+    id: request_path
+    pages: /kiosque
+    negate: false
+    context_mapping: {  }

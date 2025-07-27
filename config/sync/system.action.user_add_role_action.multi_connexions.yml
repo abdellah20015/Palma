@@ -1,0 +1,14 @@
+uuid: 50eb2af5-f79f-42b8-b186-b5ae6510ad33
+langcode: fr
+status: true
+dependencies:
+  config:
+    - user.role.multi_connexions
+  module:
+    - user
+id: user_add_role_action.multi_connexions
+label: 'Ajouter le rôle Multi-connexions aux utilisateurs sélectionnés'
+type: user
+plugin: user_add_role_action
+configuration:
+  rid: multi_connexions

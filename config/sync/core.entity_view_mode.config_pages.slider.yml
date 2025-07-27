@@ -1,0 +1,10 @@
+uuid: aa6deed4-eaf2-4a39-bf80-9ca57ef2a1ec
+langcode: fr
+status: true
+dependencies:
+  module:
+    - config_pages
+id: config_pages.slider
+label: Slider
+targetEntityType: config_pages
+cache: true

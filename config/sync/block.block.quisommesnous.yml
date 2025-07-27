@@ -1,0 +1,25 @@
+uuid: d2d9ac06-c1e9-41db-a54c-96d9cbba1c68
+langcode: fr
+status: true
+dependencies:
+  config:
+    - system.menu.qui-sommes-nous
+  module:
+    - system
+  theme:
+    - palma
+id: quisommesnous
+theme: palma
+region: footer
+weight: -16
+provider: null
+plugin: 'system_menu_block:qui-sommes-nous'
+settings:
+  id: 'system_menu_block:qui-sommes-nous'
+  label: 'Qui Sommes Nous'
+  provider: system
+  label_display: visible
+  level: 1
+  depth: 0
+  expand_all_items: false
+visibility: {  }

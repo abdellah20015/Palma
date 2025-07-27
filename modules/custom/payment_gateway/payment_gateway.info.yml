@@ -1,0 +1,5 @@
+name: 'payment gateway'
+type: module
+description: 'Module de paiement'
+core: 8.x
+package: 'Custom'

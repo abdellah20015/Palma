@@ -1,0 +1,8 @@
+uuid: 3d568890-4ceb-4a61-b0f5-2082fb4cf17c
+langcode: fr
+status: true
+dependencies: {  }
+id: numero
+label: Numero
+locked: false
+pattern: 'd M Y'

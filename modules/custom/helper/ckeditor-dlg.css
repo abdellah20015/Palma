@@ -1,0 +1,19 @@
+.cke_dialog fieldset legend {display: contents !important;float: left !important;}
+table.cke_dialog.cke_browser_webkit.cke_ltr.cke_single_page {
+    width: 65% !important;
+    left: 0 !important;
+    right: 0 !important;
+    margin: auto;
+}
+
+.cke_reset_all .cke_dialog_contents_body {
+    width: 100% !important;
+}
+
+.cke_single_page .cke_dialog_contents {
+    width: 100%;
+}
+
+.cke_reset_all .cke_dialog_contents_body .cke_dialog_ui_html {
+    width: 100% !important;
+}

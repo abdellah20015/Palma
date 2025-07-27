@@ -1,0 +1,23 @@
+uuid: 4fb119e1-0fc7-4bba-ad80-ec5657f775fc
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_nbre_jr
+    - taxonomy.vocabulary.periodicite
+id: taxonomy_term.periodicite.field_nbre_jr
+field_name: field_nbre_jr
+entity_type: taxonomy_term
+bundle: periodicite
+label: 'Nombre de Numéro'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer

@@ -1,0 +1,28 @@
+uuid: 8a45d62d-2cbd-4f1b-9490-031f1a59232c
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_pages
+    - node.type.numero
+    - node.type.page_numero
+id: node.numero.field_pages
+field_name: field_pages
+entity_type: node
+bundle: numero
+label: Pages
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      page_numero: page_numero
+    sort:
+      field: _none
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

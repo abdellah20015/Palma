@@ -1,0 +1,24 @@
+uuid: 219cec88-5393-44da-855b-9366d83dc6af
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.storage.user.field_cgdv
+  module:
+    - user
+id: user.user.field_cgdv
+field_name: field_cgdv
+entity_type: user
+bundle: user
+label: 'Conditions générales de vente'
+description: ''
+required: true
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: Activé
+  off_label: Désactivé
+field_type: boolean

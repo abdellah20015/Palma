@@ -1,0 +1,13 @@
+uuid: b9b4fffa-abae-4a0a-9184-6ae06db2427d
+langcode: fr
+status: true
+dependencies:
+  enforced:
+    module:
+      - media_library
+  module:
+    - media
+id: media.media_library
+label: 'Bibliothèque Media'
+targetEntityType: media
+cache: true

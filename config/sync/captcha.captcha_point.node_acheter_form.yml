@@ -1,0 +1,7 @@
+uuid: f72bcc3d-b6c9-4644-898d-698bcfacb4d5
+langcode: fr
+status: false
+dependencies: {  }
+formId: node_acheter_form
+captchaType: default
+label: null

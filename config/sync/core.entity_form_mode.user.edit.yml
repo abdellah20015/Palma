@@ -1,0 +1,10 @@
+uuid: d3382cf4-5638-42e3-878d-002aeca526d3
+langcode: fr
+status: true
+dependencies:
+  module:
+    - user
+id: user.edit
+label: edit
+targetEntityType: user
+cache: true

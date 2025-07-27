@@ -1,0 +1,23 @@
+uuid: 462cc091-498f-4442-aba5-5b09d4c9fe32
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_prix
+    - node.type.numero
+id: node.numero.field_prix
+field_name: field_prix
+entity_type: node
+bundle: numero
+label: Prix
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: decimal

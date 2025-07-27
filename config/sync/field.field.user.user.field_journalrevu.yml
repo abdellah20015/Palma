@@ -1,0 +1,29 @@
+uuid: 2bc9ab70-497b-4ed7-801e-11263d1393eb
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.storage.user.field_journalrevu
+    - node.type.journal_revue
+  module:
+    - user
+id: user.user.field_journalrevu
+field_name: field_journalrevu
+entity_type: user
+bundle: user
+label: 'Journaux et revues de l''éditeur'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      journal_revue: journal_revue
+    sort:
+      field: _none
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

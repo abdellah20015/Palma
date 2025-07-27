@@ -1,0 +1,21 @@
+{%
+  set classes = [
+    node.bundle|clean_class,
+    node.isPromoted() ? 'is-promoted',
+    node.isSticky() ? 'is-sticky',
+    not node.isPublished() ? 'is-unpublished',
+    view_mode ? view_mode|clean_class,
+    'clearfix',
+    'container',
+    'mon_compte_wrapper',
+  ]
+%}
+<article{{ attributes.addClass(classes) }}>
+
+<div class="mon_compte_title_page">
+    <h2 class="title_mon_compte">{{ label }}</h2>
+</div>
+  <div{{ content_attributes.addClass('content') }}>
+    {{ content }}
+  </div>
+</article>

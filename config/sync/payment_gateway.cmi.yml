@@ -1,0 +1,8 @@
+payment_gateway:
+  lang: fr
+  refreshtime: '5'
+  BillToCountry: '504'
+  encoding: UTF-8
+_core:
+  default_config_hash: WvpgHapI-2R06cWOUGHVdLruvcCmCQKlx9ndG3NUtrg
+langcode: fr

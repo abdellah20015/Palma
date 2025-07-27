@@ -1,0 +1,10 @@
+uuid: 67cd4ae4-dd4a-42dc-a285-ee42ac7e3aa4
+langcode: fr
+status: true
+dependencies:
+  module:
+    - config_pages
+id: config_pages.partenaires
+label: Partenaires
+targetEntityType: config_pages
+cache: true

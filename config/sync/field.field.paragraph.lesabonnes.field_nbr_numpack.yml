@@ -1,0 +1,23 @@
+uuid: c4d1854b-38b2-4439-98d9-46e072538ce4
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_nbr_numpack
+    - paragraphs.paragraphs_type.lesabonnes
+id: paragraph.lesabonnes.field_nbr_numpack
+field_name: field_nbr_numpack
+entity_type: paragraph
+bundle: lesabonnes
+label: 'Nombre de Numéro de Pack'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer

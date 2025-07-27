@@ -1,0 +1,12 @@
+uuid: facac9bf-9274-4bc8-9a2a-4669acf8cefe
+langcode: en
+status: true
+dependencies: {  }
+id: search_api__views_page__kiosque__page_1
+name: 'search_api:views_page__kiosque__page_1'
+filter_key: liste
+url_processor: facets_pretty_paths
+breadcrumb:
+  active: false
+  before: true
+  group: false

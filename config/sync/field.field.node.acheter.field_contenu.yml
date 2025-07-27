@@ -1,0 +1,30 @@
+uuid: 08496e0e-e831-4f1c-9010-5c4fb060ee88
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_contenu
+    - node.type.acheter
+    - node.type.article_numero
+    - node.type.numero
+id: node.acheter.field_contenu
+field_name: field_contenu
+entity_type: node
+bundle: acheter
+label: Contenu
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      article_numero: article_numero
+      numero: numero
+    sort:
+      field: _none
+    auto_create: false
+    auto_create_bundle: article_numero
+field_type: entity_reference

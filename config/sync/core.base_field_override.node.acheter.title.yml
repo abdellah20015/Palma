@@ -1,0 +1,18 @@
+uuid: 67129fc0-5174-48c7-9558-7d450c844798
+langcode: fr
+status: true
+dependencies:
+  config:
+    - node.type.acheter
+id: node.acheter.title
+field_name: title
+entity_type: node
+bundle: acheter
+label: 'Libellé d''achat'
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

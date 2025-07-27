@@ -1,0 +1,27 @@
+uuid: 7b399df8-c8fe-452f-8653-5efd4aafc8bd
+langcode: fr
+status: true
+dependencies:
+  module:
+    - node
+    - options
+id: node.field_type_de_vente
+field_name: field_type_de_vente
+entity_type: node
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: par_article
+      label: 'Par article'
+    -
+      value: numero_complet
+      label: 'Numéro complet'
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: -1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

@@ -1,0 +1,10 @@
+<form {{ attributes }} > 
+		<div class="form-group">
+ 
+		<input data-drupal-selector="edit-name" type="text" id="edit-name" name="name" class="form-control" required="required" aria-required="true" aria-invalid="true" placeholder="Entrez votre email">
+		</div>
+		<p>Les instructions de réinitialisation du mot de passe seront envoyées à votre adresse de courriel enregistrée.</p>
+ 		{{ element.form_build_id }} {# required #}
+		{{ element.form_id }} {# required #}			       
+		<input type="submit" id="edit-submit" name="op" value="Soumettre" class="btn btnprimary">     
+</form>

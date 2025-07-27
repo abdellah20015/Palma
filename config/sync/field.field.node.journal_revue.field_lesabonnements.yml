@@ -1,0 +1,37 @@
+uuid: a1bb60b0-13bf-4eff-aca0-e264931edfef
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_lesabonnements
+    - node.type.journal_revue
+    - paragraphs.paragraphs_type.lesabonnes
+  module:
+    - entity_reference_revisions
+id: node.journal_revue.field_lesabonnements
+field_name: field_lesabonnements
+entity_type: node
+bundle: journal_revue
+label: 'Pack d''abonnement '
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    negate: 0
+    target_bundles:
+      lesabonnes: lesabonnes
+    target_bundles_drag_drop:
+      lesabonnes:
+        enabled: true
+        weight: 4
+      partenaires:
+        weight: 5
+        enabled: false
+      slider:
+        weight: 6
+        enabled: false
+field_type: entity_reference_revisions

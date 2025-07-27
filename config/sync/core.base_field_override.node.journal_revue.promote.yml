@@ -1,0 +1,22 @@
+uuid: 19a002db-dc25-4d27-8457-10fda56dd5c2
+langcode: fr
+status: true
+dependencies:
+  config:
+    - node.type.journal_revue
+id: node.journal_revue.promote
+field_name: promote
+entity_type: node
+bundle: journal_revue
+label: 'Promu en page d''accueil'
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: Activé
+  off_label: Désactivé
+field_type: boolean

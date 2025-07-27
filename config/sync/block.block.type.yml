@@ -1,0 +1,29 @@
+uuid: 8b2ed696-e82f-4e5e-8fc6-fddb526f27f4
+langcode: fr
+status: true
+dependencies:
+  config:
+    - facets.facet.type
+  module:
+    - facets
+    - system
+  theme:
+    - bartik
+id: type
+theme: bartik
+region: sidebar_second
+weight: -10
+provider: null
+plugin: 'facet_block:type'
+settings:
+  id: 'facet_block:type'
+  label: Type
+  provider: facets
+  label_display: '0'
+  block_id: type
+visibility:
+  request_path:
+    id: request_path
+    pages: /kiosque
+    negate: false
+    context_mapping: {  }

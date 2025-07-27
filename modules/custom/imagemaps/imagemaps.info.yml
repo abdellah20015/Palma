@@ -1,0 +1,5 @@
+name: 'Imagemaps'
+type: module
+description: 'image maps module for ckeditor'
+core: 8.x
+package: 'CKEditor'

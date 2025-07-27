@@ -1,0 +1,187 @@
+{#
+/**
+ * @file
+ * Default theme implementation to present all user data.
+ *
+ * This template is used when viewing a registered user's page,
+ * e.g., example.com/user/123. 123 being the user's ID.
+ *
+ * Available variables:
+ * - content: A list of content items. Use 'content' to print all content, or
+ *   print a subset such as 'content.field_example'. Fields attached to a user
+ *   such as 'user_picture' are available as 'content.user_picture'.
+ * - attributes: HTML attributes for the container element.
+ * - user: A Drupal User entity.
+ *
+ * @see template_preprocess_user()
+ *
+ * @ingroup themeable
+ */
+#}
+ 
+<!--Role si etudiant, on applique la remise -->
+{% if ( ('etudiant' in user.getroles(TRUE)) and ( student == "Etudiant") and  ( carte )) %}
+  <div id="note" class="_note">
+    {{" Profitez de votre remise "|t }} 
+  </div>
+{% else %}
+  <!-- les cas etudiant -->           
+  {% if student == "Etudiant" %}
+    {% if carte and pack_type %}
+      <div id="note">
+        {{"Merci d'attendre la validation de votre carte/certificat ainsi que votre pack par notre équipe"|t }} <a id="close">[close]</a>
+      </div>
+    {% elseif carte and pack_type is null %}
+      <div id="note">
+        {{"Merci d'attendre la validation de votre carte/certificat par notre équipe, et n'oubliez pas de choisir le pack 'Etudiant' sur "|t }} <a href="/packs-abonnements">{{ 'Packs & abonnements'|t }}</a> <a id="close">[close]</a>
+      </div>
+    {% else  %}
+      <div id="note">
+        {{"Veuillez insérer votre carte d'étudiant ou certificat scolaire dans votre "|t }} <a href="/user/{{ uid }}/edit?destination={{ user_url }}">{{ 'espace client'|t }}</a> <a id="close">[close]</a>
+      </div>
+    {% endif %}
+  {% endif %}
+{% endif %}
+
+<div class="container pl_2 pr_2">
+<div class="row">
+  <div class="col-xs-12 col-sm-6 col-lg-6">
+     <div class="contentWallet">
+         <div class="profil">
+             <h3 class="title_card">{{'Mon Profile'|t }}</h3>
+         </div>
+           <div class="contentDescription">
+               <div class="immagineprofilo">
+                  {{ content.field_photo|field_value }}
+               </div>
+               <div class="infoWallet">
+                 <h4 class="nameWallet">{{ content.field_nom|field_value }} {{ content.field_prenom|field_value }}</h4>
+                  {% if not multi_users  %} 
+                    <button type="button" class="desactiver" data-toggle="modal" data-target="#Modaldisableaccount">
+                        {{'Désactiver mon compte'|t }}
+                      </button>             
+                  {% endif %}
+               </div>
+           </div>
+          <div class="contentDescription">
+             <div class="postaddr">
+                <span class="addrese"> {{'Adresse Email'|t }}</span>
+                <span class="emailWeb">{{useremail}}</span>
+             </div> 
+             <div class="abonnement_prenium">
+               <span class="abonnement">{{ 'Pack'|t }}</span>
+               <span class="premium"> 
+                {% if pack_type is not null  %} {{ pack_type }} {% else %} {{'Standard'|t }} {% endif %}
+               </span>
+             </div>
+              <div class="inscription">
+                <span class="dateletter">{{'Date d’inscription'|t }} </span>
+                <span class="dateformat">{{ date_created|date("d/m/Y") }}</span>
+              </div>
+            
+              <!-- btn desactiver -->
+              <div class="btn_desactiver"> 
+                <!-- Button trigger modal -->
+                  {% if not multi_users  %}
+                  <a href="/user/{{uid}}/edit?destination={{user_url}}" class="modifier">
+                    Modifier mes informations</a>
+                  {% endif %}
+              </div>
+         </div>
+      </div>
+  </div>
+
+  <div class="col-xs-12 col-sm-6 col-lg-6">
+    <div class="contentWallet">
+         <div class="activite">
+             <h3 class="title_card"> {{'Activité'|t }}</h3>
+         </div>
+          <div class="contentProfile">
+              <div class="row">
+                    <div class="col-md-6">
+                        <div class="item_activite">   
+                          <span class="bleu">{{'Total Achat'|t }}</span>
+                          <span class="nbrabonner">{{total_achat}}</span>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="item_activite">
+                           <span class="orange">{{'Total abonnements'|t }}</span>
+                           <span class="nbrabonner">
+                                {{ total_abonner }}
+                           </span>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="item_activite">
+                          <span class="bleu">{{'Achat d’Ajourd’hui'|t }} </span>
+                          <span class="nbrabonner">{{achat}}</span>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="item_activite">
+                         <span class="orange">{{'Abonnement d’Aujourd’hui'|t }} </span>
+                         <span class="nbrabonner">
+                           {{ abonner }}
+                       </span>
+                       </div>
+                    </div> 
+               </div>
+         </div>
+     </div>
+  </div>
+</div>   
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="Modaldisableaccount" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">{{'Êtes-vous sûr(e) de vouloir désactiver votre compte ?'|t }}</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        {{'Cette action est irréversible.'|t }}
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
+        <a href="/compte/desactiver-mon-compte" class="btn btn-primary desactiver">{{'Confirmer'|t }}</a>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container pl_2">
+  <div class="contenu_table">
+    <!-- Nav tabs -->
+    <ul class="nav nav-tabs">
+        {% if 'editeur' in user.getroles(TRUE)  %}
+        <li class="nav-item">
+          <a class="nav-link" data-toggle="tab" href="#home"> {{'Ventes'|t }} </a>
+        </li>
+        {% endif %}
+      <li class="nav-item">
+          <a class="nav-link active" data-toggle="tab" href="#menu1"> {{'Achats'|t }} </a>
+      </li>
+    </ul>
+      <!-- Tab panes --> 
+      <div class="tab-content">
+          {% if 'editeur' in user.getroles(TRUE)  %}
+             <div class="tab-pane fade" id="home">
+                    {% if tabediteur %}
+                       {{ tabediteur }}
+                   {% endif %}
+             </div>
+           {% endif %}
+          {% if statistic %}
+            <div class="tab-pane active" id="menu1">
+                   {{ statistic }}
+
+            </div>
+          {% endif %}
+      </div>  
+   </div>
+</div>
+ 

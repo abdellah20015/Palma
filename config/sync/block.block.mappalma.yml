@@ -1,0 +1,25 @@
+uuid: b7963aff-99bf-4389-9d57-8385ebc66045
+langcode: fr
+status: true
+dependencies:
+  content:
+    - 'block_content:basic:41a0f140-8ff4-4254-ab42-a18e604fe4bf'
+  module:
+    - block_content
+  theme:
+    - palma
+id: mappalma
+theme: palma
+region: footer
+weight: -13
+provider: null
+plugin: 'block_content:41a0f140-8ff4-4254-ab42-a18e604fe4bf'
+settings:
+  id: 'block_content:41a0f140-8ff4-4254-ab42-a18e604fe4bf'
+  label: 'Map palma'
+  provider: block_content
+  label_display: '0'
+  status: true
+  info: ''
+  view_mode: full
+visibility: {  }

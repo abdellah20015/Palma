@@ -1,0 +1,32 @@
+uuid: 0c341daf-ca97-4a34-94c1-b02051dd918f
+langcode: fr
+status: true
+dependencies:
+  config:
+    - filter.format.page
+  module:
+    - ckeditor
+format: page
+editor: ckeditor
+settings:
+  toolbar:
+    rows:
+      -
+        -
+          name: Média
+          items:
+            - ImceImage
+            - ImageMaps
+  plugins:
+    language:
+      language_list: un
+    stylescombo:
+      styles: ''
+image_upload:
+  status: true
+  scheme: public
+  directory: inline-images
+  max_size: ''
+  max_dimensions:
+    width: null
+    height: null

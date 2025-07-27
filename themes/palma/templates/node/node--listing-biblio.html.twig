@@ -1,0 +1,24 @@
+<!--bibliotheque-->
+ <div class="main_item_biblio  category">
+    <div class="item_populaire">
+	      <span class="cat__populaire">{{ field_categorie  }}</span> 
+		   <div class="element__lien">
+		      <a href="{{ path('entity.node.canonical', {'node': id}) }}" class="pop_item_link">{{'Voir'|t }}</a>
+		      <div class="item__media_content">
+		         <div class="item__media">
+		             <img src="{{ image_url }}" class="img-fluid">
+ 		         </div>
+		      </div>
+		      <div class="biblio_action_variable">
+				  <span class="total"> {{ prix|round  }} {{' MAD'|t }}</span>
+			      <span class="item_variable">{{'Entier'|t}}</span>
+			  </div>
+		  </div>
+	  </div>  
+ 	  <div class="populaire__content">
+          <span class="mag__item"> {{ '-'|t }} {{ field_type }} {{'-'|t }} </span>
+		  <span class="mag__item"> {{ periodicite }} </span>
+          <span class="mag__item"> {{ field_source }}  </span>
+          <span class="mag__item"> {{ 'N°'|t }} {{ titre  }} {{ titre_article }} </span>
+       </div>
+  </div> 

@@ -1,0 +1,23 @@
+uuid: 9d069846-594f-4ba0-9004-32a6b81a105c
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_prix
+    - paragraphs.paragraphs_type.lesabonnes
+id: paragraph.lesabonnes.field_prix
+field_name: field_prix
+entity_type: paragraph
+bundle: lesabonnes
+label: prix
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: decimal

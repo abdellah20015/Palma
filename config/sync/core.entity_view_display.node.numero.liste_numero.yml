@@ -1,0 +1,64 @@
+uuid: 97a39bae-9fd6-4e4c-8ef4-37bcc61f9e8a
+langcode: fr
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.liste_numero
+    - field.field.node.numero.body
+    - field.field.node.numero.field_date
+    - field.field.node.numero.field_image
+    - field.field.node.numero.field_journal_revue
+    - field.field.node.numero.field_mot_cles
+    - field.field.node.numero.field_pages
+    - field.field.node.numero.field_prix
+    - image.style.couverture
+    - node.type.numero
+  module:
+    - datetime
+    - image
+    - user
+id: node.numero.liste_numero
+targetEntityType: node
+bundle: numero
+mode: liste_numero
+content:
+  field_date:
+    type: datetime_default
+    weight: 3
+    region: content
+    label: hidden
+    settings:
+      timezone_override: Africa/Casablanca
+      format_type: numero
+    third_party_settings: {  }
+  field_image:
+    weight: 1
+    label: hidden
+    settings:
+      image_style: couverture
+    third_party_settings: {  }
+    type: image_url
+    region: content
+  field_journal_revue:
+    type: entity_reference_entity_view
+    weight: 2
+    region: content
+    label: hidden
+    settings:
+      link: false
+      view_mode: default
+    third_party_settings: {  }
+  links:
+    weight: 0
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  body: true
+  field_mot_cles: true
+  field_numero_brouillard_pdf: true
+  field_numero_pdf: true
+  field_pages: true
+  field_prix: true
+  field_type_de_vente: true
+  langcode: true

@@ -1,0 +1,25 @@
+uuid: bf4c3747-0d76-4e08-83f7-085ff3b2798e
+langcode: fr
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - palma
+_core:
+  default_config_hash: NDwadleLD3YVSbDUaakxyYZyINYtkFtOVGShfq4kWy8
+id: palma_branding
+theme: palma
+region: header
+weight: -24
+provider: null
+plugin: system_branding_block
+settings:
+  id: system_branding_block
+  label: 'Marque du site'
+  provider: system
+  label_display: '0'
+  use_site_logo: true
+  use_site_name: true
+  use_site_slogan: true
+visibility: {  }

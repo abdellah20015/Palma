@@ -1,0 +1,349 @@
+<div class="main_container numerokisque"> 
+       <div class="container p-0">
+              <div class="page_title_inner">
+					<div class="breadcrumb">
+					 {{ page.breadcrumb }} 
+					</div>
+					<div class="contenu_detail_numero">
+					<h2 class="populaire__title"> 
+					  {{ 'Kiosque'|t }}  
+					</h2>
+					</div>
+					<div class="type_contegory">    
+					 <div class="type"> {{ '-'|t }} {{ field_type }} {{'-'|t}} </div> 
+					 <div class="cat__populaire"> {{ field_categorie }}</div>
+					</div> 
+					<div class="typecontegory"> 
+					   <div class="source">{{ field_source }}</div>
+					   <div class="numero_title">{{ 'N°'|t }} {{ label.0['#context'].value }} - {{ content.field_date|field_value }}</div>
+					</div>
+              </div>
+        </div>
+</div>
+
+<div class="main_full_content">
+   <div class="container">
+		<div class="row">
+				<div class="col-md-4 pl-0">
+					<div class="item___media">
+					<img src="{{ content.field_image|field_value }}" width="100%" class="img-fluid">
+					</div>
+				</div>
+				<div class="col-md-8 text-left">
+					<div class="item__contenu"> 
+						 <div class="source_title">{{ field_source }}</div>
+							<div class="body_numero">	
+								{% if field_description_jnl_revue is not empty %}
+									{{ field_description_jnl_revue|raw  }}<br />
+								{% endif %}
+							</div>
+						  
+	{% if multi_users == 'FALSE'  %}
+		{% if display == 'show' %}
+			{% if display_link == 'show' %}
+							{% if etudiant == "etudiant" %}
+										{% if prix_numero <= 0 %}
+											<button type="button" class="pg_link_mag_art" onclick="location.href='/acheter/numero/{{node.id}}'">
+										{% else %}
+											<button type="button" class="pg_link_mag_art" data-toggle="modal" data-target="#confirmationModal">
+										{% endif %}
+												{{ 'Achetez le numéro complet à '|t }}
+												{% set prix_numero = prix_numero - (prix_numero * remise) %}
+												{{ prix_numero|round }} {{' MAD'|t }}
+										</button>
+
+										{% if node.field_type_de_vente.value=='par_article' %}
+										<a href="{{ link_articles }}" class="pg_link pg_lk_price_article"> {{ "Acheter un article" }}</a>
+										{% endif %}
+									</button>
+
+
+								{% else %}	
+									
+										<!-- Button Modal acheter tout -->
+										{% if prix_numero <= 0 %}
+											<button type="button" class="pg_link_mag_art" onclick="location.href='/acheter/numero/{{node.id}}'">
+										{% else %}
+											<button type="button" class="pg_link_mag_art" data-toggle="modal" data-target="#confirmationModal">
+										{% endif %}
+												{{ 'Achetez le numéro complet à '|t }}
+												{% set lepr = prix_numero  %}
+												{{ lepr|round }} {{' MAD'|t }}
+										</button>
+
+										{% if node.field_type_de_vente.value=='par_article' %}
+										<a href="{{ link_articles }}" class="pg_link pg_lk_price_article">
+											{{ "Acheter un article" }}</a>
+										{% endif %}
+
+							{% endif %}
+
+			{% else %}
+
+						{% if node.field_type_de_vente.value=='par_article' %}
+							<a href="{{ link_articles }}" class="pg_link pg_lk_price_article"> {{ "Lire les articles " }}</a>
+						{% endif %}
+
+			{% endif %}
+
+
+
+				{% if display_link == 'show' %}
+							{% if(node.field_numero_brouillard_pdf.entity.uri.value) %}
+								{% set pdf_numero = file_url(node.field_numero_brouillard_pdf.entity.uri.value) %}
+							{% endif %}
+					{% else %}
+							{% if(node.field_numero_pdf.entity.uri.value) %}
+								{% set pdf_numero = file_url(node.field_numero_pdf.entity.uri.value) %}
+							{% endif %}
+				{% endif %}
+
+
+				{% if (node.field_type_de_vente[1].value=='numero_complet' or node.field_type_de_vente[0].value=='numero_complet' )%}
+					
+						{% if display_link == 'show' %}
+							{% if(node.field_numero_brouillard_pdf.entity.uri.value) %}
+								<button type="button" id="pdf_numero" class="pg_link modalnumero" >
+									{{'lire extrait'|t }}
+								</button>
+							{% endif %}
+						{% else %}
+							{% if(node.field_numero_pdf.entity.uri.value) %}
+								<button type="button" id="pdf_numero" class="pg_link modalnumero" >
+									{{'Afficher le numero'|t }}
+								</button>
+							{% endif %}
+						{% endif %}
+					
+				{% endif %}
+	
+
+			<a href="javascript:void(0)" id="packs-open" class="pg_link pg_lk_sabonner"> 
+				{{ "S'abonner "}} 
+			</a>
+				<div class="mysearch">
+				<div id="packs-overlay" class="block aboner">
+					<div class="centered">
+						<div id='packs-box'>
+							<i id="packs-close" class="fa fa-times fa-2x"></i> 
+								<div id="item_abonnement">
+								{% for item in results.lesabonnes %}
+									<div class="views-row-pack">
+										<div class="cardpack">
+												<div class="cardheader">
+													<h2 class="title">{{ item.letitre }}</h2>
+												</div>
+												<div class="nombre">
+												{% set pr = item.leprix %}
+												{% set nbr_item = item.nbrenum %}
+												{% set id_item = item.periodicite_id %}
+													{%  if etudiant == "etudiant" %}
+													<span class="nbr">
+														{% set pr = pr - (pr * remise) %}
+														{{ pr|round }} 
+													</span>
+													{% else %} 
+													<span class="nbr">{{ pr|round }}</span>
+													{% endif %}
+													<span class="mad">{{' MAD'|t}}</span>
+													<span class="month">{{ item.nbrenum }} {{"Numéros"|t }}</span>
+												</div> 
+												{{ item.lebody|raw }}
+											<a href="/abonneraunumero/{{node.id|base64_encode}}/{{ pr|round|base64_encode }}/{{ item.periodicite_id|base64_encode }}/{{ item.nbrenum|base64_encode }}" class="btn_choisir active"> {{ 'choisir'|t }} </a>
+										</div>
+									</div>
+										{% else %}
+												<p class="pem"> {{"Aucun element dans le Journal/Revu "|t }}</p>	
+									{% endfor %}
+								</div>
+						</div>
+						</div>
+					</div>
+			</div>
+		{% else %}
+			<!-- numero inclut dans mon abonnement -->
+			{% if theid in id_numero %} 
+				{% if (node.field_numero_pdf.entity.uri.value) %}
+					{% set pdf_numero = file_url(node.field_numero_pdf.entity.uri.value) %}
+				{% endif %}
+				<!-- si vente par numero -->
+				{% if (node.field_type_de_vente.value=='numero_complet' )%}
+					<button type="button" id="pdf_numero" class="pg_link modalnumero" data-toggle="modal" data-target="#Modalnumero">
+						{% if(node.field_numero_pdf.entity.uri.value) %}
+							{{'Afficher le numero'|t }}
+						{% endif %} 
+					</button>
+				{% endif %} 
+				<!-- si vente par article -->
+				{% if node.field_type_de_vente.value=='par_article' %}
+					<a href="{{ link_articles }}" class="pg_link pg_lk_price_article"> {{ "Lire les articles " }}</a>
+				{% endif %}
+
+				<div class="pmsg">
+					{{ 'Votre abonnement est maintenant actif'|t }} <a id="close"> [close]</a>
+				</div>
+			{% else %} 
+				{% if display_link == 'show' %}
+					<!-- si etudiant, on applique la remise -->
+					{%  if etudiant == "etudiant" %}
+						{% set prix_numero = prix_numero - (prix_numero * remise) %}
+						{% if prix_numero <= 0 %}
+							<button type="button" class="pg_link_mag_art" onclick="location.href='/acheter/numero/{{node.id}}'">
+						{% else %}
+							<button type="button" class="pg_link_mag_art" data-toggle="modal" data-target="#confirmationModal">
+						{% endif %}
+						{{ 'Achetez le numéro complet à '|t }}
+						{{ prix_numero|number_format(2) }} {{' MAD'|t }}
+						</button>
+					{% else %}	<!-- s il est pas etudiant -->
+						{% if prix_numero <= 0 %}
+							<button type="button" class="pg_link_mag_art" onclick="location.href='/acheter/numero/{{node.id}}'">
+						{% else %}
+							<button type="button" class="pg_link_mag_art" data-toggle="modal" data-target="#confirmationModal">
+						{% endif %}
+								{{ 'Achetez le numéro complet à '|t }}
+								{{ (prix_numero)|number_format(2) }} {{' MAD'|t }}
+						</button>
+					{% endif %}
+
+					<!-- si achat par article + non achete -->
+					{% if node.field_type_de_vente.value=='par_article' %}
+						<a href="{{ link_articles }}" class="pg_link pg_lk_price_article">{{ "Acheter un article" }}</a>
+					{% endif %}
+					<!-- si achat par numero + non achete -->
+					{% if (node.field_type_de_vente.value=='numero_complet' ) %}
+						{% if(node.field_numero_brouillard_pdf.entity.uri.value) %}
+							{% set pdf_numero = file_url(node.field_numero_brouillard_pdf.entity.uri.value) %}
+							<button type="button" id="pdf_numero" class="pg_link modalnumero" data-toggle="modal" data-target="#Modalnumero">
+								{{'lire extrait'|t }}
+							</button>
+						{% endif %}
+					{% endif %}
+				{% else %}
+					<!-- si achat par article + achete -->
+					{% if node.field_type_de_vente.value=='par_article' %}
+						<a href="{{ link_articles }}" class="pg_link pg_lk_price_article"> {{ "Lire les articles " }}</a>
+					{% endif %}
+					<!-- si achat par numero + achete -->
+					{% if (node.field_type_de_vente.value=='numero_complet' ) %}
+						{% if (node.field_numero_pdf.entity.uri.value) %}
+							{% set pdf_numero = file_url(node.field_numero_pdf.entity.uri.value) %}
+							<button type="button" id="pdf_numero" class="pg_link modalnumero" data-toggle="modal" data-target="#Modalnumero">
+								{{'Afficher le numero'|t }}
+							</button>
+						{% endif %}
+					{% endif %}
+				{% endif %}
+				<!-- Message dans le cas d un numero sorti avant ou apres mon abonnement -->
+				<div class="pmsg">
+					{{ "Ce numéro n'entre pas dans votre abonnement"|t }} <a id="close"> [close]</a>
+				</div>
+			{% endif %}
+			<span class="pg_link pg_lk_price_article btnabonner">
+				{{"Abonné"|t }} 
+			</span>																				
+		{% endif %}
+	{% else %}
+		{% if display_link == 'none' or display == 'none' %}
+			{% if node.field_type_de_vente.value=='par_article' %}
+				<a href="{{ link_articles }}" class="pg_link pg_lk_price_article"> {{ "Lire les articles " }}</a>
+			{% else %}
+				{% if (node.field_numero_pdf.entity.uri.value) %}
+					{% set pdf_numero = file_url(node.field_numero_pdf.entity.uri.value) %}
+					<button type="button" id="pdf_numero" class="pg_link modalnumero" data-toggle="modal" data-target="#Modalnumero">
+						{{'Afficher le numero'|t }}
+					</button>
+				{% endif %}
+			{% endif %}
+		{% else %}
+			<p class="no-button">Votre profil ne vous permet pas de voir ce numéro.<br> Veuillez aller à la <a href="/bibliotheque">bibliothèque</a> pour consulter les numéros disponibles.</p>
+		{% endif %}
+	{% endif %}
+			</div>  
+		</div>
+	</div> 
+</div>
+
+<div class="modal fade" id="confirmationModal" tabindex="-1">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="exampleModalLabel">
+				{{'Êtes-vous sûr(e) de vouloir faire cet achat ?'|t }}</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-secondary" data-dismiss="modal"> {{'Annuler'|t }}</button>
+				<a href="/acheter/numero/{{node.id}}" class="btn btn-primary desactiver">{{'Confirmer'|t }}</a>
+			</div>
+		</div>
+	</div>
+</div>
+<div style='display: none'>
+	<div id='book'></div>
+</div>
+        <script src="/themes/palma/vendor/pdf/js/vendor/modernizr-2.7.1.min.js?v=8.8.1"></script>
+        <script src="/themes/palma/vendor/pdf/js/vendor/jquery-1.11.2.min.js"></script>
+        <script src="/themes/palma/vendor/pdf/js/helper.js?v=8.8.1"></script>
+        <script src="/themes/palma/vendor/pdf/wow_book/pdf.combined.min.js?v=8.8.1"></script>
+        <script src="/themes/palma/vendor/pdf/wow_book/wow_book.min.js?v=8.8.1"></script>
+        <script type="text/javascript">
+        $(function(){
+
+            function fullscreenErrorHandler(){
+                if (self!=top) return "The frame is blocking full screen mode. Click on 'remove frame' button above and try to go full screen again."
+            }
+
+            // imageBook = ["1", "8"][ Math.floor(Math.random()*2)];
+            // imageBookPath = "./img/magazine_template_0"+imageBook+"/";
+            // $("#book1-trigger .book-thumb").attr("src", imageBookPath+"image_000.jpg")
+
+
+            var optionsBook = {
+                 height   : 1024
+                ,width    : 768*2
+				,zoomMax  : 8
+                ,pageNumbers: false
+                ,pdf: "{{ pdf_numero }}"
+				,toc: [ ["Page Cover", 0], ["Page 2 - 3", 1], ["Page 4 - 5", 3], ["Page 6 - 7", 5], ["Page 8 - 9", 7], ["Page 10 - 11", 9], ["Page 12 - 13", 11], ["Page 14 - 15", 13], ["Page 16 - 17", 15], ["Page 18 - 19", 17], ["Page 20 - 21", 19] ]
+				,tocHeader: "Liste des pages"
+				,pdfProgressiveRender: true
+                ,lightbox : "#book2-trigger"
+                ,lightboxClass : "lightbox-pdf"
+                ,centeredWhenClosed : true
+                ,curl: false
+                ,toolbar: "lastLeft, left, currentPage, right, lastRight, zoomout, zoomin, fullscreen, toc"
+                ,thumbnailsPosition : 'bottom'
+                ,responsiveHandleWidth : 50
+                ,onFullscreenError: fullscreenErrorHandler
+            };
+
+            var books = {
+                "#book" : optionsBook
+            };
+            $("#pdf_numero").on("click",function(){
+                buildBook( "#book" );
+            })
+
+            function buildBook( elem ){
+                var book=$.wowBook(elem);
+                if (!book) {
+                    $(elem).wowBook( books[elem] );
+                    book=$.wowBook(elem);
+                }
+                // book.opts.onHideLightbox = function(){
+                //     setTimeout( function(){ book.destroy(); }, 1000);
+                // }
+                book.showLightbox();
+            }
+
+
+        });
+    </script>
+</div>		 
+
+
+
+

@@ -1,0 +1,29 @@
+uuid: 8f0e99c1-f8ee-4476-ae72-c64bd83f85c3
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_periodicite
+    - paragraphs.paragraphs_type.lesabonnes
+    - taxonomy.vocabulary.periodicite
+id: paragraph.lesabonnes.field_periodicite
+field_name: field_periodicite
+entity_type: paragraph
+bundle: lesabonnes
+label: Périodicité
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      periodicite: periodicite
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

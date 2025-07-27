@@ -1,0 +1,18 @@
+uuid: bdf15943-a67d-466f-a1b8-f65a492f00d5
+langcode: fr
+status: true
+dependencies:
+  config:
+    - node.type.journal_revue
+id: node.journal_revue.title
+field_name: title
+entity_type: node
+bundle: journal_revue
+label: Nom
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

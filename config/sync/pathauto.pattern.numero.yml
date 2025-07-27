@@ -1,0 +1,22 @@
+uuid: b0ebe662-54ed-4fa7-84c8-befbbd70fcc8
+langcode: fr
+status: true
+dependencies:
+  module:
+    - node
+id: numero
+label: numéro
+type: 'canonical_entities:node'
+pattern: 'kiosque/[node:field_journal_revue:entity:title]/[node:title] [node:field_date:date:numero]'
+selection_criteria:
+  044c2261-f6a8-4ab3-aa69-b4d79a444436:
+    id: node_type
+    bundles:
+      numero: numero
+    negate: false
+    context_mapping:
+      node: node
+    uuid: 044c2261-f6a8-4ab3-aa69-b4d79a444436
+selection_logic: and
+weight: -9
+relationships: {  }

@@ -1,0 +1,17 @@
+uuid: 70f8aa20-a7a1-4d8f-af7a-56959467a1d0
+langcode: fr
+status: true
+dependencies:
+  module:
+    - menu_ui
+third_party_settings:
+  menu_ui:
+    available_menus: {  }
+    parent: ''
+name: Article
+type: article_numero
+description: ''
+help: ''
+new_revision: true
+preview_mode: 0
+display_submitted: false

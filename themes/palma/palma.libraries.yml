@@ -1,0 +1,102 @@
+bootstrap:
+  version: 4.3.1
+  css:
+    theme:
+       vendor/css/bootstrap.css: {}
+  js:
+      vendor/js/bootstrap.js: {}
+      vendor/js/imageMapResizer.min.js: {}
+      vendor/js/jquery.maphilight.js: {}
+      
+  dependencies:
+    - core/jquery
+
+font-awesome:
+  version: 4.7.0
+  css:
+    theme:
+      vendor/fonts/font-awesome/css/font-awesome.css: {}
+
+smoothdivscroll:
+   version: 2.2.0
+   css:
+     theme:
+        vendor/css/smoothDivScroll.css: {}
+   js:
+     vendor/js/scripts/jquery-ui-1.10.3.custom.min.js: {}
+     vendor/js/scripts/jquery.mousewheel.min.js: {}
+     vendor/js/scripts/jquery.kinetic.min.js: {}
+     vendor/js/scripts/jquery.smoothdivscroll-1.3-min.js: {} 
+
+ckeditor-dialog:
+  version: VERSION
+  css:
+    theme:
+      vendor/css/ckeditor-dialog.css: {}
+
+ionicons:
+  version: 1.3.3
+  css:
+    theme:
+       vendor/css/ionicons.min.css: {}
+
+flexslider:
+   version: 2.2.0
+   css:
+     theme:
+        vendor/css/flexslider-min.css: {}
+   js:
+     vendor/js/jquery.flexslider-min.js: {}
+
+
+animate:
+  version: 2.1.1
+  css:
+    theme:
+      vendor/css/animate.css: {}
+
+webfonts:
+  version: VERSION
+  css:
+    theme:
+      //fonts.googleapis.com/icon?family=Material+Icons: { type: external }
+
+formreg:
+    version: VERSION
+    js:
+      https://cdnjs.cloudflare.com/ajax/libs/1000hz-bootstrap-validator/0.11.9/validator.min.js: { type: external }
+
+pdf:
+    version: VERSION
+    css:
+      theme:
+        vendor/pdf/css/normalize.css: {}
+        vendor/pdf/css/main.css: {}
+        vendor/pdf/wow_book/wow_book.css: {}
+    dependencies:
+    - core/jquery
+    - core/drupal
+
+base:
+  version: VERSION
+  css:
+    theme:
+      vendor/css/flaticon.css: {}
+      vendor/css/main.css: {}
+      vendor/css/responsive.css: {}
+      
+  js:
+     vendor/js/scripts.js: {}
+  dependencies:
+    - core/jquery
+    - core/drupal
+    - core/jquery.once
+    - core/drupalSetting
+
+
+
+
+
+
+
+

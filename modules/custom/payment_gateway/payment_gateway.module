@@ -1,0 +1,33 @@
+<?php
+
+/**
+ * @file
+ * Contains payment_gateway.module.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements hook_help().
+ */
+function payment_gateway_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the payment_gateway module.
+    case 'help.page.payment_gateway':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('Module de paiement') . '</p>';
+      return $output;
+
+    default:
+  }
+}
+
+function payment_gateway_form_alter(&$form, &$form_state, $form_id) {
+	if ($form_id == 'senddata_form' || $form_id == 'cmi_form') {
+    $form['#attached']['library'][] = 'payment_gateway/senddata';
+    $form['form_build_id']['#access'] = FALSE;
+        $form['form_token']['#access'] = FALSE;
+        $form['form_id']['#access'] = FALSE;
+  }
+}

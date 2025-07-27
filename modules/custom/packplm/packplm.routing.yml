@@ -1,0 +1,28 @@
+packplm.admin:
+  path: '/admin/config/packplm'
+  defaults:
+    _controller: '\Drupal\system\Controller\SystemController::systemAdminMenuBlockPage'
+    _title: 'Pack Palma'
+  requirements:
+    _permission: 'administer Packplm config'
+email.student:
+  path: '/admin/config/email/management'
+  defaults:
+    _form:  '\Drupal\packplm\Form\EmailManagement'
+    _title: "Gestion des emails Étudiants"
+  requirements:
+    _permission: 'access content'
+email.multipro:
+  path: '/admin/config/email/multiprofessionnel'
+  defaults:
+    _form:  '\Drupal\packplm\Form\EmailProfessionnel'
+    _title: "Gestion des emails Professionnels et multi connexion"
+  requirements:
+    _permission: 'access content'
+packplm.mypack:
+  path: '/abonneraupack/{node_id}'
+  defaults:
+    _controller: 'Drupal\packplm\Controller\MypackController::pack_callback'
+    _title: 'Pack Palma  Active le Pack'
+  requirements:
+    _permission: 'access content'

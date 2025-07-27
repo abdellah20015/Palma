@@ -1,0 +1,109 @@
+uuid: f2a4fd85-2d65-4b25-8d25-95c803f16f7b
+langcode: fr
+status: true
+dependencies: {  }
+id: mabibliotheque
+label: 'Ma Bibliothèque'
+renderer: quick_tabs
+options:
+  accordion_tabs:
+    jquery_ui:
+      collapsible: 0
+      heightStyle: auto
+  quick_tabs:
+    ajax: '1'
+hide_empty_tabs: 0
+default_tab: '9999'
+configuration_data:
+  -
+    title: Revues
+    weight: '-10'
+    type: block_content
+    content:
+      block_content:
+        options:
+          bid: 'views_block:bloc_bibliotheque-block_1'
+          block_title: ''
+          display_title: 0
+      node_content:
+        options:
+          nid: ''
+          view_mode: full
+          hide_title: '1'
+      qtabs_content:
+        options:
+          machine_name: home_page
+      view_content:
+        options:
+          vid: bloc_bibliotheque
+          display: default
+          args: ''
+  -
+    title: Journaux
+    weight: '-9'
+    type: block_content
+    content:
+      block_content:
+        options:
+          bid: 'views_block:bloc_bibliotheque-block_2'
+          block_title: ''
+          display_title: 0
+      node_content:
+        options:
+          nid: ''
+          view_mode: full
+          hide_title: '1'
+      qtabs_content:
+        options:
+          machine_name: home_page
+      view_content:
+        options:
+          vid: bloc_bibliotheque
+          display: default
+          args: ''
+  -
+    title: Articles
+    weight: '-8'
+    type: block_content
+    content:
+      block_content:
+        options:
+          bid: 'views_block:bloc_bibliotheque-block_3'
+          block_title: ''
+          display_title: 0
+      node_content:
+        options:
+          nid: ''
+          view_mode: full
+          hide_title: '1'
+      qtabs_content:
+        options:
+          machine_name: home_page
+      view_content:
+        options:
+          vid: bloc_bibliotheque
+          display: default
+          args: ''
+  -
+    title: Abonnements
+    weight: '0'
+    type: block_content
+    content:
+      block_content:
+        options:
+          bid: 'views_block:abonnements-block_1'
+          block_title: ''
+          display_title: 0
+      node_content:
+        options:
+          nid: ''
+          view_mode: full
+          hide_title: '1'
+      qtabs_content:
+        options:
+          machine_name: home_page
+      view_content:
+        options:
+          vid: abonnements
+          display: default
+          args: ''

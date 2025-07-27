@@ -1,0 +1,23 @@
+uuid: 6e1f5381-16f9-456d-b977-3bed44a2521b
+langcode: fr
+status: true
+dependencies:
+  config:
+    - facets.facet.langue
+  module:
+    - facets
+  theme:
+    - palma
+id: palma_langues
+theme: palma
+region: sidebar_filter
+weight: -14
+provider: null
+plugin: 'facet_block:langue'
+settings:
+  id: 'facet_block:langue'
+  label: Langues
+  provider: facets
+  label_display: '0'
+  block_id: palma_langues
+visibility: {  }

@@ -1,0 +1,22 @@
+uuid: 3b463db1-1f55-48d8-a2d5-befa6081715c
+langcode: fr
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - palma
+_core:
+  default_config_hash: 9EoWV2Lot6FVSr50t4hoKgiz1LIXYWNG-IIPYsWxBqo
+id: palma_content
+theme: palma
+region: content
+weight: -19
+provider: null
+plugin: system_main_block
+settings:
+  id: system_main_block
+  label: 'Contenu de la page principale'
+  provider: system
+  label_display: '0'
+visibility: {  }

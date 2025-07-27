@@ -1,0 +1,22 @@
+uuid: 9fb38804-6e50-4fc0-b534-f6b16eee3d76
+langcode: fr
+status: true
+dependencies:
+  module:
+    - node
+id: articles
+label: articles
+type: 'canonical_entities:node'
+pattern: 'kiosque/[node:title]'
+selection_criteria:
+  6ae0c413-374f-4982-8d69-a6abfd419197:
+    id: node_type
+    bundles:
+      article_numero: article_numero
+    negate: false
+    context_mapping:
+      node: node
+    uuid: 6ae0c413-374f-4982-8d69-a6abfd419197
+selection_logic: and
+weight: -5
+relationships: {  }

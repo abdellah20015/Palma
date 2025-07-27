@@ -1,0 +1,29 @@
+uuid: 0fadf04f-0649-4410-a99e-26d8e8ff2403
+langcode: fr
+status: true
+dependencies:
+  config:
+    - config_pages.type.config_accueil
+    - core.entity_view_mode.config_pages.partenaires
+    - field.field.config_pages.config_accueil.field_categories
+    - field.field.config_pages.config_accueil.field_partenaires
+    - field.field.config_pages.config_accueil.field_slider
+  module:
+    - entity_reference_revisions
+id: config_pages.config_accueil.partenaires
+targetEntityType: config_pages
+bundle: config_accueil
+mode: partenaires
+content:
+  field_partenaires:
+    type: entity_reference_revisions_entity_view
+    weight: 0
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    region: content
+hidden:
+  field_categories: true
+  field_slider: true

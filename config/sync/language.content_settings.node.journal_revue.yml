@@ -1,0 +1,11 @@
+uuid: 0c18b6cd-7a53-41b6-b5ce-79c0df820cd0
+langcode: fr
+status: true
+dependencies:
+  config:
+    - node.type.journal_revue
+id: node.journal_revue
+target_entity_type_id: node
+target_bundle: journal_revue
+default_langcode: site_default
+language_alterable: false

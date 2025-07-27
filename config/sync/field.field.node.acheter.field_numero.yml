@@ -1,0 +1,28 @@
+uuid: 852c8654-ef5d-4ad2-b593-1c791dbf2ed8
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_numero
+    - node.type.acheter
+    - node.type.numero
+id: node.acheter.field_numero
+field_name: field_numero
+entity_type: node
+bundle: acheter
+label: Numéro
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      numero: numero
+    sort:
+      field: _none
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

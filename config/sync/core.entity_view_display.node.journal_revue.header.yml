@@ -1,0 +1,47 @@
+uuid: ce0b2fc3-216b-4c1e-973f-f7d81d8fd9d6
+langcode: fr
+status: false
+dependencies:
+  config:
+    - core.entity_view_mode.node.header
+    - field.field.node.journal_revue.body
+    - field.field.node.journal_revue.field_categorie
+    - field.field.node.journal_revue.field_langue
+    - field.field.node.journal_revue.field_origine
+    - field.field.node.journal_revue.field_periodicite
+    - field.field.node.journal_revue.field_type
+    - node.type.journal_revue
+  module:
+    - user
+id: node.journal_revue.header
+targetEntityType: node
+bundle: journal_revue
+mode: header
+content:
+  field_categorie:
+    weight: 1
+    label: hidden
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+    region: content
+  field_type:
+    weight: 2
+    label: hidden
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+    region: content
+  links:
+    weight: 0
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  body: true
+  field_langue: true
+  field_origine: true
+  field_periodicite: true
+  langcode: true

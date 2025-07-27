@@ -1,0 +1,23 @@
+uuid: 8bd52d79-e298-46bf-af3d-b2a3ea2b428f
+langcode: fr
+status: true
+dependencies:
+  config:
+    - facets.facet.categorie
+  module:
+    - facets
+  theme:
+    - palma
+id: palma_categorie
+theme: palma
+region: sidebar_filter
+weight: -16
+provider: null
+plugin: 'facet_block:categorie'
+settings:
+  id: 'facet_block:categorie'
+  label: Catégorie
+  provider: facets
+  label_display: '0'
+  block_id: palma_categorie
+visibility: {  }

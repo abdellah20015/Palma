@@ -1,0 +1,65 @@
+uuid: 65a9948d-6b12-4494-8228-423005b54e3b
+langcode: fr
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.user.compact
+    - field.field.user.user.field_carte
+    - field.field.user.user.field_credit
+    - field.field.user.user.field_d_adresse_physique
+    - field.field.user.user.field_date_de_naissance_
+    - field.field.user.user.field_interesse_par
+    - field.field.user.user.field_nom
+    - field.field.user.user.field_photo
+    - field.field.user.user.field_prenom
+    - field.field.user.user.field_telephone
+    - field.field.user.user.field_type
+    - field.field.user.user.field_ville
+    - image.style.medium
+  module:
+    - image
+    - user
+_core:
+  default_config_hash: T2PsplcZ3qhzqgwW_aYCKQshCg_UQkSsKV45b03pEl4
+id: user.user.compact
+targetEntityType: user
+bundle: user
+mode: compact
+content:
+  field_nom:
+    type: string
+    weight: 0
+    region: content
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+  field_photo:
+    type: image_url
+    weight: 2
+    region: content
+    label: above
+    settings:
+      image_style: medium
+    third_party_settings: {  }
+  field_prenom:
+    type: string
+    weight: 1
+    region: content
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+hidden:
+  field_carte: true
+  field_credit: true
+  field_d_adresse_physique: true
+  field_date_de_naissance_: true
+  field_interesse_par: true
+  field_telephone: true
+  field_type: true
+  field_ville: true
+  langcode: true
+  member_for: true
+  profile_customer: true
+  simplenews: true

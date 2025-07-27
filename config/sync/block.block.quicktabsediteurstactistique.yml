@@ -1,0 +1,26 @@
+uuid: 3207a814-e9ba-4344-9910-25af5484a8f8
+langcode: fr
+status: false
+dependencies:
+  module:
+    - quicktabs
+    - system
+  theme:
+    - palma
+id: quicktabsediteurstactistique
+theme: palma
+region: content
+weight: -10
+provider: null
+plugin: 'quicktabs_block:stactistiqueediteur'
+settings:
+  id: 'quicktabs_block:stactistiqueediteur'
+  label: 'QuickTabs - Editeur stactistique'
+  provider: quicktabs
+  label_display: '0'
+visibility:
+  request_path:
+    id: request_path
+    pages: user/%
+    negate: false
+    context_mapping: {  }

@@ -1,0 +1,26 @@
+uuid: 16ecb9d5-e6b2-4e79-9f1f-33e7149b5f2e
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_type_numero
+    - node.type.abonner
+    - node.type.numero
+id: node.abonner.field_type_numero
+field_name: field_type_numero
+entity_type: node
+bundle: abonner
+label: 'Type Numero'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    target_uuid: 83236e8b-89fd-4e3e-a12e-ba1285440c1f
+default_value_callback: ''
+settings:
+  handler: 'default:node_type'
+  handler_settings:
+    target_bundles: null
+    auto_create: false
+field_type: entity_reference

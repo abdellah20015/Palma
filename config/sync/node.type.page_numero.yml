@@ -1,0 +1,17 @@
+uuid: bdcee847-ed10-4b9d-9bd3-a18bf6598f03
+langcode: fr
+status: true
+dependencies:
+  module:
+    - menu_ui
+third_party_settings:
+  menu_ui:
+    available_menus: {  }
+    parent: ''
+name: Page
+type: page_numero
+description: ''
+help: ''
+new_revision: true
+preview_mode: 0
+display_submitted: false

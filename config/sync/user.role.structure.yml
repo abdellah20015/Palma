@@ -1,0 +1,9 @@
+uuid: eecf14cb-f14f-4fbe-bdad-b008d2fc3d81
+langcode: fr
+status: true
+dependencies: {  }
+id: structure
+label: Structure
+weight: 5
+is_admin: null
+permissions: {  }

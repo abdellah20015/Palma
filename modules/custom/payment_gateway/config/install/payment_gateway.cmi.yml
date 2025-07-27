@@ -1,0 +1,5 @@
+payment_gateway:
+  lang: "fr"
+  refreshtime: "5"
+  BillToCountry: "504"
+  encoding: "UTF-8"

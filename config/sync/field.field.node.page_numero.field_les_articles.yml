@@ -1,0 +1,28 @@
+uuid: 66bb163a-8941-4bc5-bc82-6119a199f4f9
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_les_articles
+    - node.type.article_numero
+    - node.type.page_numero
+id: node.page_numero.field_les_articles
+field_name: field_les_articles
+entity_type: node
+bundle: page_numero
+label: 'Les articles'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      article_numero: article_numero
+    sort:
+      field: _none
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

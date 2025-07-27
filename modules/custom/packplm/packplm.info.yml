@@ -1,0 +1,5 @@
+name: Packs et abonnements
+core: 8.x
+type: module
+package: Custom
+description: Custom module for specific developments

@@ -1,0 +1,21 @@
+uuid: d1092669-e6d1-4991-a81b-b58367e6a57d
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_date
+    - node.type.abonner
+  module:
+    - datetime
+id: node.abonner.field_date
+field_name: field_date
+entity_type: node
+bundle: abonner
+label: Date
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: datetime

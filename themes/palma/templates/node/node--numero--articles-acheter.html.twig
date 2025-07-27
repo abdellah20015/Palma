@@ -1,0 +1,33 @@
+<!--Header-->
+<div class="detail_article_acheter  mainheader" style="display:none"> 
+     <div class="container p-0">
+        <div class="detail_article_action">
+          <a href="{{ url }}" class="header_image_article">
+            <img src="{{ content.field_image|field_value }}" class="img-fluid">
+          </a>
+          <div class="content_btn">
+             <a href="#" class="btn_prix">
+              {{' Acheter le  entier a '|t }}
+              {{ content.field_prix|field_value }} {{' MAD'|t }}
+             </a>
+             <a href="#" class="btn_abonner"> {{ "S'abonner "}} </a>
+           </div>
+         </div>
+          <div class="type_contegory">    
+             <div class="type"> {{ '-'|t }} {{ field_type }} {{'-'|t}} </div> 
+             <div class="cat__populaire"> {{ field_categorie }}</div>
+          </div> 
+          <div class="typecontegory"> 
+             <div class="source">{{ field_source }}</div>
+             <div class="numero_title">{{ 'N°'|t }} {{ label.0['#context'].value }} - {{ content.field_date|field_value }}</div>
+         </div>         
+      </div>
+ </div>
+
+<div class="hidden_">
+<img src="{{ content.field_image|field_value }}" class="img-fluid">
+ <a href="{{ url }}?pages=liste" class="pg_link_mag_art"> 
+{{'Acheter d\'autres articles'|t}}</a>
+{{ content.field_pages|field_value }}
+</div>
+

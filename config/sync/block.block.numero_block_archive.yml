@@ -1,0 +1,33 @@
+uuid: d0a19a04-9130-4859-afb3-f16567a71d99
+langcode: fr
+status: true
+dependencies:
+  config:
+    - views.view.numero
+  module:
+    - ctools
+    - views
+  theme:
+    - palma
+id: numero_block_archive
+theme: palma
+region: content
+weight: -17
+provider: null
+plugin: 'views_block:numero-block_archive'
+settings:
+  id: 'views_block:numero-block_archive'
+  label: ''
+  provider: views
+  label_display: visible
+  views_label: ''
+  items_per_page: '4'
+  context_mapping: {  }
+visibility:
+  'entity_bundle:node':
+    id: 'entity_bundle:node'
+    bundles:
+      numero: numero
+    negate: false
+    context_mapping:
+      node: '@node.node_route_context:node'

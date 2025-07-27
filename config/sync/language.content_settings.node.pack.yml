@@ -1,0 +1,11 @@
+uuid: 134c3b95-23a3-4863-b968-1451fe7b99be
+langcode: fr
+status: true
+dependencies:
+  config:
+    - node.type.pack
+id: node.pack
+target_entity_type_id: node
+target_bundle: pack
+default_langcode: site_default
+language_alterable: false

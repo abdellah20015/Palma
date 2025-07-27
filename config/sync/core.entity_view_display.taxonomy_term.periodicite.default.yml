@@ -1,0 +1,32 @@
+uuid: e4905faf-a465-448e-99a0-25acee447c0d
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.field.taxonomy_term.periodicite.field_nbre_jr
+    - taxonomy.vocabulary.periodicite
+  module:
+    - text
+id: taxonomy_term.periodicite.default
+targetEntityType: taxonomy_term
+bundle: periodicite
+mode: default
+content:
+  description:
+    label: hidden
+    type: text_default
+    weight: 0
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_nbre_jr:
+    weight: 1
+    label: above
+    settings:
+      thousand_separator: ''
+      prefix_suffix: true
+    third_party_settings: {  }
+    type: number_integer
+    region: content
+hidden:
+  langcode: true
